@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="orange" type="material">#EA5C2B</color>
+    <color name="orangeShade">#FFD6C8</color>
+    <color name="red">#F11C1C</color>
+    <color name="green">#417C45</color>
+    <color name="yellow">#f6e05e</color>
+    <color name="black">#0E0E0E</color>
+    <color name="darkGrey">#374151</color>
+    <color name="grey">#9CA3AF</color>
+    <color name="customGrey">#C7CAD0</color>
+    <color name="white">#FFFFFF</color>
+    <color name="lightGrey">#F5F7FA</color>
+</resources>

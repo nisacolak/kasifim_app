@@ -1,0 +1,57 @@
+name: kasifim_app
+description: A new Flutter project.
+
+publish_to: "none"
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.19.3 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  flutter_gen_runner: ^5.2.0
+
+  #GOOGLE
+
+  #Development
+
+  json_serializable: ^6.6.1
+  google_sign_in: ^6.0.2
+  retrofit: ^4.0.1
+  dio: ^5.1.1
+  hive: ^2.2.3
+  equatable: ^2.0.5
+  flutter_rating_bar: ^4.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^2.0.0
+  build_runner: ^2.3.3
+flutter_gen:
+  colors:
+    inputs:
+      - assets/colors.xml
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/fonts/
+
+  fonts:
+    - family: Caveat
+      fonts:
+        - asset: assets/fonts/Caveat-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Caveat-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Caveat-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Caveat-Bold.ttf
+          weight: 700
