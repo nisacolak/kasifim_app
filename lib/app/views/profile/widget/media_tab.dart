@@ -31,9 +31,10 @@ class MediaTab extends StatelessWidget {
               buildImage(),
               buildImage(),
               buildImage(),
-              Container(),
-              Container(),
-              Container()
+              buildImage(),
+              buildImage(),
+              buildImage(),
+              buildImage(),
             ]),
       ],
     );
@@ -59,25 +60,3 @@ class buildImage extends StatelessWidget {
         ));
   }
 }
-
-
-    // int crossAxisCount = _calculateCrossAxisCount(context);
-//     return MediaQuery.removePadding(
-//         context: context,
-//         removeTop: true,
-//         child: GridView(
-//           physics: NeverScrollableScrollPhysics(),
-//           shrinkWrap: true,
-//           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-//             crossAxisCount: 3,
-//             mainAxisSpacing: 5.0,
-//             childAspectRatio: 0.9,
-//             crossAxisSpacing: 5.0,
-//           ),
-//           children: [
-//             Image(image: AssetImage(Assets.images.dessert.path)),
-          
-//           ],
-//         ));
-//   }
-// }
