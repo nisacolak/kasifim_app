@@ -16,13 +16,10 @@ class DirectionsTab extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(
-            child: Column(
-              children: const [
-                addressBox(),
-              ],
-            ),
+            child: addressBox(),
           ),
         ],
       ),
@@ -37,30 +34,33 @@ class addressBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          margin: EdgeInsets.only(
-            top: 15,
-            bottom: 8,
+    return SingleChildScrollView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            margin: EdgeInsets.only(
+              top: 15,
+              bottom: 8,
+            ),
+            padding: EdgeInsets.only(left: 9),
+            width: MediaQuery.of(context).size.width * 0.9,
+            height: MediaQuery.of(context).size.height * .10,
+            decoration: BoxDecoration(
+              // color: ColorName.lightGrey,
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: ColorName.orange),
+            ),
+            child: Column(
+              children: const [
+                _addressRow(),
+                _phoneRow(),
+              ],
+            ),
           ),
-          padding: EdgeInsets.only(left: 9),
-          width: MediaQuery.of(context).size.width * 0.9,
-          height: MediaQuery.of(context).size.height * .10,
-          decoration: BoxDecoration(
-            // color: ColorName.lightGrey,
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: ColorName.orange),
-          ),
-          child: Column(
-            children: const [
-              _addressRow(),
-              _phoneRow(),
-            ],
-          ),
-        ),
-        _map(),
-      ],
+          _map(),
+        ],
+      ),
     );
   }
 }

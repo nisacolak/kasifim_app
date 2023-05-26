@@ -53,31 +53,34 @@ class RestaurantCard extends StatelessWidget {
                                 fit: BoxFit.cover,
                                 image: AssetImage(item.thumbnailPath))),
                         child: Column(children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                    color: ColorName.green,
-                                    borderRadius: BorderRadius.circular(4)),
-                                height: 20,
-                                width: 40,
-                                child: Row(
-                                  children: [
-                                    Icon(
-                                      Icons.star_rate_sharp,
-                                      size: 18,
-                                      color: ColorName.yellow,
-                                    ),
-                                    AppText.medium(
-                                      item.rate.toString(),
-                                      color: ColorName.white,
-                                    ),
-                                  ],
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                      color: ColorName.green,
+                                      borderRadius: BorderRadius.circular(4)),
+                                  height: 20,
+                                  width: 40,
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.star_rate_sharp,
+                                        size: 18,
+                                        color: ColorName.yellow,
+                                      ),
+                                      AppText.medium(
+                                        item.rate.toString(),
+                                        color: ColorName.white,
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              const FavoriteButton(),
-                            ],
+                                const FavoriteButton(),
+                              ],
+                            ),
                           ),
                         ])),
                     Row(

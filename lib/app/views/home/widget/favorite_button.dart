@@ -19,47 +19,50 @@ class _FavoriteButtonState extends State<FavoriteButton>
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(right: 7, top: 7),
-      child: SizedBox(
-          child: AnimatedBuilder(
-              animation: _controller,
-              builder: (context, child) => GestureDetector(
-                    child: _isFavoriteClick
-                        ? AnimatedSwitcher(
-                            switchInCurve: Curves.easeInOutBack,
-                            transitionBuilder: (child, animation) =>
-                                ScaleTransition(
-                                  scale: animation,
-                                  child: child,
-                                ),
-                            duration: const Duration(milliseconds: 350),
+        child: AnimatedBuilder(
+            animation: _controller,
+            builder: (context, child) => GestureDetector(
+                  child: _isFavoriteClick
+                      ? AnimatedSwitcher(
+                          switchInCurve: Curves.easeInOutBack,
+                          transitionBuilder: (child, animation) =>
+                              ScaleTransition(
+                                scale: animation,
+                                child: child,
+                              ),
+                          duration: const Duration(milliseconds: 350),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
                             child: Icon(Icons.favorite,
-                                size: 25,
+                                size: 23,
                                 color: ColorName.orange,
                                 key: ValueKey(
                                   'favorite',
-                                )))
-                        : AnimatedSwitcher(
-                            switchInCurve: Curves.easeInOutBack,
-                            transitionBuilder: (child, animation) =>
-                                ScaleTransition(
-                              scale: animation,
-                              child: child,
-                            ),
-                            duration: const Duration(milliseconds: 350),
+                                )),
+                          ))
+                      : AnimatedSwitcher(
+                          switchInCurve: Curves.easeInOutBack,
+                          transitionBuilder: (child, animation) =>
+                              ScaleTransition(
+                            scale: animation,
+                            child: child,
+                          ),
+                          duration: const Duration(milliseconds: 350),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
                             child: Icon(
                               Icons.favorite_sharp,
-                              size: 25,
+                              size: 23,
                               color: ColorName.white,
                               key: const ValueKey('notFavorite'),
                             ),
                           ),
-                    onTap: () {
-                      setState(() {
-                        _isFavoriteClick = !_isFavoriteClick;
-                      });
-                    },
-                  ))),
-    );
+                        ),
+                  onTap: () {
+                    setState(() {
+                      _isFavoriteClick = !_isFavoriteClick;
+                    });
+                  },
+                )));
   }
 }
