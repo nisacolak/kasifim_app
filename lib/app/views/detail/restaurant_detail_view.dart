@@ -1,13 +1,16 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'dart:math' as math;
 import 'package:kasifim_app/app/views/detail/widget/directions_tab.dart';
 import 'package:kasifim_app/app/views/detail/widget/menu_tab.dart';
 import 'package:kasifim_app/app/views/detail/widget/reviews_tab.dart';
+import 'package:kasifim_app/app/views/home/widget/circle_container.dart';
 import 'package:kasifim_app/app/views/home/widget/favorite_button.dart';
+
 import 'package:kasifim_app/app/widgets/app_text.dart';
-import 'package:kasifim_app/gen/assets.gen.dart';
+
 import 'package:kasifim_app/gen/colors.gen.dart';
-import 'package:kasifim_app/gen/fonts.gen.dart';
 
 class RestaurantDetail extends StatefulWidget {
   const RestaurantDetail({Key? key}) : super(key: key);
@@ -21,244 +24,306 @@ class _RestaurantDetailState extends State<RestaurantDetail>
   late final TabController rTabController;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     rTabController = TabController(length: 3, vsync: this);
   }
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-        length: 3,
-        child: Scaffold(
-          body: SafeArea(
-            child: NestedScrollView(
+    return Scaffold(
+        body: SafeArea(
+      child: DefaultTabController(
+          length: 3,
+          child: NestedScrollView(
               headerSliverBuilder: (context, bool innerBoxIsScrolled) {
                 return [
-                  SliverToBoxAdapter(child: _buildDetail(context)),
                   SliverAppBar(
-                    backgroundColor: Colors.white,
-                    elevation: 0,
-                    pinned: true,
-                    toolbarHeight: 10,
-                    titleSpacing: 0.0,
-                    automaticallyImplyLeading: false,
-                    bottom: PreferredSize(
-                      preferredSize: Size.fromHeight(38),
-                      child: TabBar(
-                          indicatorColor: ColorName.orange,
-                          indicatorSize: TabBarIndicatorSize.label,
-                          labelColor: ColorName.orange,
-                          // labelPadding: EdgeInsets.only(left: 50),
-                          unselectedLabelColor: ColorName.grey,
-                          controller: rTabController,
-                          tabs: [
-                            Tab(
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.restaurant_menu,
-                                    size: 20,
-                                  ),
-                                  AppText.medium('  Menu'),
-                                ],
-                              ),
-                            ),
-                            Tab(
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.chat,
-                                    size: 20,
-                                  ),
-                                  AppText.medium('  Reviews'),
-                                ],
-                              ),
-                            ),
-                            Tab(
-                              child: Row(
-                                children: [
-                                  Icon(
-                                    Icons.location_on,
-                                    size: 20,
-                                  ),
-                                  AppText.medium('Directions'),
-                                ],
-                              ),
-                            ),
-                          ]),
+                    backgroundColor: Colors.transparent,
+                    leading: Padding(
+                      padding: const EdgeInsets.only(
+                        top: 2,
+                        left: 0,
+                      ),
+                      child: CircleContainer(
+                        color: ColorName.orangeShade,
+                        widget: IconButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, '/home-body');
+                          },
+                          icon: Icon(
+                            Icons.arrow_back,
+                            color: ColorName.orange,
+                          ),
+                        ),
+                      ),
                     ),
+                    elevation: 0,
+                    floating: false,
+                    snap: false,
+                    pinned: false,
+                    toolbarHeight: 40,
+                    expandedHeight: 300,
+                    actions: [
+                      CircleContainer(
+                          margin: const EdgeInsets.only(left: 10, right: 10),
+                          color: ColorName.orangeShade,
+                          widget: FavoriteButton())
+                    ],
+                    automaticallyImplyLeading: false,
+                    flexibleSpace: FlexibleSpaceBar(
+                        titlePadding: EdgeInsets.only(
+                            top: 0, left: 55, right: 0, bottom: 27),
+                        title: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            Text(
+                              'Viyana Kahvesi',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 18),
+                            ),
+                            Text('Coffee Shop',
+                                style: TextStyle(
+                                    fontSize: 10, color: Colors.white)),
+                          ],
+                        ),
+                        background: Image.network(
+                          'https://viyanakahvesi.com/wp-content/uploads/2021/07/viyana-kahvesi-narmanli.gif',
+                          fit: BoxFit.cover,
+                        )
+                        // CarouselSlider(
+                        //     items: [
+                        //   Container(
+                        //     color: Colors.blue,
+                        //     child: Image.network(
+                        //       'https://viyanakahvesi.com/wp-content/uploads/2021/07/viyana-kahvesi-narmanli.gif',
+                        //       fit: BoxFit.cover,
+                        //     ),
+                        //   ),
+                        //   Container(
+                        //     color: Colors.red,
+                        //     child: Image.network(
+                        //       'https://media-cdn.tripadvisor.com/media/photo-s/19/14/f4/fa/photo5jpg.jpg',
+                        //       fit: BoxFit.fill,
+                        //     ),
+                        //   ),
+                        //   Container(
+                        //     color: Colors.green,
+                        //     child: Image.network(
+                        //         'https://biyudum.com/images/slider/s21ameltbe.jpg'),
+                        //   ),
+                        // ],
+                        //     options: CarouselOptions(
+                        //         height:
+                        //             MediaQuery.of(context).size.height * .60,
+                        //         viewportFraction: .90,
+                        //         reverse: false,
+                        //         aspectRatio: 16 / 7)),
+                        ),
+                    bottom: PreferredSize(
+                      preferredSize: Size.fromHeight(30),
+                      child: Container(
+                          height: 25,
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(40),
+                                topRight: Radius.circular(40),
+                              ))),
+                    ),
+                  ),
+                  SliverPersistentHeader(
+                    pinned: false,
+                    delegate: _SliverAppBarDelegate(
+                      minHeight: MediaQuery.of(context).size.height * .11,
+                      maxHeight: MediaQuery.of(context).size.height * .06,
+                      child: Container(
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: ColorName.white,
+                        ),
+                        child: buildRestaurantInfo(),
+                      ),
+                    ),
+                  ),
+                  SliverPersistentHeader(
+                    pinned: true,
+                    delegate: _SliverAppBarDelegate(
+                        minHeight: MediaQuery.of(context).size.height * .05,
+                        maxHeight: MediaQuery.of(context).size.height * .05,
+                        child: Container(
+                          color: ColorName.white,
+                          child: TabBar(
+                              indicatorColor: ColorName.orange,
+                              indicatorSize: TabBarIndicatorSize.label,
+                              labelColor: ColorName.orange,
+                              // labelPadding: EdgeInsets.only(left: 50),
+                              unselectedLabelColor: ColorName.grey,
+                              controller: rTabController,
+                              tabs: [
+                                Tab(
+                                  child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.restaurant_menu,
+                                        size: 20,
+                                      ),
+                                      AppText.medium('  Menu'),
+                                    ],
+                                  ),
+                                ),
+                                Tab(
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.chat,
+                                        size: 20,
+                                      ),
+                                      AppText.medium('  Reviews'),
+                                    ],
+                                  ),
+                                ),
+                                Tab(
+                                  child: Row(
+                                    children: [
+                                      Icon(
+                                        Icons.location_on,
+                                        size: 20,
+                                      ),
+                                      AppText.medium('Directions'),
+                                    ],
+                                  ),
+                                ),
+                              ]),
+                        )),
                   ),
                 ];
               },
               body: TabBarView(
-                  controller: rTabController,
-                  children: [MenuTab(), ReviewsTab(), DirectionsTab()]),
-            ),
-          ),
-        ));
+                controller: rTabController,
+                children: [MenuTab(), ReviewsTab(), DirectionsTab()],
+              ))),
+    ));
   }
 }
 
-Widget _buildDetail(BuildContext context) {
-  return Container(
-    margin: EdgeInsets.only(top: 0, bottom: 0, right: 15, left: 20),
-    height: MediaQuery.of(context).size.height * .48,
-    width: MediaQuery.of(context).size.width * .90,
-    decoration: BoxDecoration(
-        //color: ColorName.darkGrey,
-        borderRadius: BorderRadius.circular(15)),
-    child: Column(
-      children: [
-        SizedBox(height: 5),
-        Container(
-          height: MediaQuery.of(context).size.height * .05,
-          decoration: BoxDecoration(
-              color: ColorName.orange.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(12)),
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Container(
-              //   height: MediaQuery.of(context).size.height * .09,
-              //   width: MediaQuery.of(context).size.width * .09,
-              //   decoration: BoxDecoration(
-              //     shape: BoxShape.circle,
-              //     color: ColorName.orangeShade,
-              //   ),
-              //   child:
-              IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.arrow_back,
-                    color: Colors.white,
-                  )),
+class buildRestaurantInfo extends StatelessWidget {
+  const buildRestaurantInfo({
+    super.key,
+  });
 
-              // Container(
-              //     height: MediaQuery.of(context).size.height * .09,
-              //     width: MediaQuery.of(context).size.width * .09,
-              //     decoration: BoxDecoration(
-              //       shape: BoxShape.circle,
-              //       color: ColorName.orangeShade,
-              //     ),
-              // child:
-              FavoriteButton()
-            ],
-          ),
-        ),
-        SizedBox(
-          height: 5,
-        ),
-        Stack(children: [
-          Container(
-              height: MediaQuery.of(context).size.height * .35,
-              //width: MediaQuery.of(context).size.width * .95,
-              decoration: BoxDecoration(
-                  //color: ColorName.green,
-                  borderRadius: BorderRadius.circular(12)),
-              child: CarouselSlider(
-                options: CarouselOptions(
-                  height: MediaQuery.of(context).size.height * .30,
-                  viewportFraction: 0.9,
-                  reverse: false,
-                ),
-                items: [
-                  Container(
-                    height: MediaQuery.of(context).size.height * .35,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Image.asset(
-                      Assets.images.breakfast.path,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  // Image.asset(Assets.images.dessert.path, fit: BoxFit.cover)
-                ],
-              )),
-          Positioned(
-            bottom: -1,
-            left: 20,
-            right: 20,
-            child: Container(
-              padding: EdgeInsets.all(5),
-              height: MediaQuery.of(context).size.height * .08,
-              width: MediaQuery.of(context).size.width * .80,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: ColorName.lightGrey.withOpacity(0.6),
-              ),
-              child: Column(children: [
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.star_sharp,
-                            color: ColorName.orange,
-                          ),
-                          AppText.small(' 4.3'),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.restaurant,
-                            color: ColorName.orange,
-                          ),
-                          AppText.small(' Coffee, Dessert'),
-                        ],
-                      ),
-                    ]),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.location_on,
-                            color: ColorName.orange,
-                          ),
-                          AppText.small(' Üsküdar/İstanbul'),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.currency_lira,
-                            color: ColorName.orange,
-                          ),
-                          AppText.small(' 100 - 200  '),
-                        ],
-                      ),
-                    ]),
-              ]),
-            ),
-          ),
-        ]),
-        SizedBox(
-          height: 5,
-        ),
+  @override
+  Widget build(BuildContext context) {
+    return Column(children: [
+      Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Row(
-          mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            // Icon(
+            //   Icons.star_sharp,
+            //   color: ColorName.orange,
+            // ),
+            RatingBar.builder(
+              initialRating: 3.5,
+              minRating: 1,
+              direction: Axis.horizontal,
+              allowHalfRating: true,
+              itemCount: 5,
+              itemSize: 22,
+              itemBuilder: (context, _) => Icon(
+                Icons.star,
+                color: ColorName.orange,
+              ),
+              onRatingUpdate: (rating) {},
+            ),
+            SizedBox(
+              width: 5,
+            ),
             Text(
-              'Viyana Kahvesi',
+              '4.5',
               style: TextStyle(
-                  fontSize: 26,
-                  color: ColorName.black,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: FontFamily.caveat),
+                fontSize: 16,
+              ),
             ),
           ],
-        )
+        ),
+        Row(
+          children: [
+            Icon(
+              Icons.currency_lira,
+              color: ColorName.orange,
+            ),
+            Text(
+              ' 100 - 200  ',
+              style: TextStyle(
+                fontSize: 16,
+              ),
+            ),
+          ],
+        ),
+      ]),
+      SizedBox(
+        height: 5,
+      ),
+      Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+        Row(
+          children: [
+            Icon(
+              Icons.location_on,
+              color: ColorName.orange,
+            ),
+            Text(' Üsküdar/İstanbul',
+                style: TextStyle(
+                  fontSize: 16,
+                )),
+          ],
+        ),
+        Row(
+          children: [
+            Icon(
+              Icons.restaurant,
+              color: ColorName.orange,
+            ),
+            Text(' Coffee, Dessert',
+                style: TextStyle(
+                  fontSize: 16,
+                )),
+          ],
+        ),
+      ]),
+    ]);
+  }
+}
 
-        //_buildRestaurantInfo(),
-      ],
-    ),
-  );
+class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
+  _SliverAppBarDelegate({
+    required this.minHeight,
+    required this.maxHeight,
+    required this.child,
+  });
+  final double minHeight;
+  final double maxHeight;
+
+  final Widget child;
+
+  @override
+  double get minExtent => minHeight;
+
+  @override
+  double get maxExtent => math.max(maxHeight, minHeight);
+
+  @override
+  Widget build(
+      BuildContext context, double shrinkOffset, bool overlapsContent) {
+    return SizedBox.expand(child: child);
+  }
+
+  @override
+  bool shouldRebuild(_SliverAppBarDelegate oldDelegate) {
+    return maxHeight != oldDelegate.maxHeight ||
+        minHeight != oldDelegate.minHeight ||
+        child != oldDelegate.child;
+  }
 }
