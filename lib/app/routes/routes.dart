@@ -8,7 +8,9 @@ import 'package:kasifim_app/app/views/detail/restaurant_detail_view.dart';
 
 import 'package:kasifim_app/app/views/home/home_body_view.dart';
 import 'package:kasifim_app/app/views/home/home_view.dart';
+import 'package:kasifim_app/app/views/profile/widget/profile_tab.dart';
 import 'package:kasifim_app/app/views/search/search_view.dart';
+import 'package:kasifim_app/app/views/settings/settings.dart';
 import 'package:kasifim_app/app/views/splash/splash_screen.dart';
 import 'package:kasifim_app/app/views/welcome/welcome_page.dart';
 
@@ -25,5 +27,7 @@ Map<String, WidgetBuilder> get pageRoutes {
     '/home': (context) => const HomeView(),
     '/search': (context) => const SearchView(),
     '/restaurant-detail': (context) => RestaurantDetail(),
+    '/profile': (context) => ProfileTab(),
+    '/profile-settings': (context) => ProfileSettings(),
   };
 }

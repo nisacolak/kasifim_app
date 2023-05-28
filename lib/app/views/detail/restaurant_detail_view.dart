@@ -150,8 +150,8 @@ class _RestaurantDetailState extends State<RestaurantDetail>
                   SliverPersistentHeader(
                     pinned: true,
                     delegate: _SliverAppBarDelegate(
-                        minHeight: MediaQuery.of(context).size.height * .05,
-                        maxHeight: MediaQuery.of(context).size.height * .05,
+                        minHeight: MediaQuery.of(context).size.height * .06,
+                        maxHeight: MediaQuery.of(context).size.height * .06,
                         child: Container(
                           color: ColorName.white,
                           child: TabBar(

@@ -24,64 +24,66 @@ class _ProfileTabState extends State<ProfileTab> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-        length: 2,
-        child: SafeArea(
-          child: NestedScrollView(
-            headerSliverBuilder: (context, bool innerBoxIsScrolled) {
-              return [
-                SliverToBoxAdapter(
-                  child: buildUserBio(context),
-                ),
-                SliverAppBar(
-                  backgroundColor: Colors.white,
-                  pinned: true,
-                  elevation: 0.0,
-                  titleSpacing: 0.0,
-                  toolbarHeight: 10,
-                  bottom: PreferredSize(
-                    preferredSize: Size.fromHeight(38),
-                    child: TabBar(
-                        indicatorColor: ColorName.white,
-                        indicatorSize: TabBarIndicatorSize.label,
-                        labelPadding: EdgeInsets.only(left: 50),
-                        labelColor: ColorName.darkGrey,
-                        unselectedLabelColor: ColorName.grey,
-                        controller: pTabController,
-                        tabs: [
-                          Tab(
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.comment,
-                                  size: 20,
-                                ),
-                                AppText.medium('  Reviews'),
-                              ],
-                            ),
-                          ),
-                          Tab(
-                            child: Row(
-                              children: [
-                                AppText.medium('Photos  '),
-                                Icon(
-                                  Icons.grid_on_sharp,
-                                  size: 20,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ]),
+    return Scaffold(
+      body: DefaultTabController(
+          length: 2,
+          child: SafeArea(
+            child: NestedScrollView(
+              headerSliverBuilder: (context, bool innerBoxIsScrolled) {
+                return [
+                  SliverToBoxAdapter(
+                    child: buildUserBio(context),
                   ),
-                ),
-              ];
-            },
-            body: TabBarView(controller: pTabController, children: [
-              ProfileReviewTab(),
-              MediaTab(),
-            ]),
-          ),
-        ));
+                  SliverAppBar(
+                    backgroundColor: Colors.white,
+                    pinned: true,
+                    elevation: 0.0,
+                    titleSpacing: 0.0,
+                    toolbarHeight: 10,
+                    bottom: PreferredSize(
+                      preferredSize: Size.fromHeight(38),
+                      child: TabBar(
+                          indicatorColor: ColorName.white,
+                          indicatorSize: TabBarIndicatorSize.label,
+                          labelPadding: EdgeInsets.only(left: 50),
+                          labelColor: ColorName.darkGrey,
+                          unselectedLabelColor: ColorName.grey,
+                          controller: pTabController,
+                          tabs: [
+                            Tab(
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.comment,
+                                    size: 20,
+                                  ),
+                                  AppText.medium('  Reviews'),
+                                ],
+                              ),
+                            ),
+                            Tab(
+                              child: Row(
+                                children: [
+                                  AppText.medium('Photos  '),
+                                  Icon(
+                                    Icons.grid_on_sharp,
+                                    size: 20,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ]),
+                    ),
+                  ),
+                ];
+              },
+              body: TabBarView(controller: pTabController, children: [
+                ProfileReviewTab(),
+                MediaTab(),
+              ]),
+            ),
+          )),
+    );
   }
 }

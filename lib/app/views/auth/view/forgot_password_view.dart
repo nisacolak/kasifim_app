@@ -46,7 +46,6 @@ class ForgotPassword extends StatelessWidget {
                           Form(
                             child: AuthField(
                               controller: _forgotEmailController,
-                              obscureText: false,
                               prefixIcon: const Icon(
                                 Icons.mail_outline,
                               ),

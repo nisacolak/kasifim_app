@@ -5,14 +5,13 @@ class AuthField extends StatefulWidget {
   final TextEditingController controller;
 
   final String? hintText;
-  final bool obscureText;
+
   final Icon? prefixIcon;
   final Function()? onChanged;
   const AuthField(
       {Key? key,
       required this.controller,
       this.hintText,
-      required this.obscureText,
       this.prefixIcon,
       this.onChanged})
       : super(key: key);
@@ -29,7 +28,6 @@ class _AuthFieldState extends State<AuthField> {
       width: MediaQuery.of(context).size.width * 0.70,
       child: TextFormField(
           controller: widget.controller,
-          obscureText: widget.obscureText,
           decoration: InputDecoration(
               filled: true,
               fillColor: Colors.white,

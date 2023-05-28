@@ -58,7 +58,6 @@ class _RegisterViewState extends State<RegisterView> {
                   prefixIcon: const Icon(
                     Icons.mail_outline,
                   ),
-                  obscureText: false,
                   hintText: 'enter your full name',
                 ),
                 _buildSpace(),
@@ -70,7 +69,6 @@ class _RegisterViewState extends State<RegisterView> {
                 AuthField(
                     controller: _registerEmailController,
                     hintText: 'example@example.com',
-                    obscureText: false,
                     prefixIcon: const Icon(Icons.person_2_outlined))
               ],
             ),

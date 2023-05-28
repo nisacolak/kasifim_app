@@ -154,6 +154,8 @@ class MenuTab extends StatelessWidget {
                                                         e.price,
                                                         style: TextStyle(
                                                             fontSize: 17,
+                                                            fontWeight:
+                                                                FontWeight.bold,
                                                             color: ColorName
                                                                 .orange),
                                                       )

@@ -58,7 +58,6 @@ class _LoginViewState extends State<LoginView> {
                   prefixIcon: const Icon(
                     Icons.mail_outline,
                   ),
-                  obscureText: false,
                   hintText: 'example@example.com',
                 ),
               ],

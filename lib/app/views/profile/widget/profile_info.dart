@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:kasifim_app/app/routes/custom_page_route.dart';
+import 'package:kasifim_app/app/views/settings/settings.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 
@@ -24,33 +26,20 @@ Widget buildUserBio(BuildContext context) {
                   Navigator.pushNamed(context, '/home-body');
                 }),
             IconButton(
-                icon: Icon(
-                  Icons.settings,
-                  color: ColorName.green,
-                ),
-                onPressed: () {}),
+              icon: Icon(
+                Icons.settings,
+                color: ColorName.green,
+              ),
+              onPressed: () => Navigator.of(context)
+                  .push(CustomPageRoute(child: ProfileSettings())),
+            ),
           ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             profileAvatar(),
-            Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(
-                'Name',
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * .05,
-                width: MediaQuery.of(context).size.width * .5,
-                child: Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna alid',
-                  overflow: TextOverflow.fade,
-                  maxLines: 3,
-                  style: TextStyle(fontSize: 16),
-                ),
-              ),
-            ]),
+            profileBio(),
           ],
         ),
         SizedBox(
@@ -64,6 +53,32 @@ Widget buildUserBio(BuildContext context) {
       ],
     ),
   );
+}
+
+class profileBio extends StatelessWidget {
+  const profileBio({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Text(
+        'Name',
+        style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+      ),
+      SizedBox(
+        height: MediaQuery.of(context).size.height * .05,
+        width: MediaQuery.of(context).size.width * .5,
+        child: Text(
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna alid',
+          overflow: TextOverflow.fade,
+          maxLines: 3,
+          style: TextStyle(fontSize: 16),
+        ),
+      ),
+    ]);
+  }
 }
 
 class profileAvatar extends StatefulWidget {
