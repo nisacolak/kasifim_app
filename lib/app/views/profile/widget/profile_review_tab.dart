@@ -93,21 +93,32 @@ class ProfileReviewTab extends StatelessWidget {
           SizedBox(
               height: MediaQuery.of(context).size.height * .06,
               width: MediaQuery.of(context).size.width * .66,
-              child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 3,
-                  separatorBuilder: (context, index) => SizedBox(
-                        width: 3,
-                      ),
-                  itemBuilder: (context, index) {
-                    return Container(
-                      child: Image.asset(
-                        Assets.images.breakfast.path,
-                      ),
-                    );
-                  }))
+              child: reviewImageList())
         ],
       ),
     );
+  }
+}
+
+class reviewImageList extends StatelessWidget {
+  const reviewImageList({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.separated(
+        scrollDirection: Axis.horizontal,
+        itemCount: 3,
+        separatorBuilder: (context, index) => SizedBox(
+              width: 3,
+            ),
+        itemBuilder: (context, index) {
+          return Container(
+            child: Image.asset(
+              Assets.images.breakfast.path,
+            ),
+          );
+        });
   }
 }

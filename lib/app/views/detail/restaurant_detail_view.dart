@@ -1,14 +1,15 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'dart:math' as math;
+
 import 'package:kasifim_app/app/views/detail/widget/directions_tab.dart';
 import 'package:kasifim_app/app/views/detail/widget/menu_tab.dart';
+import 'package:kasifim_app/app/views/detail/widget/restaurant_info.dart';
 import 'package:kasifim_app/app/views/detail/widget/reviews_tab.dart';
 import 'package:kasifim_app/app/views/home/widget/circle_container.dart';
 import 'package:kasifim_app/app/views/home/widget/favorite_button.dart';
 
 import 'package:kasifim_app/app/widgets/app_text.dart';
+import 'package:kasifim_app/gen/assets.gen.dart';
 
 import 'package:kasifim_app/gen/colors.gen.dart';
 
@@ -87,39 +88,10 @@ class _RestaurantDetailState extends State<RestaurantDetail>
                                     fontSize: 10, color: Colors.white)),
                           ],
                         ),
-                        background: Image.network(
-                          'https://viyanakahvesi.com/wp-content/uploads/2021/07/viyana-kahvesi-narmanli.gif',
+                        background: Image.asset(
+                          Assets.images.dessert.path,
                           fit: BoxFit.cover,
-                        )
-                        // CarouselSlider(
-                        //     items: [
-                        //   Container(
-                        //     color: Colors.blue,
-                        //     child: Image.network(
-                        //       'https://viyanakahvesi.com/wp-content/uploads/2021/07/viyana-kahvesi-narmanli.gif',
-                        //       fit: BoxFit.cover,
-                        //     ),
-                        //   ),
-                        //   Container(
-                        //     color: Colors.red,
-                        //     child: Image.network(
-                        //       'https://media-cdn.tripadvisor.com/media/photo-s/19/14/f4/fa/photo5jpg.jpg',
-                        //       fit: BoxFit.fill,
-                        //     ),
-                        //   ),
-                        //   Container(
-                        //     color: Colors.green,
-                        //     child: Image.network(
-                        //         'https://biyudum.com/images/slider/s21ameltbe.jpg'),
-                        //   ),
-                        // ],
-                        //     options: CarouselOptions(
-                        //         height:
-                        //             MediaQuery.of(context).size.height * .60,
-                        //         viewportFraction: .90,
-                        //         reverse: false,
-                        //         aspectRatio: 16 / 7)),
-                        ),
+                        )),
                     bottom: PreferredSize(
                       preferredSize: Size.fromHeight(30),
                       child: Container(
@@ -136,7 +108,7 @@ class _RestaurantDetailState extends State<RestaurantDetail>
                   SliverPersistentHeader(
                     pinned: false,
                     delegate: _SliverAppBarDelegate(
-                      minHeight: MediaQuery.of(context).size.height * .11,
+                      minHeight: MediaQuery.of(context).size.height * .23,
                       maxHeight: MediaQuery.of(context).size.height * .06,
                       child: Container(
                         padding: EdgeInsets.all(10),
@@ -207,93 +179,6 @@ class _RestaurantDetailState extends State<RestaurantDetail>
                 children: [MenuTab(), ReviewsTab(), DirectionsTab()],
               ))),
     ));
-  }
-}
-
-class buildRestaurantInfo extends StatelessWidget {
-  const buildRestaurantInfo({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(children: [
-      Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        Row(
-          children: [
-            // Icon(
-            //   Icons.star_sharp,
-            //   color: ColorName.orange,
-            // ),
-            RatingBar.builder(
-              initialRating: 3.5,
-              minRating: 1,
-              direction: Axis.horizontal,
-              allowHalfRating: true,
-              itemCount: 5,
-              itemSize: 22,
-              itemBuilder: (context, _) => Icon(
-                Icons.star,
-                color: ColorName.orange,
-              ),
-              onRatingUpdate: (rating) {},
-            ),
-            SizedBox(
-              width: 5,
-            ),
-            Text(
-              '4.5',
-              style: TextStyle(
-                fontSize: 16,
-              ),
-            ),
-          ],
-        ),
-        Row(
-          children: [
-            Icon(
-              Icons.currency_lira,
-              color: ColorName.orange,
-            ),
-            Text(
-              ' 100 - 200  ',
-              style: TextStyle(
-                fontSize: 16,
-              ),
-            ),
-          ],
-        ),
-      ]),
-      SizedBox(
-        height: 5,
-      ),
-      Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        Row(
-          children: [
-            Icon(
-              Icons.location_on,
-              color: ColorName.orange,
-            ),
-            Text(' Üsküdar/İstanbul',
-                style: TextStyle(
-                  fontSize: 16,
-                )),
-          ],
-        ),
-        Row(
-          children: [
-            Icon(
-              Icons.restaurant,
-              color: ColorName.orange,
-            ),
-            Text(' Coffee, Dessert',
-                style: TextStyle(
-                  fontSize: 16,
-                )),
-          ],
-        ),
-      ]),
-    ]);
   }
 }
 

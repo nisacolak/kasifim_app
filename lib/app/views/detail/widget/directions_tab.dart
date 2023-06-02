@@ -42,6 +42,7 @@ class addressBox extends StatelessWidget {
               height: 10,
             ),
             Container(
+              padding: EdgeInsets.all(6),
               width: MediaQuery.of(context).size.width * 0.9,
               height: MediaQuery.of(context).size.height * .10,
               decoration: BoxDecoration(
