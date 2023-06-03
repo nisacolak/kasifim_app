@@ -217,7 +217,6 @@ void _showBottomSheet(BuildContext context) {
                 leading: Icon(Icons.person),
                 title: Text('Profile'),
                 onTap: () {
-                  
                   Navigator.pop(context);
                 },
               ),
@@ -225,7 +224,6 @@ void _showBottomSheet(BuildContext context) {
                 leading: Icon(Icons.settings),
                 title: Text('Settings'),
                 onTap: () {
-                  // Ayarlar seçildiğinde yapılacak işlemler
                   Navigator.pop(context);
                 },
               ),
@@ -233,7 +231,6 @@ void _showBottomSheet(BuildContext context) {
                 leading: Icon(Icons.logout),
                 title: Text('Logout'),
                 onTap: () {
-                  // Çıkış yap seçildiğinde yapılacak işlemler
                   Navigator.pop(context);
                 },
               ),
