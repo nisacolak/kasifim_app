@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kasifim_app/app/routes/custom_page_route.dart';
 import 'package:kasifim_app/app/views/auth/widget/auth_field.dart';
 import 'package:kasifim_app/app/views/auth/widget/password_field.dart';
+import 'package:kasifim_app/app/views/profile/widget/profile_info.dart';
 
 import 'package:kasifim_app/app/views/settings/settings.dart';
 import 'package:kasifim_app/app/views/welcome/widget/custom_button.dart';
@@ -24,84 +25,119 @@ class _ProfileEditState extends State<ProfileEdit> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          backgroundColor: ColorName.white,
-          elevation: 0,
-          title: Text(
-            'update user information',
-            style: TextStyle(color: ColorName.grey),
-          ),
-          leading: Padding(
-            padding: const EdgeInsets.only(left: 20),
-            child: IconButton(
-                onPressed: () => Navigator.of(context)
-                    .push(CustomPageRoute(child: ProfileSettings())),
-                icon: Icon(
-                  Icons.arrow_back,
-                  color: ColorName.black,
-                )),
-          )),
-      body: SingleChildScrollView(
-        child: Form(
-          child: Center(
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  buildSpace(),
-                  AppText.medium(
+        resizeToAvoidBottomInset: false,
+        bottomNavigationBar: SizedBox(
+          height: 60,
+          child: CustomButton(
+              onPressed: () {},
+              text: 'Update',
+              labelColor: ColorName.white,
+              backgroundColor: ColorName.orange),
+        ),
+        appBar: AppBar(
+            // actions: [
+            //   TextButton(onPressed: () {}, child: AppText.medium('Kaydet')),
+            // ],
+            backgroundColor: ColorName.white,
+            elevation: 0,
+            title: Text(
+              'update user information',
+              style: TextStyle(color: ColorName.grey),
+            ),
+            leading: Padding(
+              padding: const EdgeInsets.only(left: 20),
+              child: IconButton(
+                  onPressed: () => Navigator.of(context)
+                      .push(CustomPageRoute(child: ProfileSettings())),
+                  icon: Icon(
+                    Icons.arrow_back,
+                    color: ColorName.black,
+                  )),
+            )),
+        body: SafeArea(
+            child: Form(
+          child: ListView(children: [
+            Column(mainAxisAlignment: MainAxisAlignment.end, children: [
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 75),
+                  child: ProfileAvatar(),
+                ),
+                buildSpace(),
+                Padding(
+                  padding: const EdgeInsets.only(left: 15),
+                  child: AppText.medium(
                     'Name',
                     color: ColorName.darkGrey,
                   ),
-                  buildSpace(),
-                  AuthField(
-                    controller: updateName,
-                  ),
-                  buildSpace(),
-                  AppText.medium(
+                ),
+                buildSpace(),
+                AuthField(
+                  controller: updateName,
+                ),
+                buildSpace(),
+                Padding(
+                  padding: const EdgeInsets.only(left: 15),
+                  child: AppText.medium(
                     'Bio',
                     color: ColorName.darkGrey,
                   ),
-                  buildSpace(),
-                  UpdateBio(
-                    controller: updateBio,
-                  ),
-                  AppText.medium(
+                ),
+                buildSpace(),
+                UpdateBio(
+                  controller: updateBio,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 15),
+                  child: AppText.medium(
                     'Email',
                     color: ColorName.darkGrey,
                   ),
-                  buildSpace(),
-                  AuthField(
-                    controller: updateEmail,
-                  ),
-                  buildSpace(),
-                  AppText.medium(
+                ),
+                buildSpace(),
+                AuthField(
+                  controller: updateEmail,
+                ),
+                buildSpace(),
+                Padding(
+                  padding: const EdgeInsets.only(left: 15),
+                  child: AppText.medium(
                     'Password',
                     color: ColorName.darkGrey,
                   ),
-                  buildSpace(),
-                  PasswordField(
-                    controller: updatePassword,
-                  ),
-                  buildSpace(),
-                  AppText.medium(
+                ),
+                buildSpace(),
+                PasswordField(
+                  controller: updatePassword,
+                ),
+                buildSpace(),
+                Padding(
+                  padding: const EdgeInsets.only(left: 15),
+                  child: AppText.medium(
                     'Confirm Password',
                     color: ColorName.darkGrey,
                   ),
-                  buildSpace(),
-                  PasswordField(
-                    controller: updatePasswordConfirm,
-                  ),
-                  buildSpace(),
-                  CustomButton(
-                      onPressed: () {},
-                      text: 'Update',
-                      labelColor: ColorName.orange,
-                      backgroundColor: ColorName.orangeShade),
-                ]),
-          ),
-        ),
-      ),
+                ),
+                buildSpace(),
+                PasswordField(
+                  controller: updatePasswordConfirm,
+                ),
+              ]),
+            ]),
+          ]),
+        )));
+  }
+}
+
+class buildSpace extends StatelessWidget {
+  const buildSpace({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * .016,
     );
   }
 }
@@ -116,10 +152,11 @@ class UpdateBio extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * .15,
-      width: MediaQuery.of(context).size.width * 0.70,
+      height: MediaQuery.of(context).size.height * .12,
+      width: MediaQuery.of(context).size.width * .70,
       child: TextFormField(
-          maxLines: 4,
+          autofillHints: [],
+          maxLines: 2,
           minLines: 2,
           controller: controller,
           decoration: InputDecoration(

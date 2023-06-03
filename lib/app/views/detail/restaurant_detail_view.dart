@@ -3,6 +3,7 @@ import 'dart:math' as math;
 
 import 'package:kasifim_app/app/views/detail/widget/directions_tab.dart';
 import 'package:kasifim_app/app/views/detail/widget/menu_tab.dart';
+import 'package:kasifim_app/app/views/detail/widget/restaurant_images.dart';
 import 'package:kasifim_app/app/views/detail/widget/restaurant_info.dart';
 import 'package:kasifim_app/app/views/detail/widget/reviews_tab.dart';
 import 'package:kasifim_app/app/views/home/widget/circle_container.dart';
@@ -108,7 +109,7 @@ class _RestaurantDetailState extends State<RestaurantDetail>
                   SliverPersistentHeader(
                     pinned: false,
                     delegate: _SliverAppBarDelegate(
-                      minHeight: MediaQuery.of(context).size.height * .23,
+                      minHeight: MediaQuery.of(context).size.height * .11,
                       maxHeight: MediaQuery.of(context).size.height * .06,
                       child: Container(
                         padding: EdgeInsets.all(10),
@@ -119,11 +120,18 @@ class _RestaurantDetailState extends State<RestaurantDetail>
                       ),
                     ),
                   ),
+                  // SliverPersistentHeader(
+                  //   delegate: _SliverAppBarDelegate(
+                  //     minHeight: MediaQuery.of(context).size.height * .10,
+                  //     maxHeight: MediaQuery.of(context).size.height * .06,
+                  //     child: RestaurantImages(),
+                  //   ),
+                  // ),
                   SliverPersistentHeader(
                     pinned: true,
                     delegate: _SliverAppBarDelegate(
-                        minHeight: MediaQuery.of(context).size.height * .06,
-                        maxHeight: MediaQuery.of(context).size.height * .06,
+                        minHeight: MediaQuery.of(context).size.height * .07,
+                        maxHeight: MediaQuery.of(context).size.height * .07,
                         child: Container(
                           color: ColorName.white,
                           child: TabBar(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:kasifim_app/app/views/detail/widget/expandable_text.dart';
+import 'package:kasifim_app/app/views/detail/widget/restaurant_images.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 import 'package:kasifim_app/network/models/model.dart';
 
@@ -10,6 +11,7 @@ class ReviewsTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorName.lightGrey,
       //floatingActionButton: CustomFloatingAction(),
       body: SingleChildScrollView(
         child: Padding(
@@ -17,6 +19,13 @@ class ReviewsTab extends StatelessWidget {
           child: Column(
             children: [
               restaurantAddReview(),
+              // Divider(
+              //   thickness: 2,
+              // ),
+              RestaurantImages(),
+              SizedBox(
+                height: 20,
+              ),
               Column(
                   children: sampleUserModel.map((item) {
                 return Column(children: [
@@ -143,7 +152,7 @@ class restaurantAddReview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * .17,
+      height: MediaQuery.of(context).size.height * .16,
       constraints: BoxConstraints(maxHeight: double.infinity),
       color: ColorName.lightGrey,
       child: Column(
@@ -166,41 +175,42 @@ class restaurantAddReview extends StatelessWidget {
                       borderRadius: BorderRadius.circular(12),
                       borderSide: const BorderSide(color: ColorName.grey)),
                   contentPadding: const EdgeInsets.all(20))),
-          SizedBox(
-            height: 5,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              RatingBar.builder(
-                initialRating: 0,
-                minRating: 1,
-                direction: Axis.horizontal,
-                allowHalfRating: true,
-                itemCount: 5,
-                itemSize: 18,
-                itemBuilder: (context, _) => Icon(
-                  Icons.star,
-                  color: ColorName.orange,
-                ),
-                onRatingUpdate: (rating) {},
-              ),
-              TextButton(
-                onPressed: () {},
-                style: TextButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(
-                        8.0), // İstenilen kenar yarıçapı değeri
+          Container(
+            height: MediaQuery.of(context).size.height * .04,
+            color: ColorName.lightGrey,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                RatingBar.builder(
+                  initialRating: 0,
+                  minRating: 1,
+                  direction: Axis.horizontal,
+                  allowHalfRating: true,
+                  itemCount: 5,
+                  itemSize: 18,
+                  itemBuilder: (context, _) => Icon(
+                    Icons.star,
+                    color: ColorName.orange,
                   ),
+                  onRatingUpdate: (rating) {},
                 ),
-                child: Text(
-                  'Send',
-                  style: TextStyle(
-                    fontSize: 16,
+                TextButton(
+                  onPressed: () {},
+                  style: TextButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(
+                          8.0), // İstenilen kenar yarıçapı değeri
+                    ),
                   ),
-                ),
-              )
-            ],
+                  child: Text(
+                    'Send',
+                    style: TextStyle(
+                      fontSize: 16,
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
         ],
       ),

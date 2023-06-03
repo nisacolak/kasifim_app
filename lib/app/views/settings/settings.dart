@@ -28,7 +28,7 @@ class ProfileSettings extends StatelessWidget {
             child: Center(
           child: Container(
             height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width * .9,
+            width: MediaQuery.of(context).size.width * .93,
             decoration: BoxDecoration(
                 color: ColorName.lightGrey,
                 borderRadius: BorderRadius.circular(20)),
@@ -36,19 +36,20 @@ class ProfileSettings extends StatelessWidget {
               buildSpace(),
               Container(
                   height: MediaQuery.of(context).size.height * .15,
-                  width: MediaQuery.of(context).size.width * .02,
+                  width: MediaQuery.of(context).size.width * .8,
                   decoration: BoxDecoration(
                     color: ColorName.white,
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: Stack(children: [
-                    Row(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          profileAvatar(),
+                          ProfileAvatar(),
                           SizedBox(
-                            width: 6,
+                            width: 10,
                           ),
                           profileBio(),
                           IconButton(
@@ -56,8 +57,8 @@ class ProfileSettings extends StatelessWidget {
                             onPressed: () => Navigator.of(context)
                                 .push(CustomPageRoute(child: ProfileEdit())),
                           ),
-                        ])
-                  ])),
+                        ]),
+                  )),
               buildSpace(),
               buildSettingsItem(
                 height: MediaQuery.of(context).size.height * .10,

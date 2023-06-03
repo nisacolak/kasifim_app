@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kasifim_app/app/routes/custom_page_route.dart';
+import 'package:kasifim_app/app/views/search/filter/widget/close_button.dart';
 import 'package:kasifim_app/app/views/settings/settings.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
@@ -38,7 +39,7 @@ Widget buildUserBio(BuildContext context) {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            profileAvatar(),
+            ProfileAvatar(),
             profileBio(),
           ],
         ),
@@ -81,12 +82,12 @@ class profileBio extends StatelessWidget {
   }
 }
 
-class profileAvatar extends StatefulWidget {
+class ProfileAvatar extends StatefulWidget {
   @override
-  _profileAvatarState createState() => _profileAvatarState();
+  _ProfileAvatarState createState() => _ProfileAvatarState();
 }
 
-class _profileAvatarState extends State<profileAvatar> {
+class _ProfileAvatarState extends State<ProfileAvatar> {
   bool isHovered = false;
 
   @override
@@ -102,15 +103,19 @@ class _profileAvatarState extends State<profileAvatar> {
           isHovered = false;
         });
       },
-      child: CircleAvatar(
-        backgroundImage: AssetImage(Assets.images.account.path),
-        radius: 50,
-        child: isHovered
-            ? Icon(
-                Icons.camera_alt,
-                color: ColorName.white,
-              )
-            : null,
+      child: Opacity(
+        opacity: isHovered ? 0.3 : 1.0,
+        child: CircleAvatar(
+          backgroundColor: ColorName.black,
+          backgroundImage: AssetImage(Assets.images.account.path),
+          radius: 50,
+          child: isHovered
+              ? Icon(
+                  Icons.camera_alt,
+                  color: ColorName.black,
+                )
+              : null,
+        ),
       ),
     );
   }
@@ -142,18 +147,23 @@ class buildProfileInfo extends StatelessWidget {
         SizedBox(
           height: 15,
         ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              'Followers',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            Text(
-              '324',
-              style: TextStyle(fontSize: 16),
-            ),
-          ],
+        GestureDetector(
+          onTap: () {
+            _showBottomSheet(context);
+          },
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                'Followers',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              Text(
+                '324',
+                style: TextStyle(fontSize: 16),
+              ),
+            ],
+          ),
         ),
         SizedBox(
           height: 15,
@@ -187,4 +197,50 @@ class buildSpace extends StatelessWidget {
       height: 20,
     );
   }
+}
+
+void _showBottomSheet(BuildContext context) {
+  showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    builder: (BuildContext context) {
+      return SingleChildScrollView(
+        child: Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(12), topRight: Radius.circular(12))),
+          padding: EdgeInsets.all(16),
+          child: Column(
+            children: [
+              StadiumCloseButton(),
+              ListTile(
+                leading: Icon(Icons.person),
+                title: Text('Profile'),
+                onTap: () {
+                  
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.settings),
+                title: Text('Settings'),
+                onTap: () {
+                  // Ayarlar seçildiğinde yapılacak işlemler
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.logout),
+                title: Text('Logout'),
+                onTap: () {
+                  // Çıkış yap seçildiğinde yapılacak işlemler
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
+        ),
+      );
+    },
+  );
 }
