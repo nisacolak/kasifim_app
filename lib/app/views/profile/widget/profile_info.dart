@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:kasifim_app/app/routes/custom_page_route.dart';
 import 'package:kasifim_app/app/views/search/filter/widget/close_button.dart';
+import 'package:kasifim_app/app/views/search/search_box.dart';
 import 'package:kasifim_app/app/views/settings/settings.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
+
+import 'profile_avatar.dart';
 
 Widget buildUserBio(BuildContext context) {
   return Container(
@@ -82,47 +85,10 @@ class profileBio extends StatelessWidget {
   }
 }
 
-class ProfileAvatar extends StatefulWidget {
-  @override
-  _ProfileAvatarState createState() => _ProfileAvatarState();
-}
-
-class _ProfileAvatarState extends State<ProfileAvatar> {
-  bool isHovered = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return MouseRegion(
-      onHover: (event) {
-        setState(() {
-          isHovered = true;
-        });
-      },
-      onExit: (event) {
-        setState(() {
-          isHovered = false;
-        });
-      },
-      child: Opacity(
-        opacity: isHovered ? 0.3 : 1.0,
-        child: CircleAvatar(
-          backgroundColor: ColorName.black,
-          backgroundImage: AssetImage(Assets.images.account.path),
-          radius: 50,
-          child: isHovered
-              ? Icon(
-                  Icons.camera_alt,
-                  color: ColorName.black,
-                )
-              : null,
-        ),
-      ),
-    );
-  }
-}
-
 class buildProfileInfo extends StatelessWidget {
-  const buildProfileInfo({
+  final TextEditingController followerSearchController =
+      TextEditingController();
+  buildProfileInfo({
     super.key,
   });
 
@@ -144,12 +110,17 @@ class buildProfileInfo extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(
-          height: 15,
-        ),
+        buildSpace(),
         GestureDetector(
           onTap: () {
-            _showBottomSheet(context);
+            showModalBottomSheet(
+                context: context,
+                isScrollControlled: true,
+                backgroundColor: Colors.transparent,
+                builder: (context) {
+                  return showProfileFollowStatus(
+                      followerSearchController: followerSearchController);
+                });
           },
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -186,6 +157,78 @@ class buildProfileInfo extends StatelessWidget {
   }
 }
 
+class showProfileFollowStatus extends StatelessWidget {
+  const showProfileFollowStatus({
+    super.key,
+    required this.followerSearchController,
+  });
+
+  final TextEditingController followerSearchController;
+
+  @override
+  Widget build(BuildContext context) {
+    return DraggableScrollableSheet(
+      expand: false,
+      initialChildSize: 0.6,
+      maxChildSize: 0.9,
+      minChildSize: 0.4,
+      builder: (context, scrollController) {
+        return Container(
+          decoration: BoxDecoration(
+              color: ColorName.white,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20), topRight: Radius.circular(20))),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child:
+                Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+              StadiumCloseButton(),
+              Align(
+                alignment: Alignment.topCenter,
+                child: SearchContainer(
+                    controller: followerSearchController,
+                    hintText: 'search',
+                    width: MediaQuery.of(context).size.width * .9,
+                    height: MediaQuery.of(context).size.height * .05),
+              ),
+              _showFollowers(
+                scrollController: scrollController,
+              ),
+            ]),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _showFollowers extends StatelessWidget {
+  final ScrollController scrollController;
+  const _showFollowers({
+    super.key,
+    required this.scrollController,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: ListView.builder(
+          controller: scrollController,
+          itemCount: 30,
+          itemBuilder: (context, index) => ListTile(
+                leading: CircleAvatar(
+                  backgroundImage: AssetImage(Assets.images.account.path),
+                ),
+                title: Text('John Doe'),
+                trailing: IconButton(
+                  icon: Icon(Icons.person_add),
+                  onPressed: () {},
+                ),
+              )),
+    );
+  }
+}
+
 class buildSpace extends StatelessWidget {
   const buildSpace({
     super.key,
@@ -197,40 +240,4 @@ class buildSpace extends StatelessWidget {
       height: 20,
     );
   }
-}
-
-void _showBottomSheet(BuildContext context) {
-  showModalBottomSheet(
-    context: context,
-    isScrollControlled: true,
-    builder: (BuildContext context) {
-      return SingleChildScrollView(
-        child: Container(
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(12), topRight: Radius.circular(12))),
-          padding: EdgeInsets.all(16),
-          child: Column(
-            children: [
-              StadiumCloseButton(),
-              ListTile(
-                leading: Icon(Icons.person),
-                title: Text('Profile'),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.logout),
-                title: Text('Logout'),
-                onTap: () {
-                  Navigator.pop(context);
-                },
-              ),
-            ],
-          ),
-        ),
-      );
-    },
-  );
 }

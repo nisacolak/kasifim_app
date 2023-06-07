@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:kasifim_app/app/routes/custom_page_route.dart';
 import 'package:kasifim_app/app/views/auth/widget/auth_field.dart';
 import 'package:kasifim_app/app/views/auth/widget/password_field.dart';
-import 'package:kasifim_app/app/views/profile/widget/profile_info.dart';
-
+import 'package:kasifim_app/app/views/profile/widget/profile_avatar.dart';
 import 'package:kasifim_app/app/views/settings/settings.dart';
-import 'package:kasifim_app/app/views/welcome/widget/custom_button.dart';
 import 'package:kasifim_app/app/widgets/app_text.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 
@@ -26,18 +24,10 @@ class _ProfileEditState extends State<ProfileEdit> {
   Widget build(BuildContext context) {
     return Scaffold(
         resizeToAvoidBottomInset: false,
-        bottomNavigationBar: SizedBox(
-          height: 60,
-          child: CustomButton(
-              onPressed: () {},
-              text: 'Update',
-              labelColor: ColorName.white,
-              backgroundColor: ColorName.orange),
-        ),
         appBar: AppBar(
-            // actions: [
-            //   TextButton(onPressed: () {}, child: AppText.medium('Kaydet')),
-            // ],
+            actions: [
+              TextButton(onPressed: () {}, child: AppText.large('Kaydet')),
+            ],
             backgroundColor: ColorName.white,
             elevation: 0,
             title: Text(

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
-import 'package:kasifim_app/gen/colors.gen.dart';
 
 class MediaTab extends StatelessWidget {
   MediaTab({Key? key}) : super(key: key);

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:kasifim_app/app/widgets/app_text.dart';
 
 class FilterSwitch extends StatefulWidget {
   FilterSwitch({Key? key}) : super(key: key);

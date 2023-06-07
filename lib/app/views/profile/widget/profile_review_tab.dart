@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
-import 'package:kasifim_app/gen/fonts.gen.dart';
 
 class ProfileReviewTab extends StatelessWidget {
   const ProfileReviewTab({Key? key}) : super(key: key);

@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:kasifim_app/app/widgets/app_text.dart';
+import 'package:kasifim_app/app/views/explore/explore_controller.dart';
 
 class LocationView extends StatelessWidget {
   const LocationView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(child: AppText.large('Google Map')),
-    );
+    return PageView.builder(
+        itemCount: 5,
+        controller: PageController(initialPage: 0, viewportFraction: 1),
+        scrollDirection: Axis.vertical,
+        itemBuilder: (context, index) {
+          return VideoPlayerScreen();
+        });
   }
 }

@@ -119,6 +119,7 @@ class homeAppBar extends StatelessWidget {
         height: MediaQuery.of(context).size.height * 0.06,
         hintText: 'search',
         controller: homeSearchController,
+        child: FilterShow(),
       ),
       SizedBox(
         width: 10,

@@ -172,11 +172,25 @@ class $AssetsImagesGen {
       ];
 }
 
+class $AssetsVideosGen {
+  const $AssetsVideosGen();
+
+  /// File path: assets/videos/coffee.mp4
+  String get coffee => 'assets/videos/coffee.mp4';
+
+  /// File path: assets/videos/pizza.mp4
+  String get pizza => 'assets/videos/pizza.mp4';
+
+  /// List of all assets
+  List<String> get values => [coffee, pizza];
+}
+
 class Assets {
   Assets._();
 
   static const $AssetsFontsGen fonts = $AssetsFontsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsVideosGen videos = $AssetsVideosGen();
 }
 
 class AssetGenImage {
@@ -237,7 +251,16 @@ class AssetGenImage {
     );
   }
 
-  ImageProvider provider() => AssetImage(_assetName);
+  ImageProvider provider({
+    AssetBundle? bundle,
+    String? package,
+  }) {
+    return AssetImage(
+      _assetName,
+      bundle: bundle,
+      package: package,
+    );
+  }
 
   String get path => _assetName;
 

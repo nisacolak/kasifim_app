@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 
 class MenuItem {

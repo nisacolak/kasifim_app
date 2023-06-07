@@ -8,7 +8,7 @@ import 'package:kasifim_app/gen/colors.gen.dart';
 import 'package:kasifim_app/network/models/restaurant.dart';
 
 class FavoritesView extends StatelessWidget {
-  TextEditingController favSearchController = TextEditingController();
+  final TextEditingController favSearchController = TextEditingController();
   FavoritesView({Key? key}) : super(key: key);
 
   @override
@@ -183,6 +183,7 @@ class favoritesSearch extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.06,
               hintText: 'search in favorites',
               controller: favSearchController,
+              child: FilterShow(),
             )),
         CircleContainer(
           widget: Image(

@@ -144,7 +144,7 @@ class ReviewsTab extends StatelessWidget {
 }
 
 class restaurantAddReview extends StatelessWidget {
-  TextEditingController addReview = TextEditingController();
+  final TextEditingController addReview = TextEditingController();
   restaurantAddReview({
     super.key,
   });

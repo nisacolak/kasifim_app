@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kasifim_app/app/routes/custom_page_route.dart';
+import 'package:kasifim_app/app/views/profile/widget/profile_avatar.dart';
 import 'package:kasifim_app/app/views/profile/widget/profile_info.dart';
 import 'package:kasifim_app/app/views/profile/widget/profile_tab.dart';
 import 'package:kasifim_app/app/views/settings/profile_edit.dart';

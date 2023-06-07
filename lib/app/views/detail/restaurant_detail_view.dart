@@ -3,7 +3,7 @@ import 'dart:math' as math;
 
 import 'package:kasifim_app/app/views/detail/widget/directions_tab.dart';
 import 'package:kasifim_app/app/views/detail/widget/menu_tab.dart';
-import 'package:kasifim_app/app/views/detail/widget/restaurant_images.dart';
+
 import 'package:kasifim_app/app/views/detail/widget/restaurant_info.dart';
 import 'package:kasifim_app/app/views/detail/widget/reviews_tab.dart';
 import 'package:kasifim_app/app/views/home/widget/circle_container.dart';

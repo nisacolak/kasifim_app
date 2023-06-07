@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 
 class CustomCircleAvatar extends StatelessWidget {
-  Widget? child;
+  final Widget? child;
   CustomCircleAvatar({
     Key? key,
     this.child,

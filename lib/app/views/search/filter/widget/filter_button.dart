@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 
 class FilterButton extends StatelessWidget {
-  VoidCallback onPressed;
+  final VoidCallback onPressed;
   FilterButton({
     required this.onPressed,
     super.key,

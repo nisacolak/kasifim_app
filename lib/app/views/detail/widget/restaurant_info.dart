@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:kasifim_app/app/views/detail/widget/restaurant_images.dart';
-import 'package:kasifim_app/gen/assets.gen.dart';
+
 import 'package:kasifim_app/gen/colors.gen.dart';
 
 class buildRestaurantInfo extends StatelessWidget {
