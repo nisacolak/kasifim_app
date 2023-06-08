@@ -422,6 +422,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "readmore",
+      "rootUri": "file:///C:/Users/nisac/AppData/Local/Pub/Cache/hosted/pub.dev/readmore-2.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.16"
+    },
+    {
       "name": "retrofit",
       "rootUri": "file:///C:/Users/nisac/AppData/Local/Pub/Cache/hosted/pub.dev/retrofit-4.0.1",
       "packageUri": "lib/",
@@ -584,7 +590,7 @@
       "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-06-05T14:06:41.528007Z",
+  "generated": "2023-06-08T10:37:53.629153Z",
   "generator": "pub",
   "generatorVersion": "3.0.3"
 }

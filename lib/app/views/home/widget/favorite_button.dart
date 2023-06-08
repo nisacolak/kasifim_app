@@ -34,7 +34,7 @@ class _FavoriteButtonState extends State<FavoriteButton>
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Icon(Icons.favorite,
-                                size: 23,
+                                size: 24,
                                 color: ColorName.orange,
                                 key: ValueKey(
                                   'favorite',
@@ -52,7 +52,7 @@ class _FavoriteButtonState extends State<FavoriteButton>
                             padding: const EdgeInsets.all(8.0),
                             child: Icon(
                               Icons.favorite_sharp,
-                              size: 23,
+                              size: 24,
                               color: ColorName.white,
                               key: const ValueKey('notFavorite'),
                             ),

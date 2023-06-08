@@ -35,18 +35,6 @@ class _CustomNavBarState extends State<CustomNavBar> {
       bottomNavigationBar: Container(
         margin: EdgeInsets.all(5),
         height: 55,
-        decoration: BoxDecoration(
-          // border: Border.all(),
-          borderRadius: BorderRadius.circular(35),
-          // boxShadow: const [
-          //   BoxShadow(
-          //     color: ColorName.orange,
-
-          //     blurRadius: 20,
-          //     offset: Offset(0, 1), // changes position of shadow
-          //   ),
-          // ],
-        ),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(20),
           child: BottomNavigationBar(
@@ -54,7 +42,7 @@ class _CustomNavBarState extends State<CustomNavBar> {
             unselectedItemColor: ColorName.darkGrey,
             showSelectedLabels: true,
             showUnselectedLabels: true,
-            iconSize: 23,
+            iconSize: 24,
             onTap: onTap,
             currentIndex: currentIndex,
             items: const [
