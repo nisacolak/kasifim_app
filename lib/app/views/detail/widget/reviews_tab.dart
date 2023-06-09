@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:kasifim_app/app/views/detail/widget/expandable_text.dart';
+
 import 'package:kasifim_app/app/views/detail/widget/restaurant_images.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 import 'package:kasifim_app/network/models/model.dart';
+import 'package:readmore/readmore.dart';
 
 class ReviewsTab extends StatelessWidget {
   const ReviewsTab({Key? key}) : super(key: key);
@@ -19,9 +20,6 @@ class ReviewsTab extends StatelessWidget {
           child: Column(
             children: [
               restaurantAddReview(),
-              // Divider(
-              //   thickness: 2,
-              // ),
               RestaurantImages(),
               SizedBox(
                 height: 20,
@@ -100,9 +98,22 @@ class ReviewsTab extends StatelessWidget {
                                   ],
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(top: 5),
-                                  child: ExpandableText(text: item.comment),
-                                ),
+                                    padding: const EdgeInsets.only(top: 5),
+                                    child: ReadMoreText(
+                                      item.comment,
+                                      trimLines: 2,
+                                      trimMode: TrimMode.Line,
+                                      trimCollapsedText: 'Read more',
+                                      trimExpandedText: 'Read less',
+                                      lessStyle: const TextStyle(
+                                        color: ColorName.orange,
+                                        fontSize: 14,
+                                      ),
+                                      moreStyle: const TextStyle(
+                                        color: ColorName.orange,
+                                        fontSize: 14,
+                                      ),
+                                    )),
                                 SizedBox(
                                   height: 45,
                                   child: ListView(
@@ -198,8 +209,7 @@ class restaurantAddReview extends StatelessWidget {
                   onPressed: () {},
                   style: TextButton.styleFrom(
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(
-                          8.0), // İstenilen kenar yarıçapı değeri
+                      borderRadius: BorderRadius.circular(8.0),
                     ),
                   ),
                   child: Text(

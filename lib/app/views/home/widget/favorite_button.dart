@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 
 class FavoriteButton extends StatefulWidget {
-  const FavoriteButton({
+  final double size;
+  FavoriteButton({
     super.key,
+    required this.size,
   });
 
   @override
@@ -34,7 +36,7 @@ class _FavoriteButtonState extends State<FavoriteButton>
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Icon(Icons.favorite,
-                                size: 24,
+                                size: widget.size,
                                 color: ColorName.orange,
                                 key: ValueKey(
                                   'favorite',
@@ -52,7 +54,7 @@ class _FavoriteButtonState extends State<FavoriteButton>
                             padding: const EdgeInsets.all(8.0),
                             child: Icon(
                               Icons.favorite_sharp,
-                              size: 24,
+                              size: widget.size,
                               color: ColorName.white,
                               key: const ValueKey('notFavorite'),
                             ),

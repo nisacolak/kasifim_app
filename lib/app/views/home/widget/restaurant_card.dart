@@ -78,7 +78,9 @@ class RestaurantCard extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                                const FavoriteButton(),
+                                FavoriteButton(
+                                  size: 25,
+                                ),
                               ],
                             ),
                           ),

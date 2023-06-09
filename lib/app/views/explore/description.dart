@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:kasifim_app/app/views/detail/widget/expandable_text.dart';
 
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
-import 'package:readmore/readmore.dart';
 
 class ExploreDescription extends StatelessWidget {
   const ExploreDescription({super.key});
@@ -32,46 +32,63 @@ class ExploreDescription extends StatelessWidget {
                 child: FollowChip(),
               )),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 14),
-            child: ReadMoreText(
-              readmore,
-              trimLines: 2,
-              textScaleFactor: 1,
-              trimMode: TrimMode.Line,
-              trimCollapsedText: 'Show more',
-              trimExpandedText: 'Show less',
-              style: TextStyle(color: Colors.white, fontSize: 16),
-            ),
-          )
+              padding: EdgeInsets.symmetric(horizontal: 14),
+              child: ExpandableText(
+                text: readmore,
+                color: ColorName.white,
+              )
+              // ReadMoreText(
+              //   readmore,
+              //   trimLines: 2,
+              //   textScaleFactor: 1,
+              //   trimMode: TrimMode.Line,
+              //   style: TextStyle(color: Colors.white, fontSize: 16),
+              // ),
+              )
         ],
       ),
     );
   }
 }
 
-class FollowChip extends StatelessWidget {
+class FollowChip extends StatefulWidget {
   const FollowChip({
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<FollowChip> createState() => _FollowChipState();
+}
+
+class _FollowChipState extends State<FollowChip> {
+  bool isFollowing = false;
+
+  void toggleFollow() {
+    setState(() {
+      isFollowing = !isFollowing;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: toggleFollow,
       child: Container(
-          height: 30,
-          width: 60,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              border: Border.all(
-                color: ColorName.white,
-              )),
-          child: Center(
-            child: Text(
-              'Takip et',
-              style: TextStyle(color: ColorName.white),
-            ),
-          )),
+        height: 30,
+        width: 60,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(8),
+          border: Border.all(
+            color: ColorName.white,
+          ),
+        ),
+        child: Center(
+          child: Text(
+            isFollowing ? 'Unfollow' : 'Follow',
+            style: TextStyle(color: ColorName.white),
+          ),
+        ),
+      ),
     );
   }
 }

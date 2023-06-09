@@ -16,19 +16,11 @@ class ExploreTitle extends StatelessWidget {
           color: ColorName.white,
         ),
       ),
-      // leading: Container(
-      //   height: 30,
-      //   width: 30,
-      //   decoration: BoxDecoration(
-      //       color: ColorName.yellow,
-      //       borderRadius: BorderRadius.circular(8),
-      //       border: Border.all(color: ColorName.white)),
-      // ),
       trailing: IconButton(
         onPressed: () {},
         icon: Icon(
           Icons.photo_camera_outlined,
-          size: 24,
+          size: 30,
           color: ColorName.white,
         ),
       ),

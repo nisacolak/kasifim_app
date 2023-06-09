@@ -69,7 +69,9 @@ class _RestaurantDetailState extends State<RestaurantDetail>
                       CircleContainer(
                           margin: const EdgeInsets.only(left: 10, right: 10),
                           color: ColorName.orangeShade,
-                          widget: FavoriteButton())
+                          widget: FavoriteButton(
+                            size: 25,
+                          ))
                     ],
                     automaticallyImplyLeading: false,
                     flexibleSpace: FlexibleSpaceBar(
@@ -120,13 +122,6 @@ class _RestaurantDetailState extends State<RestaurantDetail>
                       ),
                     ),
                   ),
-                  // SliverPersistentHeader(
-                  //   delegate: _SliverAppBarDelegate(
-                  //     minHeight: MediaQuery.of(context).size.height * .10,
-                  //     maxHeight: MediaQuery.of(context).size.height * .06,
-                  //     child: RestaurantImages(),
-                  //   ),
-                  // ),
                   SliverPersistentHeader(
                     pinned: true,
                     delegate: _SliverAppBarDelegate(

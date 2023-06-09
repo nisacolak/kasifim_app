@@ -108,7 +108,9 @@ class FavoritesView extends StatelessWidget {
                                           MainAxisAlignment.spaceBetween,
                                       children: [
                                         AppText.large(item.restaurantName),
-                                        FavoriteButton(),
+                                        FavoriteButton(
+                                          size: 25,
+                                        ),
                                       ],
                                     ),
                                     Row(
