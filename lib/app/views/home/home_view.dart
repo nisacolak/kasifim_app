@@ -5,8 +5,7 @@ import 'package:kasifim_app/app/views/home/widget/restaurant_card.dart';
 import 'package:kasifim_app/app/views/search/search_box.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
-
-// const List<String> list = <String>['Home', 'Work'];
+import 'package:badges/badges.dart' as badges;
 
 class HomeView extends StatefulWidget {
   const HomeView({
@@ -59,23 +58,6 @@ class _HomeViewState extends State<HomeView> {
                 '127 Restaurants around you',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-              Column(
-                children: [
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.swap_vert_outlined,
-                        size: 20,
-                      ),
-                      Text(
-                        'Popular',
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  )
-                ],
-              )
             ],
           ),
           _buildSpace(context),
@@ -101,15 +83,12 @@ class homeAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
       CircleContainer(
-        color: ColorName.orange,
-        widget: IconButton(
-          onPressed: () {},
-          icon: Icon(
-            Icons.location_on_outlined,
-            size: 23,
-            color: ColorName.white,
-          ),
-        ),
+        color: ColorName.white,
+        child: GestureDetector(
+            onTap: () {},
+            child: Image.asset(
+              Assets.images.locationOn.path,
+            )),
       ),
       SizedBox(
         width: 10,
@@ -122,15 +101,22 @@ class homeAppBar extends StatelessWidget {
         child: FilterShow(),
       ),
       SizedBox(
-        width: 10,
+        width: 5,
       ),
-      CircleContainer(
-        widget: Image(
-          image: Assets.images.account.provider(),
+      CircleAvatar(
+        backgroundColor: ColorName.lightGrey,
+        child: IconButton(
+          onPressed: () {},
+          icon: badges.Badge(
+              position: badges.BadgePosition.topEnd(top: 1.5, end: 0),
+              child: Image.asset(
+                Assets.images.notification.path,
+                fit: BoxFit.cover,
+              )),
         ),
       ),
       SizedBox(
-        width: 10,
+        width: 12,
       )
     ]);
   }
