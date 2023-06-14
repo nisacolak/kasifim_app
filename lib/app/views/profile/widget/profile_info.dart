@@ -6,51 +6,49 @@ import 'package:kasifim_app/app/views/settings/settings.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 
-import 'profile_avatar.dart';
-
 Widget buildUserBio(BuildContext context) {
   return Container(
-    margin: EdgeInsets.only(top: 10, bottom: 0, right: 15, left: 20),
-    height: MediaQuery.of(context).size.height * .30,
+    margin: EdgeInsets.only(top: 10, bottom: 0, right: 15, left: 15),
+    height: MediaQuery.of(context).size.height * .36,
     width: MediaQuery.of(context).size.width * .90,
-    color: ColorName.white,
+    decoration: BoxDecoration(
+        color: ColorName.white, borderRadius: BorderRadius.circular(12)),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            IconButton(
+        SizedBox(
+          height: 15,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              IconButton(
+                  icon: Icon(
+                    Icons.arrow_back,
+                    color: ColorName.green,
+                  ),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/home-body');
+                  }),
+              IconButton(
                 icon: Icon(
-                  Icons.arrow_back,
+                  Icons.settings,
                   color: ColorName.green,
                 ),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/home-body');
-                }),
-            IconButton(
-              icon: Icon(
-                Icons.settings,
-                color: ColorName.green,
+                onPressed: () => Navigator.of(context)
+                    .push(CustomPageRoute(child: ProfileSettings())),
               ),
-              onPressed: () => Navigator.of(context)
-                  .push(CustomPageRoute(child: ProfileSettings())),
-            ),
-          ],
+            ],
+          ),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            ProfileAvatar(),
-            profileBio(),
-          ],
+        CircleAvatar(
+          radius: 40,
+          backgroundImage: AssetImage(Assets.images.expressionless.path),
         ),
+        //ProfileAvatar(),
+        profileBio(),
         SizedBox(
-          height: 10,
-        ),
-        SizedBox(
-          height: MediaQuery.of(context).size.height * .06,
+          height: MediaQuery.of(context).size.height * .07,
           width: MediaQuery.of(context).size.width * .7,
           child: buildProfileInfo(),
         ),
@@ -67,20 +65,26 @@ class profileBio extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Text(
-        'Name',
-        style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-      ),
-      SizedBox(
-        height: MediaQuery.of(context).size.height * .05,
-        width: MediaQuery.of(context).size.width * .5,
+      Center(
         child: Text(
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna alid',
-          overflow: TextOverflow.fade,
-          maxLines: 3,
-          style: TextStyle(fontSize: 16),
+          'Muhammed Cundullah Bozdağ',
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
         ),
       ),
+      SizedBox(
+        height: 5,
+      ),
+      Center(
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height * .05,
+          width: MediaQuery.of(context).size.width * .5,
+          child: Text(
+            "Lorem ipsum dolor sit amet orci aliquam",
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 16),
+          ),
+        ),
+      )
     ]);
   }
 }
@@ -110,7 +114,9 @@ class buildProfileInfo extends StatelessWidget {
             ),
           ],
         ),
-        buildSpace(),
+        SizedBox(
+          width: 5,
+        ),
         GestureDetector(
           onTap: () {
             showModalBottomSheet(
@@ -137,7 +143,7 @@ class buildProfileInfo extends StatelessWidget {
           ),
         ),
         SizedBox(
-          height: 15,
+          width: 5,
         ),
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -237,7 +243,7 @@ class buildSpace extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 20,
+      height: MediaQuery.of(context).size.height * .02,
     );
   }
 }

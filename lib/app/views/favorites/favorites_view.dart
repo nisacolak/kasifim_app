@@ -169,7 +169,7 @@ class favoritesSearch extends StatelessWidget {
       children: [
         CircleContainer(
           color: ColorName.orange.withOpacity(0.1),
-          widget: IconButton(
+          child: IconButton(
               onPressed: () {
                 Navigator.pushNamed(context, '/home-body');
               },
@@ -188,7 +188,7 @@ class favoritesSearch extends StatelessWidget {
               child: FilterShow(),
             )),
         CircleContainer(
-          widget: Image(
+          child: Image(
             image: Assets.images.account.provider(),
           ),
         ),

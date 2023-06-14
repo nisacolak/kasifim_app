@@ -25,6 +25,7 @@ class _ProfileTabState extends State<ProfileTab> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ColorName.lightGrey,
       body: DefaultTabController(
           length: 2,
           child: SafeArea(
@@ -35,45 +36,66 @@ class _ProfileTabState extends State<ProfileTab> with TickerProviderStateMixin {
                     child: buildUserBio(context),
                   ),
                   SliverAppBar(
-                    backgroundColor: Colors.white,
+                    backgroundColor: ColorName.lightGrey,
                     pinned: true,
                     elevation: 0.0,
                     titleSpacing: 0.0,
                     toolbarHeight: 10,
                     bottom: PreferredSize(
-                      preferredSize: Size.fromHeight(38),
-                      child: TabBar(
-                          indicatorColor: ColorName.white,
-                          indicatorSize: TabBarIndicatorSize.label,
-                          labelPadding: EdgeInsets.only(left: 50),
-                          labelColor: ColorName.darkGrey,
-                          unselectedLabelColor: ColorName.grey,
-                          controller: pTabController,
-                          tabs: [
-                            Tab(
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Icon(
-                                    Icons.comment,
-                                    size: 20,
+                      preferredSize: Size.fromHeight(42),
+                      child: Container(
+                        color: ColorName.lightGrey,
+                        child: Column(
+                          children: [
+                            TabBar(
+                                indicatorColor: Colors.transparent,
+                                labelPadding: EdgeInsets.only(left: 50),
+                                labelColor: ColorName.darkGrey,
+                                unselectedLabelColor: ColorName.grey,
+                                controller: pTabController,
+                                tabs: [
+                                  Tab(
+                                    child: Column(
+                                      children: [
+                                        Expanded(
+                                          child: Row(
+                                            children: [
+                                              Icon(
+                                                Icons.comment,
+                                                size: 20,
+                                              ),
+                                              AppText.medium('  Reviews'),
+                                              SizedBox(
+                                                width: 50,
+                                              ),
+                                              Expanded(
+                                                child: SizedBox(
+                                                    height: 30,
+                                                    child: VerticalDivider(
+                                                      thickness: 2,
+                                                    )),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                  AppText.medium('  Reviews'),
-                                ],
-                              ),
-                            ),
-                            Tab(
-                              child: Row(
-                                children: [
-                                  AppText.medium('Photos  '),
-                                  Icon(
-                                    Icons.grid_on_sharp,
-                                    size: 20,
+                                  Tab(
+                                    child: Row(
+                                      children: [
+                                        AppText.medium('Photos  '),
+                                        Icon(
+                                          Icons.grid_on_sharp,
+                                          size: 20,
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ],
-                              ),
-                            ),
-                          ]),
+                                ]),
+                          ],
+                        ),
+                      ),
                     ),
                   ),
                 ];

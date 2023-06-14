@@ -48,7 +48,111 @@ class ReviewsTab extends StatelessWidget {
                               spreadRadius: 0.0,
                             ), //BoxShadow
                           ],
-                          color: ColorName.lightGrey,
+                          color: ColorName.white,
+                          borderRadius: BorderRadius.circular(12)),
+                      child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(children: [
+                                  CircleAvatar(
+                                      backgroundImage: AssetImage(item.img)),
+                                  Padding(
+                                    padding: const EdgeInsets.all(5),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          item.name,
+                                          style: TextStyle(fontSize: 16),
+                                        ),
+                                        Text('23 followers'),
+                                      ],
+                                    ),
+                                  ),
+                                ]),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    RatingBar.builder(
+                                      initialRating: item.star,
+                                      minRating: 1,
+                                      direction: Axis.horizontal,
+                                      allowHalfRating: false,
+                                      itemCount: 5,
+                                      itemSize: 18,
+                                      itemBuilder: (context, _) => Icon(
+                                        Icons.star,
+                                        color: ColorName.orange,
+                                      ),
+                                      onRatingUpdate: (rating) {},
+                                    ),
+                                  ],
+                                ),
+                                Padding(
+                                    padding: const EdgeInsets.all(5),
+                                    child: ReadMoreText(
+                                      item.comment,
+                                      trimLines: 2,
+                                      trimMode: TrimMode.Line,
+                                      trimCollapsedText: ' read more',
+                                      trimExpandedText: ' read less',
+                                      lessStyle: const TextStyle(
+                                        color: ColorName.orange,
+                                        fontSize: 13,
+                                      ),
+                                      moreStyle: const TextStyle(
+                                        color: ColorName.orange,
+                                        fontSize: 13,
+                                      ),
+                                    )),
+                                SizedBox(
+                                    height: MediaQuery.of(context).size.height *
+                                        .07,
+                                    width:
+                                        MediaQuery.of(context).size.width * .6,
+                                    child: ListView.builder(
+                                      scrollDirection: Axis.horizontal,
+                                      padding: const EdgeInsets.all(5),
+                                      itemCount: 3,
+                                      itemExtent: 70,
+                                      itemBuilder:
+                                          (BuildContext context, int index) {
+                                        return Container(
+                                          margin: const EdgeInsets.only(
+                                              left: 3, right: 3),
+                                          color: ColorName.green,
+                                        );
+                                      },
+                                    )),
+                              ]))),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * .01,
+                  ),
+                  Container(
+                      constraints: BoxConstraints(
+                        maxWidth: double.infinity,
+                      ),
+                      decoration: BoxDecoration(
+                          boxShadow: const [
+                            BoxShadow(
+                              color: ColorName.customGrey,
+                              offset: Offset(
+                                1,
+                                1,
+                              ),
+                              blurRadius: 3.0,
+                            ), //BoxShadow
+                            BoxShadow(
+                              color: ColorName.white,
+                              offset: Offset(0.0, 0.0),
+                              blurRadius: 0.0,
+                              spreadRadius: 0.0,
+                            ), //BoxShadow
+                          ],
+                          color: ColorName.white,
                           borderRadius: BorderRadius.circular(12)),
                       child: Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -196,9 +300,9 @@ class restaurantAddReview extends StatelessWidget {
                   initialRating: 0,
                   minRating: 1,
                   direction: Axis.horizontal,
-                  allowHalfRating: true,
+                  allowHalfRating: false,
                   itemCount: 5,
-                  itemSize: 18,
+                  itemSize: 20,
                   itemBuilder: (context, _) => Icon(
                     Icons.star,
                     color: ColorName.orange,

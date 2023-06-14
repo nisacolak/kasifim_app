@@ -33,9 +33,14 @@ class ExploreDescription extends StatelessWidget {
               )),
           Padding(
               padding: EdgeInsets.symmetric(horizontal: 14),
-              child: ExpandableText(
-                text: readmore,
-                color: ColorName.white,
+              child: Column(
+                children: [
+                  ExpandableText(
+                    text: readmore,
+                    tags: '#tag1',
+                    color: ColorName.white,
+                  ),
+                ],
               )
               // ReadMoreText(
               //   readmore,
@@ -75,7 +80,7 @@ class _FollowChipState extends State<FollowChip> {
       onTap: toggleFollow,
       child: Container(
         height: 30,
-        width: 60,
+        width: isFollowing ? 70 : 60,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           border: Border.all(

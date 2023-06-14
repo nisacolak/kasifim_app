@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 // ignore: must_be_immutable
 class ExpandableText extends StatefulWidget {
   final String text;
+  final String? tags;
   final Color color;
 
   ExpandableText({
     Key? key,
     required this.text,
+    this.tags,
     required this.color,
   }) : super(key: key);
 

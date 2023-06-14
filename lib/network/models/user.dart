@@ -23,7 +23,7 @@ List<User> sampleUserModel = [
       name: "Slightly Smiling Face",
       email: "",
       comment:
-          "Lorem ipsum dolor sit amet. ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sed sapien augue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris pretium nulla dolor.",
       img: Assets.images.account.path,
       star: 3.5)
 ];

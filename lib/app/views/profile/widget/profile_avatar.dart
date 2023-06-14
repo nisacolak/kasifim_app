@@ -28,7 +28,7 @@ class _ProfileAvatarState extends State<ProfileAvatar> {
         child: CircleAvatar(
           backgroundColor: ColorName.black,
           backgroundImage: AssetImage(Assets.images.account.path),
-          radius: 50,
+          radius: 45,
           child: isHovered
               ? Icon(
                   Icons.camera_alt,

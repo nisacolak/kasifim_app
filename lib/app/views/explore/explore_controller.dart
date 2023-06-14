@@ -62,6 +62,9 @@ class _VideoPlayerScreenState extends State<VideoPlayerScreen> {
           });
         },
         child: Stack(children: [
+          SizedBox(
+            height: 20,
+          ),
           Center(
             child: FutureBuilder(
               future: _initializeVideoPlayerFuture,

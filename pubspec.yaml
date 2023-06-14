@@ -29,6 +29,13 @@ dependencies:
   carousel_slider: ^4.2.1
   video_player: ^2.6.1
   readmore: ^2.2.0
+  camera: ^0.10.5+2
+  path_provider: ^2.0.15
+  video_editor: ^2.4.0
+  helpers: ^1.2.3
+  fraction: ^5.0.0
+  image_picker: ^0.8.8
+  badges: ^3.1.1
 
 dev_dependencies:
   flutter_test:
@@ -59,3 +66,9 @@ flutter:
           weight: 600
         - asset: assets/fonts/Caveat-Bold.ttf
           weight: 700
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Inter-Regular.ttf
+          weight: 400

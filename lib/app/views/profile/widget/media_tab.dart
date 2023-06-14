@@ -1,41 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
+import 'package:kasifim_app/gen/colors.gen.dart';
 
 class MediaTab extends StatelessWidget {
   MediaTab({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverGrid.count(
-            crossAxisCount: 3,
-            crossAxisSpacing: 5.2,
-            childAspectRatio: 0.8,
-            mainAxisSpacing: 5,
-            children: [
-              buildImage(),
-              buildImage(),
-              buildImage(),
-              buildImage(),
-              buildImage(),
-              buildImage(),
-              buildImage(),
-              buildImage(),
-              buildImage(),
-              buildImage(),
-              buildImage(),
-              buildImage(),
-              buildImage(),
-              buildImage(),
-              buildImage(),
-              buildImage(),
-              buildImage(),
-              buildImage(),
-              buildImage(),
-              buildImage(),
-            ]),
-      ],
+    return Scaffold(
+      backgroundColor: ColorName.lightGrey,
+      body: GridView.builder(
+          padding: EdgeInsets.only(top: 0, right: 15, left: 15),
+          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 150,
+              childAspectRatio: 0.8,
+              crossAxisSpacing: 5.2,
+              mainAxisSpacing: 5),
+          itemCount: 20,
+          itemBuilder: (BuildContext ctx, index) {
+            return buildImage();
+          }),
     );
   }
 }

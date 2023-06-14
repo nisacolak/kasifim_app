@@ -16,14 +16,13 @@ class FilterDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
       height: MediaQuery.of(context).size.height * .5,
       decoration: BoxDecoration(
+        color: ColorName.white,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(36),
-          topRight: Radius.circular(36),
+          topRight: Radius.circular(20),
         ),
-        color: Colors.white,
       ),
       child: SizedBox(
         height: MediaQuery.of(context).size.height * .7,
@@ -35,7 +34,9 @@ class FilterDialog extends StatelessWidget {
               height: 10,
             ),
             StadiumCloseButton(),
-            _buildSpace(),
+            SizedBox(
+              height: 20,
+            ),
             FilterCategory(),
             _filterText('Rate'),
             FilterSlider(),

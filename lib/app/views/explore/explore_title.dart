@@ -17,7 +17,10 @@ class ExploreTitle extends StatelessWidget {
         ),
       ),
       trailing: IconButton(
-        onPressed: () {},
+        onPressed: () {
+          //showModalBottomSheet(context: context, builder: )
+          Navigator.pushNamed(context, '/video-upload');
+        },
         icon: Icon(
           Icons.photo_camera_outlined,
           size: 30,

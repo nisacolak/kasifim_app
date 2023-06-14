@@ -48,7 +48,7 @@ class _RestaurantDetailState extends State<RestaurantDetail>
                       ),
                       child: CircleContainer(
                         color: ColorName.orangeShade,
-                        widget: IconButton(
+                        child: IconButton(
                           onPressed: () {
                             Navigator.pushNamed(context, '/home-body');
                           },
@@ -69,7 +69,7 @@ class _RestaurantDetailState extends State<RestaurantDetail>
                       CircleContainer(
                           margin: const EdgeInsets.only(left: 10, right: 10),
                           color: ColorName.orangeShade,
-                          widget: FavoriteButton(
+                          child: FavoriteButton(
                             size: 25,
                           ))
                     ],

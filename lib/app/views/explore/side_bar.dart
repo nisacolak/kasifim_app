@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kasifim_app/app/views/home/widget/favorite_button.dart';
 import 'package:kasifim_app/app/views/search/filter/widget/close_button.dart';
-import 'package:kasifim_app/gen/assets.gen.dart';
+
 import 'package:kasifim_app/gen/colors.gen.dart';
 
 class ExploreSideBar extends StatelessWidget {
@@ -66,6 +66,13 @@ class ExploreSideBar extends StatelessWidget {
                 },
                 icon: Icon(
                   Icons.mode_comment_outlined,
+                  color: ColorName.white,
+                  size: 30,
+                )),
+            IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.more_horiz,
                   color: ColorName.white,
                   size: 30,
                 ))

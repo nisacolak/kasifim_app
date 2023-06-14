@@ -25,11 +25,10 @@ class ProfileSettings extends StatelessWidget {
                     color: ColorName.black,
                   )),
             )),
-        body: SafeArea(
-            child: Center(
+        body: Center(
           child: Container(
             height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width * .93,
+            width: MediaQuery.of(context).size.width * .95,
             decoration: BoxDecoration(
                 color: ColorName.lightGrey,
                 borderRadius: BorderRadius.circular(20)),
@@ -37,7 +36,7 @@ class ProfileSettings extends StatelessWidget {
               buildSpace(),
               Container(
                   height: MediaQuery.of(context).size.height * .15,
-                  width: MediaQuery.of(context).size.width * .8,
+                  width: MediaQuery.of(context).size.width * .14,
                   decoration: BoxDecoration(
                     color: ColorName.white,
                     borderRadius: BorderRadius.circular(20),
@@ -49,14 +48,19 @@ class ProfileSettings extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           ProfileAvatar(),
-                          SizedBox(
-                            width: 10,
-                          ),
                           profileBio(),
-                          IconButton(
-                            icon: Icon(Icons.edit),
-                            onPressed: () => Navigator.of(context)
-                                .push(CustomPageRoute(child: ProfileEdit())),
+                          CircleAvatar(
+                            backgroundColor: Colors.transparent,
+                            radius: 10,
+                            child: IconButton(
+                              icon: Icon(
+                                Icons.edit,
+                                size: 20,
+                                color: ColorName.black,
+                              ),
+                              onPressed: () => Navigator.of(context)
+                                  .push(CustomPageRoute(child: ProfileEdit())),
+                            ),
                           ),
                         ]),
                   )),
@@ -75,7 +79,7 @@ class ProfileSettings extends StatelessWidget {
                   onTap: () {}, iconData: Icons.exit_to_app, text: 'Logout'),
             ]),
           ),
-        )));
+        ));
   }
 }
 

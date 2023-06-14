@@ -6,6 +6,8 @@ import 'package:kasifim_app/app/views/auth/view/forgot_password_view.dart';
 import 'package:kasifim_app/app/views/auth/view/login_view.dart';
 import 'package:kasifim_app/app/views/detail/restaurant_detail_view.dart';
 
+import 'package:kasifim_app/app/views/explore/explore_recording.dart';
+
 import 'package:kasifim_app/app/views/home/home_body_view.dart';
 import 'package:kasifim_app/app/views/home/home_view.dart';
 import 'package:kasifim_app/app/views/profile/widget/profile_tab.dart';
@@ -29,5 +31,9 @@ Map<String, WidgetBuilder> get pageRoutes {
     '/restaurant-detail': (context) => RestaurantDetail(),
     '/profile': (context) => ProfileTab(),
     '/profile-settings': (context) => ProfileSettings(),
+    '/video-upload': (context) => CameraPage(),
+    // '/video-edit': (context) => VideoEditor(
+    //       file:File(path)
+    //     ),
   };
 }

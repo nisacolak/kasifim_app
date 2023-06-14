@@ -12,4 +12,7 @@ class FontFamily {
 
   /// Font family: Caveat
   static const String caveat = 'Caveat';
+
+  /// Font family: Inter
+  static const String inter = 'Inter';
 }

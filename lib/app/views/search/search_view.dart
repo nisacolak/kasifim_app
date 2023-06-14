@@ -26,7 +26,7 @@ class SearchView extends StatelessWidget {
                       Row(children: [
                         CircleContainer(
                           color: ColorName.orange,
-                          widget: IconButton(
+                          child: IconButton(
                               onPressed: () {},
                               icon: Icon(
                                 Icons.location_on_outlined,
@@ -43,7 +43,7 @@ class SearchView extends StatelessWidget {
                   Column(children: [
                     Row(children: [
                       CircleContainer(
-                        widget: Image(
+                        child: Image(
                           image: Assets.images.account.provider(),
                         ),
                       ),

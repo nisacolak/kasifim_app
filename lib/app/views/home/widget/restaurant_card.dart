@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kasifim_app/app/views/home/widget/favorite_button.dart';
 import 'package:kasifim_app/app/widgets/app_text.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
+import 'package:kasifim_app/gen/fonts.gen.dart';
 import 'package:kasifim_app/network/models/restaurant.dart';
 
 //safiye.kayaa@hotmail.com
@@ -25,7 +26,7 @@ class RestaurantCard extends StatelessWidget {
                 child: Column(
                   children: [
                     Container(
-                        height: MediaQuery.of(context).size.height * .2,
+                        height: MediaQuery.of(context).size.height * .24,
                         width: MediaQuery.of(context).size.width * .93,
                         decoration: BoxDecoration(
                             boxShadow: const [
@@ -36,7 +37,6 @@ class RestaurantCard extends StatelessWidget {
                                   1,
                                 ),
                                 blurRadius: 3.0,
-                                // spreadRadius: 2.0,
                               ), //BoxShadow
                               BoxShadow(
                                 color: ColorName.white,
@@ -88,7 +88,7 @@ class RestaurantCard extends StatelessWidget {
                     Row(
                       children: [
                         Container(
-                            height: MediaQuery.of(context).size.height * .04,
+                            height: MediaQuery.of(context).size.height * .05,
                             width: MediaQuery.of(context).size.width * .94,
                             decoration: BoxDecoration(
                               boxShadow: const [
@@ -123,9 +123,16 @@ class RestaurantCard extends StatelessWidget {
                                       children: [
                                         Padding(
                                           padding: const EdgeInsets.only(
-                                              top: 5.0, left: 7),
-                                          child: AppText.large(
-                                              item.restaurantName),
+                                              top: 7, left: 8),
+                                          child: Text(
+                                            item.restaurantName,
+                                            style: TextStyle(
+                                                fontFamily: FontFamily.inter,
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 18),
+                                          ),
+                                          // AppText.large(
+                                          //     item.restaurantName),
                                         ),
                                       ],
                                     ),
@@ -138,9 +145,16 @@ class RestaurantCard extends StatelessWidget {
                                             children: [
                                               Icon(
                                                 Icons.location_on_outlined,
-                                                size: 20,
+                                                size: 16,
                                               ),
-                                              AppText.small('${item.rate}'),
+                                              Text(
+                                                '${item.rate}',
+                                                style: TextStyle(
+                                                    fontFamily:
+                                                        FontFamily.inter,
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 16),
+                                              ),
                                             ],
                                           ),
                                         )

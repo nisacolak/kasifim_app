@@ -4,59 +4,41 @@ import 'package:kasifim_app/gen/colors.gen.dart';
 
 class ProfileReviewTab extends StatelessWidget {
   const ProfileReviewTab({Key? key}) : super(key: key);
-
+  final String review =
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam sed sapien augue. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris pretium nulla dolor.";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorName.white,
+      backgroundColor: ColorName.lightGrey,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Center(
             child: Container(
-              padding: EdgeInsets.all(5),
+              padding: EdgeInsets.only(top: 10, right: 10, left: 10, bottom: 0),
               decoration: BoxDecoration(
-                  color: ColorName.yellow.withOpacity(0.2),
+                  color: ColorName.white,
+                  boxShadow: const [
+                    BoxShadow(
+                      color: ColorName.customGrey,
+                      offset: Offset(
+                        2,
+                        2,
+                      ),
+                      blurRadius: 3.0,
+                      // spreadRadius: 2.0,
+                    ), //BoxShadow
+                    BoxShadow(
+                      color: ColorName.white,
+                      offset: Offset(0.0, 0.0),
+                      blurRadius: 0.0,
+                      spreadRadius: 0.0,
+                    ), //BoxShadow
+                  ],
                   borderRadius: BorderRadius.circular(12)),
-              height: MediaQuery.of(context).size.height * .24,
+              height: MediaQuery.of(context).size.height * .27,
               width: MediaQuery.of(context).size.width * .9,
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    buildReview(context),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    VerticalDivider(
-                      thickness: 2,
-                    ),
-                    Container(
-                      height: MediaQuery.of(context).size.height * .25,
-                      width: MediaQuery.of(context).size.width * .25,
-                      decoration: BoxDecoration(
-                        //color: ColorName.green,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Transform.scale(
-                            scale: 0.9,
-                            child: Image(
-                              image: AssetImage(Assets.images.rateBadge.path),
-                            ),
-                          ),
-                          Text(
-                            '4.5',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 16),
-                          )
-                        ],
-                      ),
-                    ),
-                  ]),
+              child: buildReview(context),
             ),
           ),
         ],
@@ -64,37 +46,73 @@ class ProfileReviewTab extends StatelessWidget {
     );
   }
 
-  Container buildReview(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height * .36,
-      width: MediaQuery.of(context).size.width * .50,
-      //color: ColorName.grey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'RestaurantName',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
+  Widget buildReview(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'RestaurantName',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Container(
+                height: MediaQuery.of(context).size.height * .04,
+                width: MediaQuery.of(context).size.width * .13,
+                //color: ColorName.green,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text('5'),
+                    CircleAvatar(
+                      child: Image.asset(Assets.images.star.path),
+                      radius: 17,
+                      backgroundColor: Colors.transparent,
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
-          SizedBox(
-            height: 5,
+        ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * .001,
+        ),
+        Text(
+          review,
+          textAlign: TextAlign.left,
+        ),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * .01,
+        ),
+        Container(
+            // color: ColorName.yellow,
+            height: MediaQuery.of(context).size.height * .06,
+            width: MediaQuery.of(context).size.width * .55,
+            child: reviewImageList()),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * .01,
+        ),
+        Container(
+          height: MediaQuery.of(context).size.height * .02,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                '2 months ago',
+                style: TextStyle(
+                    color: ColorName.grey, fontStyle: FontStyle.italic),
+              )
+            ],
           ),
-          Text(
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in maximus justo, porttitor imperdiet purus. Proin id mi.',
-            textAlign: TextAlign.left,
-          ),
-          SizedBox(
-            height: 5,
-          ),
-          SizedBox(
-              height: MediaQuery.of(context).size.height * .06,
-              width: MediaQuery.of(context).size.width * .66,
-              child: reviewImageList())
-        ],
-      ),
+        )
+      ],
     );
   }
 }

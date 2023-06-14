@@ -13,7 +13,6 @@ class StadiumCloseButton extends StatelessWidget {
         Navigator.pop(context);
       },
       child: Container(
-        margin: EdgeInsets.all(10),
         alignment: Alignment.center,
         height: MediaQuery.of(context).size.height * .006,
         width: MediaQuery.of(context).size.width * .09,

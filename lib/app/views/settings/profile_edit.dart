@@ -26,7 +26,12 @@ class _ProfileEditState extends State<ProfileEdit> {
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
             actions: [
-              TextButton(onPressed: () {}, child: AppText.large('Kaydet')),
+              TextButton(
+                  onPressed: () {},
+                  child: AppText.large(
+                    'Kaydet',
+                    color: ColorName.orange,
+                  )),
             ],
             backgroundColor: ColorName.white,
             elevation: 0,

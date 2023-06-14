@@ -28,13 +28,21 @@ class $AssetsFontsGen {
   String get caveatVariableFontWght =>
       'assets/fonts/Caveat-VariableFont_wght.ttf';
 
+  /// File path: assets/fonts/Inter-Light.ttf
+  String get interLight => 'assets/fonts/Inter-Light.ttf';
+
+  /// File path: assets/fonts/Inter-Regular.ttf
+  String get interRegular => 'assets/fonts/Inter-Regular.ttf';
+
   /// List of all assets
   List<String> get values => [
         caveatBold,
         caveatMedium,
         caveatRegular,
         caveatSemiBold,
-        caveatVariableFontWght
+        caveatVariableFontWght,
+        interLight,
+        interRegular
       ];
 }
 
@@ -100,6 +108,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/explore.png
   AssetGenImage get explore => const AssetGenImage('assets/images/explore.png');
 
+  /// File path: assets/images/expressionless.png
+  AssetGenImage get expressionless =>
+      const AssetGenImage('assets/images/expressionless.png');
+
   /// File path: assets/images/fastFood.jpg
   AssetGenImage get fastFood =>
       const AssetGenImage('assets/images/fastFood.jpg');
@@ -111,17 +123,20 @@ class $AssetsImagesGen {
   /// File path: assets/images/google.png
   AssetGenImage get google => const AssetGenImage('assets/images/google.png');
 
-  /// File path: assets/images/rateBadge.png
-  AssetGenImage get rateBadge =>
-      const AssetGenImage('assets/images/rateBadge.png');
+  /// File path: assets/images/location_on.png
+  AssetGenImage get locationOn =>
+      const AssetGenImage('assets/images/location_on.png');
 
-  /// File path: assets/images/rateBadge2.png
-  AssetGenImage get rateBadge2 =>
-      const AssetGenImage('assets/images/rateBadge2.png');
+  /// File path: assets/images/notification.png
+  AssetGenImage get notification =>
+      const AssetGenImage('assets/images/notification.png');
 
   /// File path: assets/images/reset-password.png
   AssetGenImage get resetPassword =>
       const AssetGenImage('assets/images/reset-password.png');
+
+  /// File path: assets/images/star.png
+  AssetGenImage get star => const AssetGenImage('assets/images/star.png');
 
   /// File path: assets/images/success.png
   AssetGenImage get success => const AssetGenImage('assets/images/success.png');
@@ -132,9 +147,6 @@ class $AssetsImagesGen {
   /// File path: assets/images/viyanaAddress.png
   AssetGenImage get viyanaAddress =>
       const AssetGenImage('assets/images/viyanaAddress.png');
-
-  /// File path: assets/images/welcome.png
-  AssetGenImage get welcome => const AssetGenImage('assets/images/welcome.png');
 
   /// File path: assets/images/welcome2.jpg
   AssetGenImage get welcome2 =>
@@ -158,16 +170,17 @@ class $AssetsImagesGen {
         cookie,
         dessert,
         explore,
+        expressionless,
         fastFood,
         forgotPassword,
         google,
-        rateBadge,
-        rateBadge2,
+        locationOn,
+        notification,
         resetPassword,
+        star,
         success,
         turkish,
         viyanaAddress,
-        welcome,
         welcome2
       ];
 }
