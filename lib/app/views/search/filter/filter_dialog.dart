@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:kasifim_app/app/views/search/filter/widget/close_button.dart';
-import 'package:kasifim_app/app/views/search/filter/widget/filter_slider.dart';
-import 'package:kasifim_app/app/views/search/filter/widget/filter_switch.dart';
+import 'package:kasifim_app/app/views/search/filter/widget/filter_short.dart';
+import 'package:kasifim_app/gen/assets.gen.dart';
 
 import 'package:kasifim_app/gen/colors.gen.dart';
-
-import 'widget/filter_button.dart';
+import 'widget/filter_button..dart';
 import 'widget/filter_category.dart';
+import 'widget/filter_radio.dart';
+import 'widget/filter_ratings.dart';
 
 class FilterDialog extends StatelessWidget {
   const FilterDialog({
@@ -15,73 +16,87 @@ class FilterDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: MediaQuery.of(context).size.height * .5,
-      decoration: BoxDecoration(
-        color: ColorName.white,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(36),
-          topRight: Radius.circular(20),
+    return SingleChildScrollView(
+      child: Container(
+        padding: EdgeInsets.all(5),
+        decoration: BoxDecoration(
+          color: ColorName.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30),
+            topRight: Radius.circular(30),
+          ),
         ),
-      ),
-      child: SizedBox(
-        height: MediaQuery.of(context).size.height * .7,
-        width: MediaQuery.of(context).size.height * .6,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
           mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(
-              height: 10,
-            ),
             StadiumCloseButton(),
-            SizedBox(
-              height: 20,
+            buildSpace(),
+            Wrap(
+              spacing: 10,
+              children: [
+                FilterShortEditor(),
+                FilterShortNearby(),
+                FilterShortPopular()
+              ],
             ),
+            //FilterRadioButton(),
+            buildSpace(),
             FilterCategory(),
-            _filterText('Rate'),
-            FilterSlider(),
-            _filterText('Price Range'),
-            FilterSwitch(),
-            FilterButton(
-              onPressed: () {},
-            ),
+
+            FilterRatings(),
+
+            FilterButtonsRow()
+            //_filterText('Rate'),
+            //FilterSlider(),
+            //_filterText('Price Range'),
+            //FilterSwitch(),
+            // FilterButton(
+            //   onPressed: () {},
+            // ),
           ],
         ),
       ),
     );
   }
-
-  Widget _filterText(String text) {
-    return Padding(
-      padding: const EdgeInsets.only(
-        top: 8,
-        left: 12,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Text(
-            text,
-            style: TextStyle(
-              fontSize: 18,
-              color: ColorName.grey,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 }
 
-class _buildSpace extends StatelessWidget {
-  const _buildSpace({
+class buildSpace extends StatelessWidget {
+  const buildSpace({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 10,
+      height: MediaQuery.of(context).size.height * .02,
+    );
+  }
+}
+
+class FilterButtonsRow extends StatelessWidget {
+  const FilterButtonsRow({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        FilterButton(
+          onTap: () {
+            Navigator.pushNamed(context, '/filtered-restaurants-advanced');
+          },
+          text: 'Advanced Filter',
+        ),
+        SizedBox(
+            height: 35,
+            child: VerticalDivider(
+              thickness: 2,
+            )),
+        FilterButton(onTap: () {}, text: 'Filter')
+      ],
     );
   }
 }

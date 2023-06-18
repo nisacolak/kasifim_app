@@ -8,20 +8,17 @@ class FilterCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          CustomFilterChip(text: 'vegan'),
-          _buildSpace(),
-          CustomFilterChip(text: 'casual'),
-          _buildSpace(),
-          CustomFilterChip(text: 'coffee'),
-          _buildSpace(),
-          CustomFilterChip(text: 'fine'),
-        ],
-      ),
+    return Wrap(
+      spacing: 10,
+      children: [
+        CustomFilterChip(text: 'vegan'),
+        CustomFilterChip(text: 'casual'),
+        CustomFilterChip(text: 'turkish cusine'),
+        CustomFilterChip(text: 'coffee'),
+        CustomFilterChip(text: 'fine'),
+        CustomFilterChip(text: 'breakfast'),
+        CustomFilterChip(text: 'fastfood'),
+      ],
     );
   }
 }

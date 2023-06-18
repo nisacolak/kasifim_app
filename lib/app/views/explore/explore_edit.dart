@@ -8,7 +8,7 @@ import 'package:video_editor/video_editor.dart';
 import 'explore_crop.dart';
 
 class VideoEditor extends StatefulWidget {
-  VideoEditor({Key? key, required this.file});
+  const VideoEditor({Key? key, required this.file});
 
   final File file;
 
@@ -133,7 +133,7 @@ class _VideoEditorState extends State<VideoEditor> {
                                                   ),
                                                   child: const Icon(
                                                     Icons.play_arrow,
-                                                    color: Colors.black,
+                                                    color: Colors.white,
                                                   ),
                                                 ),
                                               ),
@@ -231,7 +231,10 @@ class _VideoEditorState extends State<VideoEditor> {
             Expanded(
               child: IconButton(
                 onPressed: () => Navigator.of(context).pop(),
-                icon: const Icon(Icons.exit_to_app),
+                icon: const Icon(
+                  Icons.exit_to_app,
+                  color: Colors.white,
+                ),
                 tooltip: 'Leave editor',
               ),
             ),
@@ -240,7 +243,10 @@ class _VideoEditorState extends State<VideoEditor> {
               child: IconButton(
                 onPressed: () =>
                     _controller.rotate90Degrees(RotateDirection.left),
-                icon: const Icon(Icons.rotate_left),
+                icon: const Icon(
+                  Icons.rotate_left,
+                  color: Colors.white,
+                ),
                 tooltip: 'Rotate unclockwise',
               ),
             ),
@@ -248,7 +254,10 @@ class _VideoEditorState extends State<VideoEditor> {
               child: IconButton(
                 onPressed: () =>
                     _controller.rotate90Degrees(RotateDirection.right),
-                icon: const Icon(Icons.rotate_right),
+                icon: const Icon(
+                  Icons.rotate_right,
+                  color: Colors.white,
+                ),
                 tooltip: 'Rotate clockwise',
               ),
             ),
@@ -260,7 +269,10 @@ class _VideoEditorState extends State<VideoEditor> {
                     builder: (context) => CropScreen(controller: _controller),
                   ),
                 ),
-                icon: const Icon(Icons.crop),
+                icon: const Icon(
+                  Icons.crop,
+                  color: Colors.white,
+                ),
                 tooltip: 'Open crop screen',
               ),
             ),
@@ -268,7 +280,10 @@ class _VideoEditorState extends State<VideoEditor> {
             Expanded(
               child: PopupMenuButton(
                 tooltip: 'Open export menu',
-                icon: const Icon(Icons.save),
+                icon: const Icon(
+                  Icons.save,
+                  color: Colors.white,
+                ),
                 itemBuilder: (context) => [
                   PopupMenuItem(
                     onTap: _exportCover,

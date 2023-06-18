@@ -82,16 +82,21 @@ class homeAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-      CircleContainer(
-        color: ColorName.white,
+      Container(
+        decoration: BoxDecoration(
+          color: ColorName.white,
+          shape: BoxShape.circle,
+        ),
         child: GestureDetector(
             onTap: () {},
             child: Image.asset(
               Assets.images.locationOn.path,
+              height: MediaQuery.of(context).size.height * .04,
+              width: MediaQuery.of(context).size.width * .10,
             )),
       ),
       SizedBox(
-        width: 10,
+        width: MediaQuery.of(context).size.width * .02,
       ),
       SearchContainer(
         width: MediaQuery.of(context).size.width * 0.7,

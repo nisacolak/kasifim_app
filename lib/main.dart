@@ -20,7 +20,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(primarySwatch: ColorName.orange),
+        theme: ThemeData(
+          sliderTheme: SliderThemeData(
+              activeTickMarkColor: Colors.transparent,
+              inactiveTickMarkColor: Colors.transparent),
+          primarySwatch: ColorName.orange,
+        ),
         title: 'Flutter Demo',
         routes: pageRoutes);
   }

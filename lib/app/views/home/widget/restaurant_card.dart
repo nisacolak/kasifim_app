@@ -5,6 +5,8 @@ import 'package:kasifim_app/gen/colors.gen.dart';
 import 'package:kasifim_app/gen/fonts.gen.dart';
 import 'package:kasifim_app/network/models/restaurant.dart';
 
+import 'border_favorite.dart';
+
 //safiye.kayaa@hotmail.com
 class RestaurantCard extends StatelessWidget {
   const RestaurantCard({
@@ -78,9 +80,10 @@ class RestaurantCard extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                                FavoriteButton(
-                                  size: 25,
-                                ),
+                                BorderFavoriteButton(),
+                                // FavoriteButton(
+                                //   size: 25,
+                                // ),
                               ],
                             ),
                           ),
@@ -136,30 +139,32 @@ class RestaurantCard extends StatelessWidget {
                                         ),
                                       ],
                                     ),
-                                    Column(
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(right: 8),
-                                          child: Row(
-                                            children: [
-                                              Icon(
-                                                Icons.location_on_outlined,
-                                                size: 16,
-                                              ),
-                                              Text(
-                                                '${item.rate}',
-                                                style: TextStyle(
-                                                    fontFamily:
-                                                        FontFamily.inter,
-                                                    fontWeight: FontWeight.w500,
-                                                    fontSize: 16),
-                                              ),
-                                            ],
+                                    Container(
+                                      padding:
+                                          EdgeInsets.only(right: 3, top: 7),
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              .03,
+                                      width: MediaQuery.of(context).size.width *
+                                          .14,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          Icon(
+                                            Icons.location_on_outlined,
+                                            size: 20,
                                           ),
-                                        )
-                                      ],
-                                    ),
+                                          Text(
+                                            '${item.rate}',
+                                            style: TextStyle(
+                                                fontFamily: FontFamily.inter,
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 16),
+                                          ),
+                                        ],
+                                      ),
+                                    )
                                   ],
                                 ),
 

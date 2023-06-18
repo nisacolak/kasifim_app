@@ -32,14 +32,9 @@ class _CustomFilterChipState extends State<CustomFilterChip> {
         widget.text,
         color: _isSelected ? ColorName.orange : Colors.black,
       ),
-      // labelStyle: TextStyle(
-      //   fontSize: 16,
-      //   decorationThickness: 0.1,
-      //   color: _isSelected ? ColorName.orange : Colors.black,
-      // ),
       backgroundColor: ColorName.white,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20.0),
+        borderRadius: BorderRadius.circular(12),
         side: BorderSide(
           color: _isSelected ? ColorName.orange : Colors.black,
         ),

@@ -1,12 +1,15 @@
 import 'dart:io';
 
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
+
+import 'explore_edit.dart';
 
 class VideoPage extends StatefulWidget {
   final String filePath;
 
-  VideoPage({Key? key, required this.filePath}) : super(key: key);
+  const VideoPage({Key? key, required this.filePath}) : super(key: key);
 
   @override
   _VideoPageState createState() => _VideoPageState();
@@ -39,8 +42,14 @@ class _VideoPageState extends State<VideoPage> {
           IconButton(
             icon: const Icon(Icons.check),
             onPressed: () {
-              Navigator.pushNamed(context, '/video-edit',
-                  arguments: File(widget.filePath));
+              Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                      builder: ((context) => VideoEditor(
+                            file: File(widget.filePath),
+                          ))));
+              // Navigator.pushNamed(context, '/video-edit',
+              //     arguments: File(widget.filePath));
             },
           )
         ],

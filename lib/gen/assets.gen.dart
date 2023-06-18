@@ -105,6 +105,10 @@ class $AssetsImagesGen {
   /// File path: assets/images/dessert.png
   AssetGenImage get dessert => const AssetGenImage('assets/images/dessert.png');
 
+  /// File path: assets/images/editorsChoice.png
+  AssetGenImage get editorsChoice =>
+      const AssetGenImage('assets/images/editorsChoice.png');
+
   /// File path: assets/images/explore.png
   AssetGenImage get explore => const AssetGenImage('assets/images/explore.png');
 
@@ -127,9 +131,16 @@ class $AssetsImagesGen {
   AssetGenImage get locationOn =>
       const AssetGenImage('assets/images/location_on.png');
 
+  /// File path: assets/images/nearby.png
+  AssetGenImage get nearby => const AssetGenImage('assets/images/nearby.png');
+
   /// File path: assets/images/notification.png
   AssetGenImage get notification =>
       const AssetGenImage('assets/images/notification.png');
+
+  /// File path: assets/images/popularRestaurants.png
+  AssetGenImage get popularRestaurants =>
+      const AssetGenImage('assets/images/popularRestaurants.png');
 
   /// File path: assets/images/reset-password.png
   AssetGenImage get resetPassword =>
@@ -169,13 +180,16 @@ class $AssetsImagesGen {
         chocolateCake,
         cookie,
         dessert,
+        editorsChoice,
         explore,
         expressionless,
         fastFood,
         forgotPassword,
         google,
         locationOn,
+        nearby,
         notification,
+        popularRestaurants,
         resetPassword,
         star,
         success,

@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kasifim_app/gen/colors.gen.dart';
 
 class FilterSwitch extends StatefulWidget {
   FilterSwitch({Key? key}) : super(key: key);
@@ -32,20 +34,24 @@ class _FilterSwitchState extends State<FilterSwitch> {
               });
             },
           ),
-          SwitchListTile(
-            title: Text(
-              'Low to High',
-              style: TextStyle(fontSize: 16),
+          CupertinoFormRow(
+            child: CupertinoSwitch(
+              activeColor: ColorName.orange,
+              // title: Text(
+              //   'Low to High',
+              //   style: TextStyle(fontSize: 16),
+              // ),
+              value: _lowToHigh,
+              onChanged: (newValue) {
+                setState(() {
+                  _lowToHigh = newValue;
+                  if (_lowToHigh) {
+                    _highToLow = false;
+                  }
+                });
+              },
             ),
-            value: _lowToHigh,
-            onChanged: (newValue) {
-              setState(() {
-                _lowToHigh = newValue;
-                if (_lowToHigh) {
-                  _highToLow = false;
-                }
-              });
-            },
+            prefix: Text('Low to High'),
           ),
         ],
       ),
