@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:kasifim_app/app/views/home/widget/category_container.dart';
 import 'package:kasifim_app/app/views/home/widget/circle_container.dart';
 import 'package:kasifim_app/app/views/home/widget/restaurant_card.dart';
@@ -20,49 +21,51 @@ class _HomeViewState extends State<HomeView> {
   TextEditingController homeSearchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-          preferredSize: Size.fromHeight(54),
-          child: AppBar(
-            elevation: 0,
-            backgroundColor: Colors.transparent,
-            automaticallyImplyLeading: false,
-            actions: [
-              homeAppBar(homeSearchController: homeSearchController),
-            ],
-          )),
-      body: Padding(
-        padding: const EdgeInsets.only(top: 0, right: 10, left: 10),
-        child: ListView(children: [
-          _buildSpace(context),
-          const _mainContainer(),
-          _buildSpace(context),
-          _buildSpace(context),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Eat what makes you happy',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-          _buildSpace(context),
-          CategoryContainer(),
-          _buildSpace(context),
-          _buildSpace(context),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                '127 Restaurants around you',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-            ],
-          ),
-          _buildSpace(context),
-          RestaurantCard(),
-        ]),
+    return SafeArea(
+      child: Scaffold(
+        appBar: PreferredSize(
+            preferredSize: Size.fromHeight(54),
+            child: AppBar(
+              elevation: 0,
+              backgroundColor: Colors.transparent,
+              automaticallyImplyLeading: false,
+              actions: [
+                homeAppBar(homeSearchController: homeSearchController),
+              ],
+            )),
+        body: Padding(
+          padding: const EdgeInsets.only(top: 0, right: 10, left: 10),
+          child: ListView(children: [
+            _buildSpace(context),
+            const _mainContainer(),
+            _buildSpace(context),
+            _buildSpace(context),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Eat what makes you happy',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            _buildSpace(context),
+            CategoryContainer(),
+            _buildSpace(context),
+            _buildSpace(context),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  '127 Restaurants around you',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+              ],
+            ),
+            _buildSpace(context),
+            RestaurantCard(),
+          ]),
+        ),
       ),
     );
   }
@@ -83,6 +86,8 @@ class homeAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
       Container(
+        height: MediaQuery.of(context).size.height * .04,
+        width: MediaQuery.of(context).size.width * .12,
         decoration: BoxDecoration(
           color: ColorName.white,
           shape: BoxShape.circle,
@@ -91,8 +96,7 @@ class homeAppBar extends StatelessWidget {
             onTap: () {},
             child: Image.asset(
               Assets.images.locationOn.path,
-              height: MediaQuery.of(context).size.height * .04,
-              width: MediaQuery.of(context).size.width * .10,
+              scale: 3,
             )),
       ),
       SizedBox(
@@ -111,7 +115,9 @@ class homeAppBar extends StatelessWidget {
       CircleAvatar(
         backgroundColor: ColorName.lightGrey,
         child: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, '/notifications');
+          },
           icon: badges.Badge(
               position: badges.BadgePosition.topEnd(top: 1.5, end: 0),
               child: Image.asset(

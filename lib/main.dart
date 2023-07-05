@@ -6,8 +6,16 @@ import 'package:kasifim_app/gen/colors.gen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky,
-      overlays: []).then(
+  // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [])
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+    ),
+  );
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+          overlays: [SystemUiOverlay.top])
+      // SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky)
+      .then(
     (_) => runApp(MyApp()),
   );
 }
@@ -15,7 +23,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

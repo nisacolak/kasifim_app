@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
-import 'package:kasifim_app/network/models/menu_item.dart';
+import 'package:kasifim_app/network/dummy%20models/menu_item.dart';
 
 class MenuTab extends StatelessWidget {
   const MenuTab({

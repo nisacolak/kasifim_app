@@ -35,9 +35,9 @@ class FilterDialog extends StatelessWidget {
             Wrap(
               spacing: 10,
               children: [
-                FilterShortEditor(),
-                FilterShortNearby(),
-                FilterShortPopular()
+                FilterSortEditor(),
+                FilterSortNearby(),
+                FilterSortPopular()
               ],
             ),
             //FilterRadioButton(),

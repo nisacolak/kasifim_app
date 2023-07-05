@@ -47,8 +47,7 @@ class _FilterRateState extends State<FilterRate> {
       showCheckmark: false,
       avatar: Icon(
         Icons.star,
-        color:
-            _isSelected ? ColorName.orange : Color.fromARGB(255, 241, 214, 65),
+        color: _isSelected ? ColorName.orange : ColorName.customYellow,
         size: 20,
       ),
       //Image.asset(Assets.images.star.path),

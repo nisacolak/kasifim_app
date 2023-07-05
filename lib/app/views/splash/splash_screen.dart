@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 import 'package:kasifim_app/gen/fonts.gen.dart';
@@ -14,7 +15,7 @@ class _SplashState extends State<Splash> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(seconds: 5))
+    Future.delayed(const Duration(seconds: 3))
         .then((value) => {Navigator.pushNamed(context, '/welcome')});
   }
 
@@ -22,9 +23,9 @@ class _SplashState extends State<Splash> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: ColorName.orange,
-        body: SizedBox(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
+        body: SafeArea(
+          bottom: true,
+          top: true,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

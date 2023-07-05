@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 
 import 'package:kasifim_app/gen/colors.gen.dart';
-import 'package:kasifim_app/network/models/restaurant.dart';
+import 'package:kasifim_app/network/dummy%20models/restaurant.dart';
 
 class DirectionsTab extends StatelessWidget {
   final Restaurant? sampleModel;

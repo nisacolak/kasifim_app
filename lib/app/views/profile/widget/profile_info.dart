@@ -92,6 +92,7 @@ class profileBio extends StatelessWidget {
 class buildProfileInfo extends StatelessWidget {
   final TextEditingController followerSearchController =
       TextEditingController();
+  final TextEditingController followSearchController = TextEditingController();
   buildProfileInfo({
     super.key,
   });
@@ -124,7 +125,7 @@ class buildProfileInfo extends StatelessWidget {
                 isScrollControlled: true,
                 backgroundColor: Colors.transparent,
                 builder: (context) {
-                  return showProfileFollowStatus(
+                  return showProfileFollowerStatus(
                       followerSearchController: followerSearchController);
                 });
           },
@@ -145,26 +146,38 @@ class buildProfileInfo extends StatelessWidget {
         SizedBox(
           width: 5,
         ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text(
-              'Follow',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            Text(
-              '5',
-              style: TextStyle(fontSize: 16),
-            ),
-          ],
+        GestureDetector(
+          onTap: () {
+            showModalBottomSheet(
+                context: context,
+                isScrollControlled: true,
+                backgroundColor: Colors.transparent,
+                builder: (context) {
+                  return showProfileFollowStatus(
+                      followSearchController: followSearchController);
+                });
+          },
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                'Follow',
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              Text(
+                '5',
+                style: TextStyle(fontSize: 16),
+              ),
+            ],
+          ),
         ),
       ],
     );
   }
 }
 
-class showProfileFollowStatus extends StatelessWidget {
-  const showProfileFollowStatus({
+class showProfileFollowerStatus extends StatelessWidget {
+  const showProfileFollowerStatus({
     super.key,
     required this.followerSearchController,
   });
@@ -189,6 +202,9 @@ class showProfileFollowStatus extends StatelessWidget {
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.start, children: [
               StadiumCloseButton(),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * .01,
+              ),
               Align(
                 alignment: Alignment.topCenter,
                 child: SearchContainer(
@@ -235,15 +251,77 @@ class _showFollowers extends StatelessWidget {
   }
 }
 
-class buildSpace extends StatelessWidget {
-  const buildSpace({
+class showProfileFollowStatus extends StatelessWidget {
+  const showProfileFollowStatus({
     super.key,
+    required this.followSearchController,
+  });
+
+  final TextEditingController followSearchController;
+
+  @override
+  Widget build(BuildContext context) {
+    return DraggableScrollableSheet(
+      expand: false,
+      initialChildSize: 0.6,
+      maxChildSize: 0.9,
+      minChildSize: 0.4,
+      builder: (context, scrollController) {
+        return Container(
+          decoration: BoxDecoration(
+              color: ColorName.white,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20), topRight: Radius.circular(20))),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child:
+                Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+              StadiumCloseButton(),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * .01,
+              ),
+              Align(
+                alignment: Alignment.topCenter,
+                child: SearchContainer(
+                    controller: followSearchController,
+                    hintText: 'search',
+                    width: MediaQuery.of(context).size.width * .9,
+                    height: MediaQuery.of(context).size.height * .05),
+              ),
+              _showFollow(
+                scrollController: scrollController,
+              ),
+            ]),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class _showFollow extends StatelessWidget {
+  final ScrollController scrollController;
+  const _showFollow({
+    super.key,
+    required this.scrollController,
   });
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * .02,
+    return Expanded(
+      child: ListView.builder(
+          controller: scrollController,
+          itemCount: 30,
+          itemBuilder: (context, index) => ListTile(
+                leading: CircleAvatar(
+                  backgroundImage: AssetImage(Assets.images.account.path),
+                ),
+                title: Text('John Doe'),
+                trailing: IconButton(
+                  icon: Icon(Icons.person_add),
+                  onPressed: () {},
+                ),
+              )),
     );
   }
 }

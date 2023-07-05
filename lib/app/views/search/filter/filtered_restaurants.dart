@@ -1,7 +1,10 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:kasifim_app/app/views/profile/widget/profile_info.dart';
+import 'package:flutter/services.dart';
+
+import 'package:kasifim_app/app/views/search/filter/filtered_restaurant_card.dart';
+
 import 'package:kasifim_app/app/views/search/filter/widget/filter_category.dart';
 import 'package:kasifim_app/app/views/search/filter/widget/filter_ratings.dart';
 import 'package:kasifim_app/app/views/search/filter/widget/filter_short.dart';
@@ -33,64 +36,158 @@ class _FilteredRestaurantsAdvancedState
     });
   }
 
+  TextEditingController filterRestaurantController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: scaffoldKey,
-      // onEndDrawerChanged: (isOpened) {
-      //   if (!isOpened) {
-      //     setState(() {});
-      //   }
-      // },
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(54),
-        child: Container(
-          //color: ColorName.green,
-          child: Row(
-            children: [
-              BackButton(
-                color: ColorName.black,
-              ),
-              SizedBox(),
-              Container(
-                width: MediaQuery.of(context).size.width * .5,
-                height: MediaQuery.of(context).size.height * .04,
-                decoration: BoxDecoration(
-                  color: ColorName.orange.withOpacity(0.2),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    ActionChip(
-                      onPressed: () {
-                        scaffoldKey.currentState!.openEndDrawer();
-                      },
-                      backgroundColor: ColorName.orange,
-                      avatar: Icon(
-                        Icons.tune_sharp,
-                        color: ColorName.white,
-                        size: 18,
-                      ),
-                      labelPadding: EdgeInsets.only(right: 2),
-                      label: Text(
-                        'Filter',
-                        style: TextStyle(color: ColorName.white),
-                      ),
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.light,
+      child: SafeArea(
+        child: Scaffold(
+          backgroundColor: ColorName.white,
+          key: scaffoldKey,
+          appBar: PreferredSize(
+              preferredSize: Size.fromHeight(100),
+              child: AppBar(
+                  toolbarHeight: 100,
+                  backgroundColor: ColorName.white,
+                  automaticallyImplyLeading: true,
+                  elevation: 2,
+                  actions: [
+                    Column(
+                      children: [
+                        Row(children: [
+                          BackButton(
+                            color: ColorName.orange,
+                          ),
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width * .01,
+                          ),
+                          Container(
+                              width: MediaQuery.of(context).size.width * 0.8,
+                              height: MediaQuery.of(context).size.height * 0.05,
+                              decoration: BoxDecoration(
+                                color: ColorName.orange.withOpacity(0.1),
+                                borderRadius: BorderRadius.circular(28),
+                              ),
+                              child: TextFormField(
+                                controller: filterRestaurantController,
+                                textAlignVertical: TextAlignVertical.bottom,
+                                decoration: InputDecoration(
+                                  contentPadding: EdgeInsets.only(bottom: 15),
+                                  border: InputBorder.none,
+                                  hintStyle: TextStyle(
+                                      color: ColorName.orange, fontSize: 16),
+                                  hintText: 'search',
+                                  prefixIcon: Icon(
+                                    Icons.search_sharp,
+                                    color: ColorName.orange,
+                                  ),
+                                ),
+                              )),
+                          SizedBox(
+                              width: MediaQuery.of(context).size.width * .01),
+                        ]),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * .01,
+                          width: MediaQuery.of(context).size.width * .99,
+                          child: Divider(),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            GestureDetector(
+                                onTap: () {
+                                  showModalBottomSheet<void>(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return Wrap(
+                                        children: [
+                                          ListTile(
+                                            onTap: () {},
+                                            //leading: Icon(Icons.share),
+                                            title: Text('Option 1'),
+                                          ),
+                                          ListTile(
+                                            onTap: () {},
+                                            //leading: Icon(Icons.copy),
+                                            title: Text('Option 2'),
+                                          ),
+                                          ListTile(
+                                            onTap: () {},
+                                            //leading: Icon(Icons.edit),
+                                            title: Text('Option 3'),
+                                          ),
+                                          ListTile(
+                                            onTap: () {},
+                                            //leading: Icon(Icons.share),
+                                            title: Text('Option 4'),
+                                          ),
+                                          ListTile(
+                                            onTap: () {},
+                                            //leading: Icon(Icons.share),
+                                            title: Text('Option 5'),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                },
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  height:
+                                      MediaQuery.of(context).size.height * .05,
+                                  width:
+                                      MediaQuery.of(context).size.width * .46,
+                                  child: Text(
+                                    'Sort by',
+                                    style: TextStyle(
+                                        color: ColorName.orange,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                )),
+                            Padding(
+                              padding: EdgeInsets.only(top: 5),
+                              child: SizedBox(
+                                  height: 30,
+                                  child: VerticalDivider(
+                                    thickness: 1,
+                                  )),
+                            ),
+                            GestureDetector(
+                                onTap: () {
+                                  scaffoldKey.currentState!.openEndDrawer();
+                                },
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  height:
+                                      MediaQuery.of(context).size.height * .05,
+                                  width:
+                                      MediaQuery.of(context).size.width * .46,
+                                  child: Text(
+                                    'Filter',
+                                    style: TextStyle(
+                                        color: ColorName.orange,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                ))
+                          ],
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ])),
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.only(right: 8, left: 10, top: 8),
+              child: Wrap(
+                children: [FilteredRestaurantCards()],
               ),
-            ],
+            ),
           ),
+          endDrawer: CustomEndDrawer(),
         ),
       ),
-      body: SafeArea(
-        child: Wrap(
-          children: [],
-        ),
-      ),
-      endDrawer: CustomEndDrawer(),
     );
   }
 }
@@ -106,37 +203,43 @@ class CustomEndDrawer extends StatelessWidget {
       borderRadius: BorderRadius.only(topLeft: Radius.circular(20)),
       child: Drawer(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(3),
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * .01,
+                ),
                 Text(
                   'Advanced Filter',
-                  style: TextStyle(color: ColorName.orange),
+                  style: TextStyle(
+                    color: ColorName.orange,
+                    fontSize: 18,
+                  ),
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * .02,
                 ),
                 Wrap(
-                  spacing: 5,
+                  spacing: 3,
                   children: [
-                    FilterShortEditor(),
-                    FilterShortNearby(),
-                    FilterShortPopular()
+                    FilterSortEditor(),
+                    FilterSortNearby(),
+                    FilterSortPopular()
                   ],
                 ),
-
+                customDivider(),
                 Text(
                   'Categories',
                   style: TextStyle(fontSize: 16),
                 ),
                 FilterCategory(),
-                SizedBox(
-                  height: 10,
-                ),
+                customDivider(),
                 Text(
                   'Distance',
                   style: TextStyle(fontSize: 16),
                 ),
-
                 FilterSliderDistance(),
                 customDivider(),
                 Text(
@@ -145,27 +248,26 @@ class CustomEndDrawer extends StatelessWidget {
                 ),
                 FilterSliderPrice(),
                 customDivider(),
-                buildSpace(),
                 Text('Rating', style: TextStyle(fontSize: 16)),
-                FilterRatings(),
+                Padding(
+                  padding: const EdgeInsets.only(right: 10, left: 10),
+                  child: FilterRatings(),
+                ),
                 customDivider(),
-                Container(
-                  height: MediaQuery.of(context).size.height * .1,
-                  width: MediaQuery.of(context).size.width,
-                  color: ColorName.green,
+                GestureDetector(
+                  child: Container(
+                    alignment: Alignment.center,
+                    height: MediaQuery.of(context).size.height * .04,
+                    width: MediaQuery.of(context).size.width,
+                    child: Text(
+                      'Filter',
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          color: ColorName.orange),
+                    ),
+                  ),
                 )
-                // ListTile(
-                //   title: Text('Screen 1'),
-                //   onTap: () {
-                //     // Go to Screen 1
-                //   },
-                // ),
-                // ListTile(
-                //   title: Text('Screen 2'),
-                //   onTap: () {
-                //     // Go to Screen 2
-                //   },
-                // ),
               ],
             ),
           ),

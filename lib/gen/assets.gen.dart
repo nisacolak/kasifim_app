@@ -127,6 +127,9 @@ class $AssetsImagesGen {
   /// File path: assets/images/google.png
   AssetGenImage get google => const AssetGenImage('assets/images/google.png');
 
+  /// File path: assets/images/lira.png
+  AssetGenImage get lira => const AssetGenImage('assets/images/lira.png');
+
   /// File path: assets/images/location_on.png
   AssetGenImage get locationOn =>
       const AssetGenImage('assets/images/location_on.png');
@@ -186,6 +189,7 @@ class $AssetsImagesGen {
         fastFood,
         forgotPassword,
         google,
+        lira,
         locationOn,
         nearby,
         notification,

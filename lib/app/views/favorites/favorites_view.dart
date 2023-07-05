@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:kasifim_app/app/views/home/widget/circle_container.dart';
 import 'package:kasifim_app/app/views/home/widget/favorite_button.dart';
 import 'package:kasifim_app/app/views/search/search_box.dart';
 import 'package:kasifim_app/app/widgets/app_text.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
-import 'package:kasifim_app/network/models/restaurant.dart';
+import 'package:kasifim_app/network/dummy%20models/restaurant.dart';
 
 class FavoritesView extends StatelessWidget {
   final TextEditingController favSearchController = TextEditingController();
@@ -13,140 +14,124 @@ class FavoritesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-          preferredSize: Size.fromHeight(54),
-          child: AppBar(
-            elevation: 0,
-            backgroundColor: Colors.transparent,
-            automaticallyImplyLeading: false,
-            actions: [
-              favoritesSearch(favSearchController: favSearchController)
-            ],
-          )),
-      body: SingleChildScrollView(
-        child: Align(
-          alignment: Alignment.center,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: 10,
-              ),
-              Container(
-                height: MediaQuery.of(context).size.height,
-                width: MediaQuery.of(context).size.width * .9,
-                decoration: BoxDecoration(
-                    // boxShadow: const [
-                    //   BoxShadow(
-                    //     color: ColorName.customGrey,
-                    //     offset: Offset(
-                    //       1,
-                    //       1,
-                    //     ),
-                    //     blurRadius: 3.0,
-                    //     // spreadRadius: 2.0,
-                    //   ), //BoxShadow
-                    //   BoxShadow(
-                    //     color: ColorName.white,
-                    //     offset: Offset(0.0, 0.0),
-                    //     blurRadius: 0.0,
-                    //     spreadRadius: 0.0,
-                    //   ), //BoxShadow
-                    // ],
-                    borderRadius: BorderRadius.circular(12),
-                    color: ColorName.lightGrey),
-                child: Wrap(
-                    children: sampleModel.map((item) {
-                  return SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    height: MediaQuery.of(context).size.height * 0.15,
-                    child: Row(
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(left: 7, right: 5),
-                          width: MediaQuery.of(context).size.width * 0.3,
-                          height: MediaQuery.of(context).size.height * 0.1,
-                          decoration: BoxDecoration(
-                              boxShadow: const [
-                                BoxShadow(
-                                  color: ColorName.customGrey,
-                                  offset: Offset(
-                                    1,
-                                    1,
+    return SafeArea(
+      child: Scaffold(
+        appBar: PreferredSize(
+            preferredSize: Size.fromHeight(54),
+            child: AppBar(
+              elevation: 0,
+              backgroundColor: Colors.transparent,
+              automaticallyImplyLeading: false,
+              actions: [
+                favoritesSearch(favSearchController: favSearchController)
+              ],
+            )),
+        body: SingleChildScrollView(
+          child: Align(
+            alignment: Alignment.center,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width * .9,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      color: ColorName.lightGrey),
+                  child: Wrap(
+                      children: sampleModel.map((item) {
+                    return SizedBox(
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      height: MediaQuery.of(context).size.height * 0.15,
+                      child: Row(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(left: 7, right: 5),
+                            width: MediaQuery.of(context).size.width * 0.3,
+                            height: MediaQuery.of(context).size.height * 0.1,
+                            decoration: BoxDecoration(
+                                boxShadow: const [
+                                  BoxShadow(
+                                    color: ColorName.customGrey,
+                                    offset: Offset(
+                                      1,
+                                      1,
+                                    ),
+                                    blurRadius: 3.0,
+                                  ), //BoxShadow
+                                  BoxShadow(
+                                    color: ColorName.white,
+                                    offset: Offset(0.0, 0.0),
+                                    blurRadius: 0.0,
+                                    spreadRadius: 0.0,
+                                  ), //BoxShadow
+                                ],
+                                borderRadius: BorderRadius.circular(12),
+                                image: DecorationImage(
+                                  alignment: Alignment.center,
+                                  image: AssetImage(
+                                    item.thumbnailPath,
                                   ),
-                                  blurRadius: 3.0,
-                                  // spreadRadius: 2.0,
-                                ), //BoxShadow
-                                BoxShadow(
-                                  color: ColorName.white,
-                                  offset: Offset(0.0, 0.0),
-                                  blurRadius: 0.0,
-                                  spreadRadius: 0.0,
-                                ), //BoxShadow
-                              ],
-                              borderRadius: BorderRadius.circular(12),
-                              image: DecorationImage(
-                                alignment: Alignment.center,
-                                image: AssetImage(
-                                  item.thumbnailPath,
-                                ),
-                                fit: BoxFit.cover,
-                              )),
-                        ),
-                        Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(10),
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        AppText.large(item.restaurantName),
-                                        FavoriteButton(
-                                          size: 25,
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        AppText.medium(
-                                          item.categoryName,
-                                          color: ColorName.grey,
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Icon(
-                                          Icons.star_sharp,
-                                          color: ColorName.orange,
-                                          size: 20,
-                                        ),
-                                        AppText.medium(item.rate.toString()),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ],
+                                  fit: BoxFit.cover,
+                                )),
                           ),
-                        )
-                      ],
-                    ),
-                  );
-                }).toList()),
-              )
-            ],
+                          Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(10),
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          AppText.large(item.restaurantName),
+                                          FavoriteButton(
+                                            size: 25,
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          AppText.medium(
+                                            item.categoryName,
+                                            color: ColorName.grey,
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Icon(
+                                            Icons.star_sharp,
+                                            color: ColorName.orange,
+                                            size: 20,
+                                          ),
+                                          AppText.medium(item.rate.toString()),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  }).toList()),
+                )
+              ],
+            ),
           ),
         ),
       ),

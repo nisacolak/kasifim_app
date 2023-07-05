@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:kasifim_app/app/views/home/widget/favorite_button.dart';
 import 'package:kasifim_app/app/widgets/app_text.dart';
+import 'package:kasifim_app/app/widgets/glass_box.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 import 'package:kasifim_app/gen/fonts.gen.dart';
-import 'package:kasifim_app/network/models/restaurant.dart';
+import 'package:kasifim_app/network/dummy%20models/restaurant.dart';
 
 import 'border_favorite.dart';
 
@@ -62,7 +63,7 @@ class RestaurantCard extends StatelessWidget {
                               children: [
                                 Container(
                                   decoration: BoxDecoration(
-                                      color: ColorName.green,
+                                      color: ColorName.orange,
                                       borderRadius: BorderRadius.circular(4)),
                                   height: 20,
                                   width: 40,

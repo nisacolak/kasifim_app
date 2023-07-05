@@ -53,7 +53,7 @@ class _FavoriteButtonState extends State<FavoriteButton>
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Icon(
-                              Icons.favorite_sharp,
+                              Icons.favorite_border_outlined,
                               size: widget.size,
                               color: ColorName.white,
                               key: const ValueKey('notFavorite'),

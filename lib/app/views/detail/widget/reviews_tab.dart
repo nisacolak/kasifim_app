@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import 'package:kasifim_app/app/views/detail/widget/restaurant_images.dart';
+import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
-import 'package:kasifim_app/network/models/model.dart';
+import 'package:kasifim_app/network/dummy%20models/model.dart';
 import 'package:readmore/readmore.dart';
 
 class ReviewsTab extends StatelessWidget {
@@ -64,33 +65,40 @@ class ReviewsTab extends StatelessWidget {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Text(
-                                          item.name,
-                                          style: TextStyle(fontSize: 16),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              "Muhammed Cundullah Bozdağ",
+                                              style: TextStyle(fontSize: 16),
+                                            ),
+                                            SizedBox(
+                                              width: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  .08,
+                                            ),
+                                            RatingBar.builder(
+                                              initialRating: item.star,
+                                              minRating: 1,
+                                              direction: Axis.horizontal,
+                                              allowHalfRating: false,
+                                              itemCount: 5,
+                                              itemSize: 14,
+                                              itemBuilder: (context, _) => Icon(
+                                                Icons.star,
+                                                color: ColorName.orange,
+                                              ),
+                                              onRatingUpdate: (rating) {},
+                                            ),
+                                          ],
                                         ),
                                         Text('23 followers'),
                                       ],
                                     ),
                                   ),
                                 ]),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    RatingBar.builder(
-                                      initialRating: item.star,
-                                      minRating: 1,
-                                      direction: Axis.horizontal,
-                                      allowHalfRating: false,
-                                      itemCount: 5,
-                                      itemSize: 18,
-                                      itemBuilder: (context, _) => Icon(
-                                        Icons.star,
-                                        color: ColorName.orange,
-                                      ),
-                                      onRatingUpdate: (rating) {},
-                                    ),
-                                  ],
-                                ),
                                 Padding(
                                     padding: const EdgeInsets.all(5),
                                     child: ReadMoreText(
@@ -123,131 +131,31 @@ class ReviewsTab extends StatelessWidget {
                                         return Container(
                                           margin: const EdgeInsets.only(
                                               left: 3, right: 3),
-                                          color: ColorName.green,
+                                          decoration: BoxDecoration(
+                                              color: ColorName.green,
+                                              image: DecorationImage(
+                                                  image: Assets
+                                                      .images.breakfast2
+                                                      .provider())),
                                         );
                                       },
                                     )),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      'review date',
+                                      style: TextStyle(
+                                          color: ColorName.grey,
+                                          fontStyle: FontStyle.italic),
+                                    )
+                                  ],
+                                ),
                               ]))),
                   SizedBox(
                     height: MediaQuery.of(context).size.height * .01,
                   ),
-                  Container(
-                      constraints: BoxConstraints(
-                        maxWidth: double.infinity,
-                      ),
-                      decoration: BoxDecoration(
-                          boxShadow: const [
-                            BoxShadow(
-                              color: ColorName.customGrey,
-                              offset: Offset(
-                                1,
-                                1,
-                              ),
-                              blurRadius: 3.0,
-                            ), //BoxShadow
-                            BoxShadow(
-                              color: ColorName.white,
-                              offset: Offset(0.0, 0.0),
-                              blurRadius: 0.0,
-                              spreadRadius: 0.0,
-                            ), //BoxShadow
-                          ],
-                          color: ColorName.white,
-                          borderRadius: BorderRadius.circular(12)),
-                      child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(children: [
-                                  CircleAvatar(
-                                      backgroundImage: AssetImage(item.img)),
-                                  Padding(
-                                    padding: const EdgeInsets.all(5),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          item.name,
-                                          style: TextStyle(fontSize: 16),
-                                        ),
-                                        Text('23 followers'),
-                                      ],
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Align(
-                                      alignment: Alignment.centerRight,
-                                      child: Text('review date'),
-                                    ),
-                                  ),
-                                ]),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    RatingBar.builder(
-                                      initialRating: item.star,
-                                      minRating: 1,
-                                      direction: Axis.horizontal,
-                                      allowHalfRating: true,
-                                      itemCount: 5,
-                                      itemSize: 18,
-                                      itemBuilder: (context, _) => Icon(
-                                        Icons.star,
-                                        color: ColorName.orange,
-                                      ),
-                                      onRatingUpdate: (rating) {},
-                                    ),
-                                  ],
-                                ),
-                                Padding(
-                                    padding: const EdgeInsets.only(top: 5),
-                                    child: ReadMoreText(
-                                      item.comment,
-                                      trimLines: 2,
-                                      trimMode: TrimMode.Line,
-                                      trimCollapsedText: 'Read more',
-                                      trimExpandedText: 'Read less',
-                                      lessStyle: const TextStyle(
-                                        color: ColorName.orange,
-                                        fontSize: 14,
-                                      ),
-                                      moreStyle: const TextStyle(
-                                        color: ColorName.orange,
-                                        fontSize: 14,
-                                      ),
-                                    )),
-                                SizedBox(
-                                  height: 45,
-                                  child: ListView(
-                                    scrollDirection: Axis.horizontal,
-                                    children: [
-                                      Container(
-                                        margin: const EdgeInsets.only(
-                                            left: 3, right: 3),
-                                        width: 60,
-                                        height: 50,
-                                        color: Colors.green,
-                                      ),
-                                      Container(
-                                        margin: const EdgeInsets.only(
-                                            left: 3, right: 3),
-                                        width: 60,
-                                        height: 50,
-                                        color: Colors.green,
-                                      ),
-                                      Container(
-                                        margin: const EdgeInsets.only(
-                                            left: 3, right: 3),
-                                        width: 60,
-                                        height: 50,
-                                        color: Colors.green,
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              ])))
                 ]);
               }).toList()),
             ],

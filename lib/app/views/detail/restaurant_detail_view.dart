@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
 import 'dart:math' as math;
 
 import 'package:kasifim_app/app/views/detail/widget/directions_tab.dart';
@@ -10,6 +12,7 @@ import 'package:kasifim_app/app/views/home/widget/circle_container.dart';
 import 'package:kasifim_app/app/views/home/widget/favorite_button.dart';
 
 import 'package:kasifim_app/app/widgets/app_text.dart';
+import 'package:kasifim_app/app/widgets/glass_box.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 
 import 'package:kasifim_app/gen/colors.gen.dart';
@@ -46,11 +49,12 @@ class _RestaurantDetailState extends State<RestaurantDetail>
                         top: 2,
                         left: 0,
                       ),
-                      child: CircleContainer(
-                        color: ColorName.orangeShade,
+                      child: GlassBox(
+                        height: 50,
+                        width: 50,
                         child: IconButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, '/home-body');
+                            Navigator.pop(context);
                           },
                           icon: Icon(
                             Icons.arrow_back,
@@ -66,9 +70,9 @@ class _RestaurantDetailState extends State<RestaurantDetail>
                     toolbarHeight: 40,
                     expandedHeight: 300,
                     actions: [
-                      CircleContainer(
-                          margin: const EdgeInsets.only(left: 10, right: 10),
-                          color: ColorName.orangeShade,
+                      GlassBox(
+                          height: 50,
+                          width: 50,
                           child: FavoriteButton(
                             size: 25,
                           ))

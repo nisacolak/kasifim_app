@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 
-class FilterShortEditor extends StatefulWidget {
+class FilterSortEditor extends StatefulWidget {
   final bool isSelected;
-  const FilterShortEditor({super.key, this.isSelected = false});
+  const FilterSortEditor({super.key, this.isSelected = false});
 
   @override
-  State<FilterShortEditor> createState() => _FilterShortEditorState();
+  State<FilterSortEditor> createState() => _FilterSortEditorState();
 }
 
-class _FilterShortEditorState extends State<FilterShortEditor> {
+class _FilterSortEditorState extends State<FilterSortEditor> {
   bool _isSelected = false;
   @override
   void initState() {
@@ -47,15 +47,15 @@ class _FilterShortEditorState extends State<FilterShortEditor> {
   }
 }
 
-class FilterShortNearby extends StatefulWidget {
+class FilterSortNearby extends StatefulWidget {
   final bool isSelected;
-  const FilterShortNearby({super.key, this.isSelected = false});
+  const FilterSortNearby({super.key, this.isSelected = false});
 
   @override
-  State<FilterShortNearby> createState() => _FilterShortNearbyState();
+  State<FilterSortNearby> createState() => _FilterSortNearbyState();
 }
 
-class _FilterShortNearbyState extends State<FilterShortNearby> {
+class _FilterSortNearbyState extends State<FilterSortNearby> {
   bool _isSelected = false;
   @override
   void initState() {
@@ -92,15 +92,15 @@ class _FilterShortNearbyState extends State<FilterShortNearby> {
   }
 }
 
-class FilterShortPopular extends StatefulWidget {
+class FilterSortPopular extends StatefulWidget {
   final bool isSelected;
-  const FilterShortPopular({super.key, this.isSelected = false});
+  const FilterSortPopular({super.key, this.isSelected = false});
 
   @override
-  State<FilterShortPopular> createState() => _FilterShortPopularState();
+  State<FilterSortPopular> createState() => _FilterSortPopularState();
 }
 
-class _FilterShortPopularState extends State<FilterShortPopular> {
+class _FilterSortPopularState extends State<FilterSortPopular> {
   bool _isSelected = false;
   @override
   void initState() {
