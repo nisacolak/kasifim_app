@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:kasifim_app/app/views/home/widget/favorite_button.dart';
+
 import 'package:kasifim_app/app/widgets/app_text.dart';
-import 'package:kasifim_app/app/widgets/glass_box.dart';
+
 import 'package:kasifim_app/gen/colors.gen.dart';
 import 'package:kasifim_app/gen/fonts.gen.dart';
 import 'package:kasifim_app/network/dummy%20models/restaurant.dart';

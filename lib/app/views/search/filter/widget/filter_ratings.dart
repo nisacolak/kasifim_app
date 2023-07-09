@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kasifim_app/app/widgets/app_text.dart';
-import 'package:kasifim_app/gen/assets.gen.dart';
+
 import 'package:kasifim_app/gen/colors.gen.dart';
 
 class FilterRatings extends StatelessWidget {

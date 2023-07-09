@@ -8,7 +8,7 @@ import 'package:kasifim_app/app/views/detail/widget/menu_tab.dart';
 
 import 'package:kasifim_app/app/views/detail/widget/restaurant_info.dart';
 import 'package:kasifim_app/app/views/detail/widget/reviews_tab.dart';
-import 'package:kasifim_app/app/views/home/widget/circle_container.dart';
+
 import 'package:kasifim_app/app/views/home/widget/favorite_button.dart';
 
 import 'package:kasifim_app/app/widgets/app_text.dart';

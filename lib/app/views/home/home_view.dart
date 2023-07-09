@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kasifim_app/app/views/home/widget/category_container.dart';
-import 'package:kasifim_app/app/views/home/widget/circle_container.dart';
+
 import 'package:kasifim_app/app/views/home/widget/restaurant_card.dart';
 import 'package:kasifim_app/app/views/search/search_box.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';

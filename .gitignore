@@ -9,7 +9,7 @@ local.properties
 
 # Log/OS Files
 *.log
-
+.dart_tool/
 # Android Studio generated files and folders
 captures/
 .externalNativeBuild/
@@ -30,3 +30,4 @@ google-services.json
 
 # Android Profiling
 *.hprof
+

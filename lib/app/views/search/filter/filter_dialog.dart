@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:kasifim_app/app/views/search/filter/widget/close_button.dart';
 import 'package:kasifim_app/app/views/search/filter/widget/filter_short.dart';
-import 'package:kasifim_app/gen/assets.gen.dart';
 
 import 'package:kasifim_app/gen/colors.gen.dart';
 import 'widget/filter_button..dart';
 import 'widget/filter_category.dart';
-import 'widget/filter_radio.dart';
+
 import 'widget/filter_ratings.dart';
 
 class FilterDialog extends StatelessWidget {

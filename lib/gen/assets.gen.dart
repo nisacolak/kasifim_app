@@ -149,6 +149,18 @@ class $AssetsImagesGen {
   AssetGenImage get resetPassword =>
       const AssetGenImage('assets/images/reset-password.png');
 
+  /// File path: assets/images/restaurant.png
+  AssetGenImage get restaurant =>
+      const AssetGenImage('assets/images/restaurant.png');
+
+  /// File path: assets/images/restaurant2.png
+  AssetGenImage get restaurant2 =>
+      const AssetGenImage('assets/images/restaurant2.png');
+
+  /// File path: assets/images/restaurant3.png
+  AssetGenImage get restaurant3 =>
+      const AssetGenImage('assets/images/restaurant3.png');
+
   /// File path: assets/images/star.png
   AssetGenImage get star => const AssetGenImage('assets/images/star.png');
 
@@ -195,6 +207,9 @@ class $AssetsImagesGen {
         notification,
         popularRestaurants,
         resetPassword,
+        restaurant,
+        restaurant2,
+        restaurant3,
         star,
         success,
         turkish,

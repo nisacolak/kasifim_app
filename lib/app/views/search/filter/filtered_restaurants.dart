@@ -291,14 +291,3 @@ class customDivider extends StatelessWidget {
     );
   }
 }
-
-class FilteredSearchBox extends StatelessWidget {
-  FilteredSearchBox({super.key});
-  TextEditingController homeSearchController = TextEditingController();
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: ColorName.orange,
-    );
-  }
-}
