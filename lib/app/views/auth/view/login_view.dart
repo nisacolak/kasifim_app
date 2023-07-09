@@ -8,6 +8,7 @@ import 'package:kasifim_app/app/views/welcome/widget/custom_text_button.dart';
 import 'package:kasifim_app/app/widgets/app_text.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
+import 'package:kasifim_app/network/repository/auth/login_repository.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -17,6 +18,7 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
+  final LoginRepository _loginRepository = LoginRepository.instance;
   final GlobalKey<FormState> _loginFormKey = GlobalKey();
   final TextEditingController _loginEmailController = TextEditingController();
   final TextEditingController _loginPasswordController =
@@ -89,9 +91,21 @@ class _LoginViewState extends State<LoginView> {
             ),
             _buildSpace(),
             CustomButton(
-              onPressed: () {
+              onPressed: () async {
+                // repository input
+                final response = await _loginRepository.loginService(
+                    _loginEmailController.text, _loginPasswordController.text);
+                if (response == 200) {
+                  // ignore: use_build_context_synchronously
+                  Navigator.pushNamed(context, '/home-body');
+                } else {
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text('Login olamadık maalesef'),
+                    backgroundColor: Colors.red,
+                  ));
+                }
                 //_login();
-                Navigator.pushNamed(context, '/home-body');
+                //
               },
               text: 'Login',
               backgroundColor: ColorName.orange,

@@ -3,10 +3,12 @@ import 'package:flutter/services.dart';
 
 import 'package:kasifim_app/app/routes/routes.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
+import 'package:kasifim_app/network/local/isar/isar_client.dart';
 
-void main() {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [])
+  await IsarLocalDatabase.instance.initIsar();
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
