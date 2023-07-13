@@ -33,13 +33,13 @@ class ForgotPasswordSuccess extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      AppText.small('Please check your email for create'),
+                      AppText.medium('Please check your email for create'),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      AppText.small(' a new password'),
+                      AppText.medium(' a new password'),
                     ],
                   ),
                   Row(

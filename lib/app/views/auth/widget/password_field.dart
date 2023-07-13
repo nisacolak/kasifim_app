@@ -50,7 +50,7 @@ class _PasswordFieldState extends State<PasswordField> {
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(color: ColorName.orange),
           ),
-          contentPadding: const EdgeInsets.all(22),
+          contentPadding: const EdgeInsets.all(19),
         ),
       ),
     );

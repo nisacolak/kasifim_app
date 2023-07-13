@@ -26,13 +26,13 @@ class ChangePasswordSuccess extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  AppText.small('Congratulations your password has'),
+                  AppText.medium('Congratulations your password has'),
                 ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  AppText.small('been changed'),
+                  AppText.medium('been changed'),
                 ],
               ),
               SizedBox(

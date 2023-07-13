@@ -4,6 +4,7 @@ import 'package:kasifim_app/app/views/home/widget/category_container.dart';
 
 import 'package:kasifim_app/app/views/home/widget/restaurant_card.dart';
 import 'package:kasifim_app/app/views/search/search_box.dart';
+import 'package:kasifim_app/app/widgets/app_text.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 import 'package:badges/badges.dart' as badges;
@@ -43,22 +44,26 @@ class _HomeViewState extends State<HomeView> {
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                AppText.title(
                   'Eat what makes you happy',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  color: ColorName.orange,
+                  fontWeight: FontWeight.bold,
                 ),
               ],
             ),
-            _buildSpace(context),
             CategoryContainer(),
-            _buildSpace(context),
-            _buildSpace(context),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  '127 Restaurants around you',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                AppText.large(
+                  '127',
+                  fontWeight: FontWeight.bold,
+                  color: ColorName.orange,
+                ),
+                AppText.large(
+                  ' Restaurants around you',
+                  color: ColorName.orange,
+                  //color: Color.fromARGB(255, 67, 67, 67),
+                  fontWeight: FontWeight.bold,
                 ),
               ],
             ),

@@ -28,11 +28,46 @@ class $AssetsFontsGen {
   String get caveatVariableFontWght =>
       'assets/fonts/Caveat-VariableFont_wght.ttf';
 
+  /// File path: assets/fonts/HelveticaNeue-67-Medium-Condensed.otf
+  String get helveticaNeue67MediumCondensed =>
+      'assets/fonts/HelveticaNeue-67-Medium-Condensed.otf';
+
+  /// File path: assets/fonts/HelveticaNeue-Condensed-Bold.ttf
+  String get helveticaNeueCondensedBold =>
+      'assets/fonts/HelveticaNeue-Condensed-Bold.ttf';
+
+  /// File path: assets/fonts/HelveticaNeue-Regular.otf
+  String get helveticaNeueRegular => 'assets/fonts/HelveticaNeue-Regular.otf';
+
   /// File path: assets/fonts/Inter-Light.ttf
   String get interLight => 'assets/fonts/Inter-Light.ttf';
 
   /// File path: assets/fonts/Inter-Regular.ttf
   String get interRegular => 'assets/fonts/Inter-Regular.ttf';
+
+  /// File path: assets/fonts/ProximaNova-AltBold.otf
+  String get proximaNovaAltBold => 'assets/fonts/ProximaNova-AltBold.otf';
+
+  /// File path: assets/fonts/ProximaNova-AltLight.otf
+  String get proximaNovaAltLight => 'assets/fonts/ProximaNova-AltLight.otf';
+
+  /// File path: assets/fonts/ProximaNova-AltThin.otf
+  String get proximaNovaAltThin => 'assets/fonts/ProximaNova-AltThin.otf';
+
+  /// File path: assets/fonts/ProximaNova-Black.otf
+  String get proximaNovaBlack => 'assets/fonts/ProximaNova-Black.otf';
+
+  /// File path: assets/fonts/ProximaNova-Bold.otf
+  String get proximaNovaBold => 'assets/fonts/ProximaNova-Bold.otf';
+
+  /// File path: assets/fonts/ProximaNova-Regular.otf
+  String get proximaNovaRegular => 'assets/fonts/ProximaNova-Regular.otf';
+
+  /// File path: assets/fonts/ProximaNova-Semibold.ttf
+  String get proximaNovaSemibold => 'assets/fonts/ProximaNova-Semibold.ttf';
+
+  /// File path: assets/fonts/ProximaNova-Thin.otf
+  String get proximaNovaThin => 'assets/fonts/ProximaNova-Thin.otf';
 
   /// List of all assets
   List<String> get values => [
@@ -41,8 +76,19 @@ class $AssetsFontsGen {
         caveatRegular,
         caveatSemiBold,
         caveatVariableFontWght,
+        helveticaNeue67MediumCondensed,
+        helveticaNeueCondensedBold,
+        helveticaNeueRegular,
         interLight,
-        interRegular
+        interRegular,
+        proximaNovaAltBold,
+        proximaNovaAltLight,
+        proximaNovaAltThin,
+        proximaNovaBlack,
+        proximaNovaBold,
+        proximaNovaRegular,
+        proximaNovaSemibold,
+        proximaNovaThin
       ];
 }
 

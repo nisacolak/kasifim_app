@@ -13,6 +13,12 @@ class FontFamily {
   /// Font family: Caveat
   static const String caveat = 'Caveat';
 
+  /// Font family: HelveticaNeue
+  static const String helveticaNeue = 'HelveticaNeue';
+
   /// Font family: Inter
   static const String inter = 'Inter';
+
+  /// Font family: ProximaNova
+  static const String proximaNova = 'ProximaNova';
 }

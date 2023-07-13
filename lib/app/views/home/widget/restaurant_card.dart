@@ -131,8 +131,10 @@ class RestaurantCard extends StatelessWidget {
                                           child: Text(
                                             item.restaurantName,
                                             style: TextStyle(
-                                                fontFamily: FontFamily.inter,
-                                                fontWeight: FontWeight.w500,
+                                                fontFamily:
+                                                    FontFamily.proximaNova,
+                                                fontWeight: FontWeight.w700,
+                                                fontStyle: FontStyle.normal,
                                                 fontSize: 18),
                                           ),
                                           // AppText.large(
@@ -159,8 +161,9 @@ class RestaurantCard extends StatelessWidget {
                                           Text(
                                             '${item.rate}',
                                             style: TextStyle(
-                                                fontFamily: FontFamily.inter,
-                                                fontWeight: FontWeight.w500,
+                                                fontFamily:
+                                                    FontFamily.proximaNova,
+                                                fontWeight: FontWeight.w600,
                                                 fontSize: 16),
                                           ),
                                         ],

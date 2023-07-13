@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:kasifim_app/gen/colors.gen.dart';
 
 class GlassBox extends StatelessWidget {
   final Widget child;
@@ -16,10 +17,13 @@ class GlassBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
+      borderRadius: BorderRadius.circular(100),
       child: Container(
         width: width,
         height: height,
-        decoration: BoxDecoration(shape: BoxShape.circle),
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+        ),
         child: Stack(children: [
           BackdropFilter(
             filter: ImageFilter.blur(

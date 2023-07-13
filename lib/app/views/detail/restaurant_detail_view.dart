@@ -16,6 +16,7 @@ import 'package:kasifim_app/app/widgets/glass_box.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 
 import 'package:kasifim_app/gen/colors.gen.dart';
+import 'package:kasifim_app/gen/fonts.gen.dart';
 
 class RestaurantDetail extends StatefulWidget {
   const RestaurantDetail({Key? key}) : super(key: key);
@@ -44,55 +45,74 @@ class _RestaurantDetailState extends State<RestaurantDetail>
                 return [
                   SliverAppBar(
                     backgroundColor: Colors.transparent,
-                    leading: Padding(
-                      padding: const EdgeInsets.only(
-                        top: 2,
-                        left: 0,
-                      ),
-                      child: GlassBox(
-                        height: 50,
-                        width: 50,
-                        child: IconButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          icon: Icon(
-                            Icons.arrow_back,
-                            color: ColorName.orange,
-                          ),
-                        ),
-                      ),
-                    ),
                     elevation: 0,
+                    automaticallyImplyLeading: false,
                     floating: false,
                     snap: false,
                     pinned: false,
-                    toolbarHeight: 40,
+                    toolbarHeight: 55,
                     expandedHeight: 300,
                     actions: [
-                      GlassBox(
-                          height: 50,
-                          width: 50,
-                          child: FavoriteButton(
-                            size: 25,
-                          ))
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 5, right: 5),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                GlassBox(
+                                    height: 40,
+                                    width: 40,
+                                    child: BackButton(
+                                      color: ColorName.orange,
+                                    )),
+                                GlassBox(
+                                    height: 40,
+                                    width: 40,
+                                    child: FavoriteButton(
+                                      size: 25,
+                                    )),
+                              ]),
+                        ),
+                      )
                     ],
-                    automaticallyImplyLeading: false,
                     flexibleSpace: FlexibleSpaceBar(
                         titlePadding: EdgeInsets.only(
-                            top: 0, left: 55, right: 0, bottom: 27),
+                            top: 0, left: 62, right: 0, bottom: 27),
                         title: Column(
                           mainAxisAlignment: MainAxisAlignment.end,
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Text(
-                              'Viyana Kahvesi',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 18),
+                          children: [
+                            Stack(
+                              children: [
+                                Text(
+                                  'Viyana Kahvesi',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontFamily: FontFamily.helveticaNeue,
+                                    fontWeight: FontWeight.w400,
+                                    foreground: Paint()
+                                      ..style = PaintingStyle.stroke
+                                      ..strokeWidth = 5
+                                      ..color = ColorName.black,
+                                  ),
+                                ),
+                                const Text(
+                                  'Viyana Kahvesi',
+                                  style: TextStyle(
+                                    fontFamily: FontFamily.helveticaNeue,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 20,
+                                    color: ColorName.white,
+                                  ),
+                                ),
+                              ],
                             ),
                             Text('Coffee Shop',
                                 style: TextStyle(
-                                    fontSize: 10, color: Colors.white)),
+                                    fontFamily: FontFamily.helveticaNeue,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 12,
+                                    color: Colors.white)),
                           ],
                         ),
                         background: Image.asset(
@@ -150,7 +170,7 @@ class _RestaurantDetailState extends State<RestaurantDetail>
                                         Icons.restaurant_menu,
                                         size: 20,
                                       ),
-                                      AppText.medium('  Menu'),
+                                      AppText.medium('  Menu'), //16 olmalı
                                     ],
                                   ),
                                 ),

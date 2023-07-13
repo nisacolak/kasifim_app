@@ -19,7 +19,7 @@ class CustomActionChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ActionChip(
-      label: AppText.small(
+      label: AppText.medium(
         text,
       ),
       shape: RoundedRectangleBorder(

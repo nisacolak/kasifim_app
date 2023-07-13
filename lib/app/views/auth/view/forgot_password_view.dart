@@ -54,7 +54,7 @@ class ForgotPassword extends StatelessWidget {
                           Row(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              AppText.small('Remember the password?'),
+                              AppText.medium('Remember the password?'),
                               CustomTextButton(
                                   onPressed: () {
                                     Navigator.pop(context);

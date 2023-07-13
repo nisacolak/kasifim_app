@@ -53,7 +53,7 @@ class _FilterRateState extends State<FilterRate> {
       //Image.asset(Assets.images.star.path),
       selectedColor: ColorName.orange.withOpacity(0.1),
       checkmarkColor: ColorName.orange,
-      label: AppText.small(
+      label: AppText.medium(
         widget.text,
         color: _isSelected ? ColorName.orange : ColorName.darkGrey,
       ),

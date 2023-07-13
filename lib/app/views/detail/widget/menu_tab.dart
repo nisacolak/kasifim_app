@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
+import 'package:kasifim_app/gen/fonts.gen.dart';
 import 'package:kasifim_app/network/dummy%20models/menu_item.dart';
 
 class MenuTab extends StatelessWidget {
@@ -26,7 +27,6 @@ class MenuTab extends StatelessWidget {
                       1,
                     ),
                     blurRadius: 3.0,
-                    // spreadRadius: 2.0,
                   ), //BoxShadow
                   BoxShadow(
                     color: ColorName.white,
@@ -49,7 +49,9 @@ class MenuTab extends StatelessWidget {
                       child: Text(
                         e.category,
                         style: TextStyle(
-                            fontSize: 21, fontWeight: FontWeight.bold),
+                            fontFamily: FontFamily.proximaNova,
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                     Column(

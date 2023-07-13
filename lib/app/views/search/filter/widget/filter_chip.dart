@@ -28,7 +28,7 @@ class _CustomFilterChipState extends State<CustomFilterChip> {
     return FilterChip(
       selectedColor: ColorName.orange.withOpacity(0.1),
       checkmarkColor: ColorName.orange,
-      label: AppText.small(
+      label: AppText.medium(
         widget.text,
         color: _isSelected ? ColorName.orange : Colors.black,
       ),

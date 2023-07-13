@@ -43,10 +43,9 @@ dependencies:
   bloc: ^8.1.1
   logger: ^1.4.0
 
-  # local storage 
+  # local storage
   isar: 3.0.5
   isar_flutter_libs: 3.0.5
-
 
 dev_dependencies:
   flutter_test:
@@ -55,7 +54,7 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   build_runner: ^2.3.3
   retrofit_generator: ^7.0.8
-  injectable_generator:  ^1.5.4
+  injectable_generator: ^1.5.4
   freezed: ^2.3.0
   isar_generator: 3.0.5
 
@@ -88,3 +87,15 @@ flutter:
           weight: 300
         - asset: assets/fonts/Inter-Regular.ttf
           weight: 400
+    - family: HelveticaNeue
+      fonts:
+        - asset: assets/fonts/HelveticaNeue-Regular.otf
+        - asset: assets/fonts/HelveticaNeue-Condensed-Bold.ttf
+    - family: ProximaNova
+      fonts:
+        - asset: assets/fonts/ProximaNova-Regular.otf
+        - asset: assets/fonts/ProximaNova-AltLight.otf
+        - asset: assets/fonts/ProximaNova-AltThin.otf
+        - asset: assets/fonts/ProximaNova-Bold.otf
+        - asset: assets/fonts/ProximaNova-Thin.otf
+        - asset: assets/fonts/ProximaNova-Semibold.ttf
