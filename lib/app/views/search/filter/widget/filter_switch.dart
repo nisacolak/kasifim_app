@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:kasifim_app/app/widgets/app_text.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 
 class FilterSwitch extends StatefulWidget {
@@ -20,9 +21,8 @@ class _FilterSwitchState extends State<FilterSwitch> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SwitchListTile(
-            title: Text(
+            title: AppText.basic(
               'High to Low',
-              style: TextStyle(fontSize: 16),
             ),
             value: _highToLow,
             onChanged: (newValue) {
@@ -37,10 +37,6 @@ class _FilterSwitchState extends State<FilterSwitch> {
           CupertinoFormRow(
             child: CupertinoSwitch(
               activeColor: ColorName.orange,
-              // title: Text(
-              //   'Low to High',
-              //   style: TextStyle(fontSize: 16),
-              // ),
               value: _lowToHigh,
               onChanged: (newValue) {
                 setState(() {

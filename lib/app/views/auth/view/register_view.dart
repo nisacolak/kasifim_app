@@ -40,6 +40,7 @@ class _RegisterViewState extends State<RegisterView> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
+      backgroundColor: ColorName.white,
       body: Form(
         key: _registerFormKey,
         child: ListView(children: [
@@ -56,7 +57,7 @@ class _RegisterViewState extends State<RegisterView> {
                 AuthField(
                   controller: _nameController,
                   prefixIcon: const Icon(
-                    Icons.mail_outline,
+                    Icons.person_2_outlined,
                   ),
                   hintText: 'enter your full name',
                 ),
@@ -69,7 +70,7 @@ class _RegisterViewState extends State<RegisterView> {
                 AuthField(
                     controller: _registerEmailController,
                     hintText: 'example@example.com',
-                    prefixIcon: const Icon(Icons.person_2_outlined))
+                    prefixIcon: const Icon(Icons.mail_outlined))
               ],
             ),
             Column(
@@ -93,7 +94,7 @@ class _RegisterViewState extends State<RegisterView> {
                 //_login();
                 Navigator.pushNamed(context, '/home-body');
               },
-              text: 'Login',
+              text: 'Register',
               backgroundColor: ColorName.orange,
             ),
             SpecificButton(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kasifim_app/app/views/detail/widget/expandable_text.dart';
+import 'package:kasifim_app/app/widgets/app_text.dart';
 
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
@@ -17,12 +18,9 @@ class ExploreDescription extends StatelessWidget {
               dense: true,
               minLeadingWidth: 0,
               horizontalTitleGap: 12,
-              title: Text(
+              title: AppText.basic(
                 'Slightly Smiling Face',
-                style: TextStyle(
-                  fontSize: 16,
-                  color: ColorName.white,
-                ),
+                color: ColorName.white,
               ),
               leading: CircleAvatar(
                   radius: 16,
@@ -41,15 +39,7 @@ class ExploreDescription extends StatelessWidget {
                     color: ColorName.white,
                   ),
                 ],
-              )
-              // ReadMoreText(
-              //   readmore,
-              //   trimLines: 2,
-              //   textScaleFactor: 1,
-              //   trimMode: TrimMode.Line,
-              //   style: TextStyle(color: Colors.white, fontSize: 16),
-              // ),
-              )
+              ))
         ],
       ),
     );
@@ -88,10 +78,8 @@ class _FollowChipState extends State<FollowChip> {
           ),
         ),
         child: Center(
-          child: Text(
-            isFollowing ? 'Unfollow' : 'Follow',
-            style: TextStyle(color: ColorName.white),
-          ),
+          child: AppText.basic(isFollowing ? 'Unfollow' : 'Follow',
+              color: ColorName.white),
         ),
       ),
     );

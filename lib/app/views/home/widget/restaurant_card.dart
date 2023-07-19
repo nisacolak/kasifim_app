@@ -158,13 +158,10 @@ class RestaurantCard extends StatelessWidget {
                                             Icons.location_on_outlined,
                                             size: 20,
                                           ),
-                                          Text(
+                                          AppText.basic(
                                             '${item.rate}',
-                                            style: TextStyle(
-                                                fontFamily:
-                                                    FontFamily.proximaNova,
-                                                fontWeight: FontWeight.w600,
-                                                fontSize: 16),
+                                            fontFamily: FontFamily.proximaNova,
+                                            fontWeight: FontWeight.w600,
                                           ),
                                         ],
                                       ),

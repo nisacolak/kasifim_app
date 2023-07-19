@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kasifim_app/app/views/home/widget/favorite_button.dart';
+import 'package:kasifim_app/app/widgets/app_text.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 import 'package:kasifim_app/network/dummy%20models/model.dart';
@@ -67,9 +68,8 @@ class FilteredRestaurantCards extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  Text(
+                                  AppText.medium(
                                     item.restaurantName,
-                                    style: TextStyle(fontSize: 14),
                                   ),
                                 ],
                               ),
@@ -78,11 +78,8 @@ class FilteredRestaurantCards extends StatelessWidget {
                               ),
                               Row(
                                 children: [
-                                  Text(
+                                  AppText.italic(
                                     item.categoryName,
-                                    style: TextStyle(
-                                        color: ColorName.grey,
-                                        fontStyle: FontStyle.italic),
                                   ),
                                 ],
                               ),
@@ -100,9 +97,8 @@ class FilteredRestaurantCards extends StatelessWidget {
                                               shape: BoxShape.circle),
                                           child: Image.asset(
                                               Assets.images.nearby.path)),
-                                      Text(
+                                      AppText.small(
                                         item.distance,
-                                        style: TextStyle(fontSize: 12),
                                       ),
                                     ],
                                   ),
@@ -115,9 +111,8 @@ class FilteredRestaurantCards extends StatelessWidget {
                                           radius: 6,
                                           child: Image.asset(
                                               Assets.images.lira.path)),
-                                      Text(
+                                      AppText.small(
                                         item.priceRange,
-                                        style: TextStyle(fontSize: 12),
                                       ),
                                     ],
                                   ),
@@ -131,8 +126,9 @@ class FilteredRestaurantCards extends StatelessWidget {
                                         size: 18,
                                         color: ColorName.orange,
                                       ),
-                                      Text(item.rate.toString(),
-                                          style: TextStyle(fontSize: 12)),
+                                      AppText.small(
+                                        item.rate.toString(),
+                                      ),
                                     ],
                                   ),
                                 ],

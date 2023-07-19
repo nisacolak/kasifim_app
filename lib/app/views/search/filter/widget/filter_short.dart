@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kasifim_app/app/widgets/app_text.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 
@@ -23,11 +24,9 @@ class _FilterSortEditorState extends State<FilterSortEditor> {
     return FilterChip(
       showCheckmark: false,
       backgroundColor: ColorName.red.withOpacity(0.1),
-      label: Text(
+      label: AppText.medium(
         'Editor\'s',
-        style: TextStyle(
-          color: _isSelected ? ColorName.red : Colors.black,
-        ),
+        color: _isSelected ? ColorName.red : Colors.black,
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
@@ -68,11 +67,9 @@ class _FilterSortNearbyState extends State<FilterSortNearby> {
     return FilterChip(
       showCheckmark: false,
       backgroundColor: ColorName.green.withOpacity(0.1),
-      label: Text(
+      label: AppText.medium(
         'Nearby',
-        style: TextStyle(
-          color: _isSelected ? ColorName.green : Colors.black,
-        ),
+        color: _isSelected ? ColorName.green : Colors.black,
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
@@ -113,11 +110,9 @@ class _FilterSortPopularState extends State<FilterSortPopular> {
     return FilterChip(
       showCheckmark: false,
       backgroundColor: ColorName.yellow.withOpacity(0.1),
-      label: Text(
+      label: AppText.medium(
         'Popular',
-        style: TextStyle(
-          color: _isSelected ? ColorName.yellow : Colors.black,
-        ),
+        color: _isSelected ? ColorName.yellow : Colors.black,
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),

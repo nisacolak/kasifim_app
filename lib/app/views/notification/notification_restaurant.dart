@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kasifim_app/app/widgets/app_text.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 
@@ -71,8 +72,8 @@ class _NotificationRestaurantState extends State<NotificationRestaurant> {
                               ),
                             ),
                           ),
-                          title: Text(item + ' Lorem ipsum laoreet'),
-                          subtitle: Text(
+                          title: AppText.basic(item + ' Lorem ipsum laoreet'),
+                          subtitle: AppText.small(
                               '$item + Lorem ipsum dolor sit amet, consectetur adipiscing elit dui.'),
                         ),
                       ),

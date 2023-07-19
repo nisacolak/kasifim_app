@@ -3,6 +3,7 @@ import 'package:kasifim_app/app/routes/custom_page_route.dart';
 import 'package:kasifim_app/app/views/search/filter/widget/close_button.dart';
 import 'package:kasifim_app/app/views/search/search_box.dart';
 import 'package:kasifim_app/app/views/settings/settings.dart';
+import 'package:kasifim_app/app/widgets/app_text.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 
@@ -17,7 +18,7 @@ Widget buildUserBio(BuildContext context) {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         SizedBox(
-          height: 15,
+          height: 40,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,7 +82,7 @@ class profileBio extends StatelessWidget {
           child: Text(
             "Lorem ipsum dolor sit amet orci aliquam",
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 16),
+            style: TextStyle(fontSize: 14),
           ),
         ),
       )
@@ -105,13 +106,9 @@ class buildProfileInfo extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              'Posts',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
-            Text(
+            AppText.regular('Posts', fontWeight: FontWeight.bold),
+            AppText.basic(
               '20',
-              style: TextStyle(fontSize: 16),
             ),
           ],
         ),
@@ -132,13 +129,9 @@ class buildProfileInfo extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
-                'Followers',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              Text(
+              AppText.regular('Followers', fontWeight: FontWeight.bold),
+              AppText.basic(
                 '324',
-                style: TextStyle(fontSize: 16),
               ),
             ],
           ),
@@ -160,13 +153,9 @@ class buildProfileInfo extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
-                'Follow',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              Text(
+              AppText.regular('Follow', fontWeight: FontWeight.bold),
+              AppText.basic(
                 '5',
-                style: TextStyle(fontSize: 16),
               ),
             ],
           ),

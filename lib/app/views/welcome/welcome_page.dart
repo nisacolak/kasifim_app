@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:kasifim_app/app/views/welcome/widget/custom_button.dart';
 import 'package:kasifim_app/app/views/welcome/widget/welcome_tab_bar.dart';
+import 'package:kasifim_app/app/widgets/app_text.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 
@@ -35,20 +36,14 @@ class Welcome extends StatelessWidget {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.5,
                   ),
-                  Text(
+                  AppText.welcome(
                     'Welcome',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold),
                   ),
                   _buildSpace(context),
-                  Text(
-                      'Before Enjoying FoodMedia Services \n Please Register First',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: ColorName.white,
-                      )),
+                  AppText.welcomeSubtitle(
+                    'Before Enjoying FoodMedia Services \n Please Register First',
+                    color: ColorName.white,
+                  ),
                   _buildSpace(context),
                   _buildSpace(context),
                   Padding(

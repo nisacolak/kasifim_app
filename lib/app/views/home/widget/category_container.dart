@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kasifim_app/app/widgets/app_text.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
-import 'package:kasifim_app/gen/fonts.gen.dart';
 import 'package:kasifim_app/network/dummy%20models/restaurant.dart';
 
 class CategoryContainer extends StatelessWidget {
@@ -58,7 +57,7 @@ class CategoryContainer extends StatelessWidget {
                       SizedBox(
                         height: 2,
                       ),
-                      AppText.medium(
+                      AppText.small(
                         sampleModel[index].categoryName,
                       ),
                     ],

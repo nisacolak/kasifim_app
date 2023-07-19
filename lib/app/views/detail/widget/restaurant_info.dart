@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:kasifim_app/app/widgets/app_text.dart';
 
 import 'package:kasifim_app/gen/colors.gen.dart';
 
@@ -30,11 +31,8 @@ class buildRestaurantInfo extends StatelessWidget {
             SizedBox(
               width: 5,
             ),
-            Text(
+            AppText.basic(
               '4.5',
-              style: TextStyle(
-                fontSize: 16,
-              ),
             ),
           ],
         ),
@@ -44,11 +42,8 @@ class buildRestaurantInfo extends StatelessWidget {
               Icons.currency_lira,
               color: ColorName.orange,
             ),
-            Text(
+            AppText.basic(
               ' 100 - 200  ',
-              style: TextStyle(
-                fontSize: 16,
-              ),
             ),
           ],
         ),
@@ -63,10 +58,9 @@ class buildRestaurantInfo extends StatelessWidget {
               Icons.location_on,
               color: ColorName.orange,
             ),
-            Text(' Üsküdar/İstanbul',
-                style: TextStyle(
-                  fontSize: 16,
-                )),
+            AppText.basic(
+              ' Üsküdar/İstanbul',
+            ),
           ],
         ),
         Row(
@@ -75,10 +69,9 @@ class buildRestaurantInfo extends StatelessWidget {
               Icons.restaurant,
               color: ColorName.orange,
             ),
-            Text(' Coffee, Dessert',
-                style: TextStyle(
-                  fontSize: 16,
-                )),
+            AppText.basic(
+              ' Coffee, Dessert',
+            ),
           ],
         ),
       ]),

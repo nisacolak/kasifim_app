@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kasifim_app/app/widgets/app_text.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 import 'package:kasifim_app/gen/fonts.gen.dart';
 import 'package:kasifim_app/network/dummy%20models/menu_item.dart';
@@ -113,10 +114,14 @@ class MenuTab extends StatelessWidget {
                                                 children: [
                                                   Text(
                                                     e.name,
-                                                    style:
-                                                        TextStyle(fontSize: 18),
+                                                    style: TextStyle(
+                                                        fontSize: 16,
+                                                        fontFamily: FontFamily
+                                                            .proximaNova,
+                                                        fontWeight:
+                                                            FontWeight.w600),
                                                   ),
-                                                  SizedBox(
+                                                  Container(
                                                     height:
                                                         MediaQuery.of(context)
                                                                 .size
@@ -127,34 +132,24 @@ class MenuTab extends StatelessWidget {
                                                                 .size
                                                                 .width *
                                                             .5,
-                                                    child: Text(
+                                                    child: AppText.basic(
                                                       e.desc,
-                                                      style: TextStyle(
-                                                          color: ColorName
-                                                              .darkGrey,
-                                                          fontSize: 15,
-                                                          fontStyle:
-                                                              FontStyle.italic),
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
                                                     ),
                                                   ),
                                                   Row(
                                                     children: [
+                                                      AppText.basic(e.price,
+                                                          fontFamily: FontFamily
+                                                              .helveticaNeue,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          color:
+                                                              ColorName.orange),
                                                       Icon(
                                                         Icons.currency_lira,
                                                         color: ColorName.orange,
-                                                        size: 17,
+                                                        size: 16,
                                                       ),
-                                                      Text(
-                                                        e.price,
-                                                        style: TextStyle(
-                                                            fontSize: 17,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            color: ColorName
-                                                                .orange),
-                                                      )
                                                     ],
                                                   ),
                                                 ],

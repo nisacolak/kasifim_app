@@ -35,10 +35,8 @@ class _ProfileEditState extends State<ProfileEdit> {
             ],
             backgroundColor: ColorName.white,
             elevation: 0,
-            title: Text(
-              'update user information',
-              style: TextStyle(color: ColorName.grey),
-            ),
+            title:
+                AppText.basic('update user information', color: ColorName.grey),
             leading: Padding(
               padding: const EdgeInsets.only(left: 20),
               child: IconButton(

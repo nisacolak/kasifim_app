@@ -1,51 +1,81 @@
 import 'package:flutter/material.dart';
+import 'package:kasifim_app/app/widgets/app_text.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 
-class NotificationFollow extends StatelessWidget {
+class NotificationFollow extends StatefulWidget {
   const NotificationFollow({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    List<String> nearData = ['Item 1', 'Item 2', 'Item 3'];
+  State<NotificationFollow> createState() => _NotificationFollowState();
+}
 
+class _NotificationFollowState extends State<NotificationFollow> {
+  List<String> followData = ['Item 1', 'Item 2', 'Item 3'];
+  int _selectedIndex = -1;
+  @override
+  Widget build(BuildContext context) {
     return Column(
       children: [
         Flexible(
           child: ListView.builder(
-            itemCount: nearData.length,
+            itemCount: followData.length,
             itemBuilder: (context, index) {
-              final item = nearData[index];
+              final item = followData[index];
               return Dismissible(
                 key: Key(item),
                 direction: DismissDirection.endToStart,
-                background: Container(
-                  padding: EdgeInsets.all(3),
-                  color: ColorName.orange,
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Padding(
-                      padding: EdgeInsets.only(right: 16.0),
-                      child: Icon(Icons.delete, color: Colors.white),
+                background: Card(
+                  elevation: 0,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: ColorName.orange,
+                    ),
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Padding(
+                        padding: EdgeInsets.only(right: 16),
+                        child: Icon(Icons.delete, color: Colors.white),
+                      ),
                     ),
                   ),
                 ),
                 onDismissed: (direction) {},
                 child: Column(
                   children: [
-                    ListTile(
-                      leading: CircleAvatar(
-                        radius: 20,
-                        backgroundImage:
-                            Assets.images.expressionless.provider(),
+                    GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          if (_selectedIndex == index) {
+                            _selectedIndex = -1;
+                          } else {
+                            _selectedIndex = index;
+                          }
+                        });
+                      },
+                      child: Card(
+                        elevation: 0,
+                        color: _selectedIndex == index
+                            ? Colors.white
+                            : ColorName.orange.withOpacity(0.15),
+                        child: ListTile(
+                          leading: ConstrainedBox(
+                            constraints: BoxConstraints(
+                              maxWidth: 27,
+                            ),
+                            child: Center(
+                              child: Image(
+                                image: AssetImage(
+                                    Assets.images.expressionless.path),
+                              ),
+                            ),
+                          ),
+                          title: AppText.basic(item + ' Lorem ipsum laoreet'),
+                          subtitle: AppText.small(
+                              '$item + Lorem ipsum dolor sit amet, consectetur adipiscing elit dui.'),
+                        ),
                       ),
-
-                      title: Text('Lorem ipsum dolor sit eu.'), //25
-                      subtitle:
-                          Text('Lorem ipsum dolor sit amet gravida.'), //40
-                    ),
-                    Divider(
-                      thickness: 0.8,
                     ),
                   ],
                 ),

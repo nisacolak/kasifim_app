@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 import 'package:kasifim_app/app/views/detail/widget/restaurant_images.dart';
+import 'package:kasifim_app/app/widgets/app_text.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 import 'package:kasifim_app/network/dummy%20models/model.dart';
@@ -69,9 +70,8 @@ class ReviewsTab extends StatelessWidget {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Text(
+                                            AppText.basic(
                                               "Muhammed Cundullah Bozdağ",
-                                              style: TextStyle(fontSize: 16),
                                             ),
                                             SizedBox(
                                               width: MediaQuery.of(context)
@@ -94,7 +94,10 @@ class ReviewsTab extends StatelessWidget {
                                             ),
                                           ],
                                         ),
-                                        Text('23 followers'),
+                                        AppText.medium(
+                                          '23 followers',
+                                          fontWeight: FontWeight.normal,
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -109,11 +112,11 @@ class ReviewsTab extends StatelessWidget {
                                       trimExpandedText: ' read less',
                                       lessStyle: const TextStyle(
                                         color: ColorName.orange,
-                                        fontSize: 13,
+                                        fontSize: 14,
                                       ),
                                       moreStyle: const TextStyle(
                                         color: ColorName.orange,
-                                        fontSize: 13,
+                                        fontSize: 14,
                                       ),
                                     )),
                                 SizedBox(
@@ -144,11 +147,8 @@ class ReviewsTab extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: [
-                                    Text(
+                                    AppText.italic(
                                       'review date',
-                                      style: TextStyle(
-                                          color: ColorName.grey,
-                                          fontStyle: FontStyle.italic),
                                     )
                                   ],
                                 ),
@@ -224,11 +224,8 @@ class restaurantAddReview extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                   ),
-                  child: Text(
+                  child: AppText.basic(
                     'Send',
-                    style: TextStyle(
-                      fontSize: 16,
-                    ),
                   ),
                 )
               ],

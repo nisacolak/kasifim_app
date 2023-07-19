@@ -8,6 +8,7 @@ import 'package:kasifim_app/app/views/search/filter/filtered_restaurant_card.dar
 import 'package:kasifim_app/app/views/search/filter/widget/filter_category.dart';
 import 'package:kasifim_app/app/views/search/filter/widget/filter_ratings.dart';
 import 'package:kasifim_app/app/views/search/filter/widget/filter_short.dart';
+import 'package:kasifim_app/app/widgets/app_text.dart';
 
 import 'package:kasifim_app/gen/colors.gen.dart';
 
@@ -97,38 +98,46 @@ class _FilteredRestaurantsAdvancedState
                           children: [
                             GestureDetector(
                                 onTap: () {
-                                  showModalBottomSheet<void>(
+                                  showModalBottomSheet(
+                                    backgroundColor: Colors.transparent,
                                     context: context,
                                     builder: (BuildContext context) {
-                                      return Wrap(
-                                        children: [
-                                          ListTile(
-                                            onTap: () {},
-                                            //leading: Icon(Icons.share),
-                                            title: Text('Option 1'),
-                                          ),
-                                          ListTile(
-                                            onTap: () {},
-                                            //leading: Icon(Icons.copy),
-                                            title: Text('Option 2'),
-                                          ),
-                                          ListTile(
-                                            onTap: () {},
-                                            //leading: Icon(Icons.edit),
-                                            title: Text('Option 3'),
-                                          ),
-                                          ListTile(
-                                            onTap: () {},
-                                            //leading: Icon(Icons.share),
-                                            title: Text('Option 4'),
-                                          ),
-                                          ListTile(
-                                            onTap: () {},
-                                            //leading: Icon(Icons.share),
-                                            title: Text('Option 5'),
-                                          ),
-                                        ],
-                                      );
+                                      return Container(
+                                          decoration: BoxDecoration(
+                                              color: ColorName.white,
+                                              borderRadius:
+                                                  BorderRadius.circular(20)),
+                                          child: Wrap(
+                                            children: [
+                                              ListTile(
+                                                onTap: () {},
+                                                //leading: Icon(Icons.share),
+                                                title: Text('Recommend'),
+                                              ),
+                                              ListTile(
+                                                onTap: () {},
+                                                //leading: Icon(Icons.copy),
+                                                title: Text('Top Rated'),
+                                              ),
+                                              ListTile(
+                                                onTap: () {},
+                                                //leading: Icon(Icons.share),
+                                                title: Text('Nearby'),
+                                              ),
+                                              ListTile(
+                                                onTap: () {},
+                                                //leading: Icon(Icons.edit),
+                                                title:
+                                                    Text('Price High to Low'),
+                                              ),
+                                              ListTile(
+                                                onTap: () {},
+                                                //leading: Icon(Icons.share),
+                                                title:
+                                                    Text('Price Low to High'),
+                                              ),
+                                            ],
+                                          ));
                                     },
                                   );
                                 },
@@ -138,13 +147,9 @@ class _FilteredRestaurantsAdvancedState
                                       MediaQuery.of(context).size.height * .05,
                                   width:
                                       MediaQuery.of(context).size.width * .46,
-                                  child: Text(
-                                    'Sort by',
-                                    style: TextStyle(
-                                        color: ColorName.orange,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w500),
-                                  ),
+                                  child: AppText.basic('Sort by',
+                                      color: ColorName.orange,
+                                      fontWeight: FontWeight.w500),
                                 )),
                             Padding(
                               padding: EdgeInsets.only(top: 5),
@@ -164,13 +169,10 @@ class _FilteredRestaurantsAdvancedState
                                       MediaQuery.of(context).size.height * .05,
                                   width:
                                       MediaQuery.of(context).size.width * .46,
-                                  child: Text(
-                                    'Filter',
-                                    style: TextStyle(
-                                        color: ColorName.orange,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w500),
-                                  ),
+                                  child: AppText.basic('Filter',
+                                      color: ColorName.orange,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500),
                                 ))
                           ],
                         ),
@@ -211,12 +213,9 @@ class CustomEndDrawer extends StatelessWidget {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * .01,
                 ),
-                Text(
+                AppText.regular(
                   'Advanced Filter',
-                  style: TextStyle(
-                    color: ColorName.orange,
-                    fontSize: 18,
-                  ),
+                  color: ColorName.orange,
                 ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * .02,
@@ -230,25 +229,24 @@ class CustomEndDrawer extends StatelessWidget {
                   ],
                 ),
                 customDivider(),
-                Text(
+                AppText.basic(
                   'Categories',
-                  style: TextStyle(fontSize: 16),
                 ),
                 FilterCategory(),
                 customDivider(),
-                Text(
+                AppText.basic(
                   'Distance',
-                  style: TextStyle(fontSize: 16),
                 ),
                 FilterSliderDistance(),
                 customDivider(),
-                Text(
+                AppText.basic(
                   'Price Range',
-                  style: TextStyle(fontSize: 16),
                 ),
                 FilterSliderPrice(),
                 customDivider(),
-                Text('Rating', style: TextStyle(fontSize: 16)),
+                AppText.basic(
+                  'Rating',
+                ),
                 Padding(
                   padding: const EdgeInsets.only(right: 10, left: 10),
                   child: FilterRatings(),
@@ -259,13 +257,8 @@ class CustomEndDrawer extends StatelessWidget {
                     alignment: Alignment.center,
                     height: MediaQuery.of(context).size.height * .04,
                     width: MediaQuery.of(context).size.width,
-                    child: Text(
-                      'Filter',
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500,
-                          color: ColorName.orange),
-                    ),
+                    child: AppText.basic('Filter',
+                        fontWeight: FontWeight.w500, color: ColorName.orange),
                   ),
                 )
               ],

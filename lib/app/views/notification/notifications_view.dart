@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kasifim_app/app/views/notification/notification_follows.dart';
 import 'package:kasifim_app/app/views/notification/notification_restaurant.dart';
+import 'package:kasifim_app/app/widgets/app_text.dart';
 
 import 'package:kasifim_app/gen/colors.gen.dart';
 
@@ -68,13 +69,11 @@ class _NotificationsViewState extends State<NotificationsView>
                                               Expanded(
                                                 child: Row(
                                                   children: [
-                                                    Text(
-                                                      '  Restaurant',
-                                                      style: TextStyle(
-                                                          fontSize: 16),
+                                                    AppText.basic(
+                                                      'Restaurant',
                                                     ),
                                                     SizedBox(
-                                                      width: 55,
+                                                      width: 40,
                                                     ),
                                                     Expanded(
                                                       child: SizedBox(
@@ -96,9 +95,8 @@ class _NotificationsViewState extends State<NotificationsView>
                                               SizedBox(
                                                 width: 10,
                                               ),
-                                              Text(
+                                              AppText.basic(
                                                 'Follow',
-                                                style: TextStyle(fontSize: 16),
                                               ),
                                             ],
                                           ),

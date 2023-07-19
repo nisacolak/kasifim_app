@@ -6,6 +6,7 @@ import 'package:kasifim_app/app/views/search/search_box.dart';
 import 'package:kasifim_app/app/widgets/app_text.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
+import 'package:kasifim_app/gen/fonts.gen.dart';
 import 'package:kasifim_app/network/dummy%20models/restaurant.dart';
 
 class FavoritesView extends StatelessWidget {
@@ -91,7 +92,14 @@ class FavoritesView extends StatelessWidget {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          AppText.large(item.restaurantName),
+                                          Text(
+                                            item.restaurantName,
+                                            style: TextStyle(
+                                                fontFamily:
+                                                    FontFamily.proximaNova,
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 20),
+                                          ),
                                           FavoriteButton(
                                             size: 25,
                                           ),
@@ -101,9 +109,14 @@ class FavoritesView extends StatelessWidget {
                                         mainAxisAlignment:
                                             MainAxisAlignment.start,
                                         children: [
-                                          AppText.medium(
+                                          Text(
                                             item.categoryName,
-                                            color: ColorName.grey,
+                                            style: TextStyle(
+                                                color: ColorName.darkGrey,
+                                                fontFamily:
+                                                    FontFamily.proximaNova,
+                                                fontSize: 14,
+                                                fontStyle: FontStyle.italic),
                                           ),
                                         ],
                                       ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kasifim_app/gen/colors.gen.dart';
+import 'package:kasifim_app/app/widgets/app_text.dart';
 
 class FilterButton extends StatelessWidget {
   final VoidCallback onTap;
@@ -15,12 +15,8 @@ class FilterButton extends StatelessWidget {
         //color: ColorName.green,
         height: MediaQuery.of(context).size.height * .09,
         width: MediaQuery.of(context).size.width * .46,
-        child: Text(
+        child: AppText.basic(
           text,
-          style: TextStyle(
-            color: ColorName.orange,
-            fontSize: 16,
-          ),
         ),
       ),
     );

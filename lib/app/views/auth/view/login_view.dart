@@ -42,6 +42,7 @@ class _LoginViewState extends State<LoginView> {
   ) {
     return SafeArea(
         child: Scaffold(
+      backgroundColor: ColorName.white,
       body: Form(
         key: _loginFormKey,
         child: ListView(children: [
@@ -120,15 +121,6 @@ class _LoginViewState extends State<LoginView> {
       ),
     ));
   }
-
-  // void _login() {
-  //   final isValid = _formKey.currentState?.validate();
-  //   if (isValid != null && isValid) {
-  //     final request = LoginRequest(
-  //         email: _emailController.text, password: _passwordController.text);
-  //     ref.read(loginControllerProvider.notifier).login(request);
-  //   }
-  // }
 
   SizedBox _buildSpace() => const SizedBox(
         height: 20,

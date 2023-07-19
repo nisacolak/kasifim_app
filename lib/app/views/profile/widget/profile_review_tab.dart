@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kasifim_app/app/widgets/app_text.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 
@@ -104,10 +105,8 @@ class ProfileReviewTab extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Text(
+              AppText.italic(
                 '2 months ago',
-                style: TextStyle(
-                    color: ColorName.grey, fontStyle: FontStyle.italic),
               )
             ],
           ),

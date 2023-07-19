@@ -4,6 +4,7 @@ import 'package:kasifim_app/app/views/profile/widget/profile_avatar.dart';
 import 'package:kasifim_app/app/views/profile/widget/profile_info.dart';
 import 'package:kasifim_app/app/views/profile/widget/profile_tab.dart';
 import 'package:kasifim_app/app/views/settings/profile_edit.dart';
+import 'package:kasifim_app/app/widgets/app_text.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 
 class ProfileSettings extends StatelessWidget {
@@ -28,7 +29,7 @@ class ProfileSettings extends StatelessWidget {
         body: Center(
           child: Container(
             height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width * .95,
+            width: MediaQuery.of(context).size.width * .99,
             decoration: BoxDecoration(
                 color: ColorName.lightGrey,
                 borderRadius: BorderRadius.circular(20)),
@@ -39,7 +40,7 @@ class ProfileSettings extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * .14,
                   decoration: BoxDecoration(
                     color: ColorName.white,
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -51,7 +52,7 @@ class ProfileSettings extends StatelessWidget {
                           profileBio(),
                           CircleAvatar(
                             backgroundColor: Colors.transparent,
-                            radius: 10,
+                            radius: 5,
                             child: IconButton(
                               icon: Icon(
                                 Icons.edit,
@@ -62,6 +63,9 @@ class ProfileSettings extends StatelessWidget {
                                   .push(CustomPageRoute(child: ProfileEdit())),
                             ),
                           ),
+                          SizedBox(
+                            width: 8,
+                          )
                         ]),
                   )),
               buildSpace(),
@@ -134,10 +138,7 @@ class buildSettingsItem extends StatelessWidget {
                     SizedBox(
                       width: 8,
                     ),
-                    Text(
-                      text,
-                      style: TextStyle(fontSize: 18, color: ColorName.grey),
-                    ),
+                    AppText.regular(text, color: ColorName.grey),
                   ],
                 ),
                 Icon(
