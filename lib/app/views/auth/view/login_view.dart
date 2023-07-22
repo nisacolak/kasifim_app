@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kasifim_app/app/views/auth/modules/login_bloc.dart';
 
 import 'package:kasifim_app/app/views/auth/widget/auth_field.dart';
 import 'package:kasifim_app/app/views/auth/widget/password_field.dart';
@@ -8,38 +10,41 @@ import 'package:kasifim_app/app/views/welcome/widget/custom_text_button.dart';
 import 'package:kasifim_app/app/widgets/app_text.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
-import 'package:kasifim_app/network/repository/auth/login_repository.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({super.key});
+class LoginView extends StatelessWidget {
+  LoginView({super.key});
 
-  @override
-  State<StatefulWidget> createState() => _LoginViewState();
-}
-
-class _LoginViewState extends State<LoginView> {
-  final LoginRepository _loginRepository = LoginRepository.instance;
   final GlobalKey<FormState> _loginFormKey = GlobalKey();
+
   final TextEditingController _loginEmailController = TextEditingController();
+
   final TextEditingController _loginPasswordController =
       TextEditingController();
 
   @override
-  void initState() {
-    super.initState();
+  Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<LoginBloc>().add(LoginInitialEvent());
+    });
+
+    return BlocBuilder<LoginBloc, LoginStates>(
+      builder: (context, state) {
+        if (state is LoadingInitial) {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        } else if (state is LoginSuccessState) {
+          return _mainWidget(context, state);
+        } else {
+          return Center(
+            child: Text("test"),
+          );
+        }
+      },
+    );
   }
 
-  @override
-  void dispose() {
-    _loginEmailController.dispose();
-    _loginPasswordController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(
-    BuildContext context,
-  ) {
+  SafeArea _mainWidget(BuildContext context, LoginSuccessState state) {
     return SafeArea(
         child: Scaffold(
       backgroundColor: ColorName.white,
@@ -92,20 +97,11 @@ class _LoginViewState extends State<LoginView> {
             ),
             _buildSpace(),
             CustomButton(
-              onPressed: () async {
+              onPressed: () {
                 // repository input
-                final response = await _loginRepository.loginService(
-                    _loginEmailController.text, _loginPasswordController.text);
-                if (response == 200) {
-                  // ignore: use_build_context_synchronously
-                  Navigator.pushNamed(context, '/home-body');
-                } else {
-                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text('Login olamadık maalesef'),
-                    backgroundColor: Colors.red,
-                  ));
-                }
-                //_login();
+                context.read<LoginBloc>().add(LoginSuccessEvent(
+                    email: _loginEmailController.text,
+                    password: _loginPasswordController.text));
                 //
               },
               text: 'Login',

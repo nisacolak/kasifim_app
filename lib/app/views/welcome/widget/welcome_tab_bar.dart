@@ -43,10 +43,9 @@ class _WelcomeTabState extends State<WelcomeTab> with TickerProviderStateMixin {
                 controller: tabController,
                 tabs: [
                   Tab(
-                    child: AppText.medium(
-                      'Create Account',
-                    ),
-                  ),
+                      child: AppText.medium(
+                    'Create Account',
+                  )),
                   Tab(
                     child: AppText.medium(
                       'Login',
@@ -56,7 +55,7 @@ class _WelcomeTabState extends State<WelcomeTab> with TickerProviderStateMixin {
             Expanded(
                 child: TabBarView(
               controller: tabController,
-              children: const [
+              children: [
                 RegisterView(),
                 LoginView(),
               ],

@@ -1,7 +1,10 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:kasifim_app/app/views/home/modules/home_view_bloc.dart';
 import 'package:kasifim_app/app/widgets/app_text.dart';
-
+import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 import 'package:kasifim_app/gen/fonts.gen.dart';
 import 'package:kasifim_app/network/dummy%20models/restaurant.dart';
@@ -16,8 +19,37 @@ class RestaurantCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<HomeViewBloc>().add(HomeViewLoadingEvent());
+    });
+    // return _mainWidget();
+    return BlocBuilder<HomeViewBloc, HomeViewStates>(
+      builder: (context, state) {
+        if (state is HomeViewLoadingState) {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        } else if (state is HomeViewSuccessState) {
+          return _mainWidget(state: state);
+        } else {
+          return Center(child: Text("error"));
+        }
+      },
+    );
+  }
+}
+
+class _mainWidget extends StatelessWidget {
+  HomeViewSuccessState state;
+  _mainWidget({
+    Key? key,
+    required this.state,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
     return Column(
-        children: sampleModel
+        children: state.restaurants
             .map(
               (item) => InkWell(
                 onTap: () {
@@ -54,7 +86,8 @@ class RestaurantCard extends StatelessWidget {
                             color: ColorName.green,
                             image: DecorationImage(
                                 fit: BoxFit.cover,
-                                image: AssetImage(item.thumbnailPath))),
+                                image:
+                                    AssetImage(Assets.images.restaurant.path))),
                         child: Column(children: [
                           Padding(
                             padding: const EdgeInsets.all(8.0),
@@ -75,7 +108,7 @@ class RestaurantCard extends StatelessWidget {
                                         color: ColorName.yellow,
                                       ),
                                       AppText.medium(
-                                        item.rate.toString(),
+                                        item!.name!,
                                         color: ColorName.white,
                                       ),
                                     ],
@@ -129,7 +162,7 @@ class RestaurantCard extends StatelessWidget {
                                           padding: const EdgeInsets.only(
                                               top: 7, left: 8),
                                           child: Text(
-                                            item.restaurantName,
+                                            item.name!,
                                             style: TextStyle(
                                                 fontFamily:
                                                     FontFamily.proximaNova,
@@ -159,7 +192,7 @@ class RestaurantCard extends StatelessWidget {
                                             size: 20,
                                           ),
                                           AppText.basic(
-                                            '${item.rate}',
+                                            '${item.location}',
                                             fontFamily: FontFamily.proximaNova,
                                             fontWeight: FontWeight.w600,
                                           ),

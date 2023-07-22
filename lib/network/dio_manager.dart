@@ -9,7 +9,7 @@ class DioManager {
     return _instance!;
   }
 
-  final String _baseUrl = 'https://api.kasifim.com';
+  final String _baseUrl = 'https://api.kasifim.com/api';
   late final Dio dio;
 
   DioManager._init() {

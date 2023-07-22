@@ -1,5 +1,6 @@
 import 'package:isar/isar.dart';
 import 'package:kasifim_app/network/local/isar/collection/auth_data.dart';
+import 'package:kasifim_app/network/local/isar/collection/restaurant_data.dart';
 
 class IsarLocalDatabase {
   IsarLocalDatabase._();
@@ -8,9 +9,7 @@ class IsarLocalDatabase {
   static IsarLocalDatabase get instance => _instance;
 
   initIsar() async {
-    await Isar.openSync([
-      AuthDataSchema,
-    ]);
+    await Isar.openSync([AuthDataSchema, RestaurantDatasSchema]);
   }
 
   getAccessToken() async {
@@ -18,5 +17,12 @@ class IsarLocalDatabase {
     final authData = await isar?.authDatas.get(1);
 
     return 'Bearer: ${authData?.token}';
+  }
+
+  getAllRestaurant() async {
+    final isar = await Isar.getInstance();
+    final restaurantDatas = await isar?.restaurantDatas.where().findAll();
+
+    return restaurantDatas;
   }
 }

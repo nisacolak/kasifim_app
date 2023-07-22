@@ -20,7 +20,7 @@ Map<String, WidgetBuilder> get pageRoutes {
   return {
     '/': (context) => Splash(),
     '/welcome': (context) => const Welcome(),
-    '/login': (context) => const LoginView(),
+    '/login': (context) => LoginView(),
     '/forgot-password': (context) => ForgotPassword(),
     '/forgot-password-success': (context) => ForgotPasswordSuccess(),
     '/change-password': (context) => ChangePassword(),
