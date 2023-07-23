@@ -26,18 +26,18 @@ class RestaurantRepository {
       final response = await client.getRestaurant(token);
       print(response);
       int i = 1;
-      // response.restaurants!.forEach((element) async {
-      //   final restaurant = new RestaurantDatas()
-      //     ..id = i++
-      //     ..description = element.description
-      //     ..name = element.name
-      //     ..sId = element.sId
-      //     ..phone = element.phone
-      //     ..location = element.location;
-      //   await isar!.writeTxn(() async {
-      //     await isar.restaurantDatas.put(restaurant); // insert & update
-      //   });
-      // });
+      response.restaurants!.forEach((element) async {
+        final restaurant = new RestaurantDatas()
+          ..id = i++
+          ..description = element.description
+          ..name = element.name
+          ..sId = element.sId
+          ..phone = element.phone
+          ..location = element.location;
+        await isar!.writeTxn(() async {
+          await isar.restaurantDatas.put(restaurant); // insert & update
+        });
+      });
 
       return 200;
     } on DioError catch (e) {

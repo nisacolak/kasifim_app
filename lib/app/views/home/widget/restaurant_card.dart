@@ -7,11 +7,9 @@ import 'package:kasifim_app/app/widgets/app_text.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 import 'package:kasifim_app/gen/fonts.gen.dart';
-import 'package:kasifim_app/network/dummy%20models/restaurant.dart';
 
 import 'border_favorite.dart';
 
-//safiye.kayaa@hotmail.com
 class RestaurantCard extends StatelessWidget {
   const RestaurantCard({
     Key? key,
@@ -22,7 +20,7 @@ class RestaurantCard extends StatelessWidget {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<HomeViewBloc>().add(HomeViewLoadingEvent());
     });
-    // return _mainWidget();
+
     return BlocBuilder<HomeViewBloc, HomeViewStates>(
       builder: (context, state) {
         if (state is HomeViewLoadingState) {

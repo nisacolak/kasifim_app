@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kasifim_app/app/views/auth/modules/register_bloc.dart';
 import 'package:kasifim_app/app/views/auth/widget/auth_field.dart';
 import 'package:kasifim_app/app/views/auth/widget/password_field.dart';
 import 'package:kasifim_app/app/views/auth/widget/specific_button.dart';
@@ -7,42 +9,45 @@ import 'package:kasifim_app/app/widgets/app_text.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 
-class RegisterView extends StatefulWidget {
-  const RegisterView({Key? key}) : super(key: key);
+class RegisterView extends StatelessWidget {
+  RegisterView({super.key});
 
-  @override
-  State<RegisterView> createState() => _RegisterViewState();
-}
-
-class _RegisterViewState extends State<RegisterView> {
-  final GlobalKey<FormState> _registerFormKey = GlobalKey();
   final TextEditingController _nameController = TextEditingController();
+
   final TextEditingController _registerEmailController =
       TextEditingController();
+
   final TextEditingController _registerPasswordController =
       TextEditingController();
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _nameController;
-    _registerEmailController.dispose();
-    _registerPasswordController.dispose();
-
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read()<RegisterBloc>().add(RegisterInitialEvent());
+    });
+
+    return BlocBuilder<RegisterBloc, RegisterStates>(
+      builder: (context, state) {
+        if (state is RegisterInitial) {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        } else if (state is RegisterSuccessState) {
+          return _mainWidget(context, state);
+        } else {
+          return Center(
+            child: Text("test"),
+          );
+        }
+      },
+    );
+  }
+
+  SafeArea _mainWidget(BuildContext context, RegisterSuccessState state) {
     return SafeArea(
         child: Scaffold(
       backgroundColor: ColorName.white,
       body: Form(
-        key: _registerFormKey,
         child: ListView(children: [
           Column(mainAxisAlignment: MainAxisAlignment.end, children: [
             Column(
@@ -91,8 +96,11 @@ class _RegisterViewState extends State<RegisterView> {
             _buildSpace(),
             CustomButton(
               onPressed: () {
-                //_login();
-                Navigator.pushNamed(context, '/home-body');
+                context.read()<RegisterBloc>().add(RegisterSuccessEvent(
+                    name: _nameController.text,
+                    email: _registerEmailController.text,
+                    password: _registerPasswordController.text));
+                //Navigator.pushNamed(context, '/home-body');
               },
               text: 'Register',
               backgroundColor: ColorName.orange,
