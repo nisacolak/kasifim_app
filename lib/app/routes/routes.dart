@@ -26,7 +26,7 @@ Map<String, WidgetBuilder> get pageRoutes {
     '/change-password': (context) => ChangePassword(),
     '/change-password-success': (context) => ChangePasswordSuccess(),
     '/home-body': (context) => CustomNavBar(),
-    '/home': (context) => const HomeView(),
+    '/home': (context) =>  HomeView(),
     '/search': (context) => const SearchView(),
     '/restaurant-detail': (context) => RestaurantDetail(),
     '/profile': (context) => ProfileTab(),

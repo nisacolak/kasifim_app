@@ -17,29 +17,49 @@ const RestaurantDatasSchema = CollectionSchema(
   name: r'RestaurantDatas',
   id: -4256365969344083101,
   properties: {
-    r'description': PropertySchema(
+    r'cuisine': PropertySchema(
       id: 0,
+      name: r'cuisine',
+      type: IsarType.string,
+    ),
+    r'description': PropertySchema(
+      id: 1,
       name: r'description',
       type: IsarType.string,
     ),
-    r'location': PropertySchema(
-      id: 1,
-      name: r'location',
-      type: IsarType.string,
+    r'likeCount': PropertySchema(
+      id: 2,
+      name: r'likeCount',
+      type: IsarType.long,
     ),
     r'name': PropertySchema(
-      id: 2,
+      id: 3,
       name: r'name',
       type: IsarType.string,
     ),
     r'phone': PropertySchema(
-      id: 3,
+      id: 4,
       name: r'phone',
       type: IsarType.string,
     ),
+    r'priceRange': PropertySchema(
+      id: 5,
+      name: r'priceRange',
+      type: IsarType.string,
+    ),
+    r'restaurantImage': PropertySchema(
+      id: 6,
+      name: r'restaurantImage',
+      type: IsarType.string,
+    ),
     r'sId': PropertySchema(
-      id: 4,
+      id: 7,
       name: r'sId',
+      type: IsarType.string,
+    ),
+    r'website': PropertySchema(
+      id: 8,
+      name: r'website',
       type: IsarType.string,
     )
   },
@@ -64,13 +84,13 @@ int _restaurantDatasEstimateSize(
 ) {
   var bytesCount = offsets.last;
   {
-    final value = object.description;
+    final value = object.cuisine;
     if (value != null) {
       bytesCount += 3 + value.length * 3;
     }
   }
   {
-    final value = object.location;
+    final value = object.description;
     if (value != null) {
       bytesCount += 3 + value.length * 3;
     }
@@ -88,7 +108,25 @@ int _restaurantDatasEstimateSize(
     }
   }
   {
+    final value = object.priceRange;
+    if (value != null) {
+      bytesCount += 3 + value.length * 3;
+    }
+  }
+  {
+    final value = object.restaurantImage;
+    if (value != null) {
+      bytesCount += 3 + value.length * 3;
+    }
+  }
+  {
     final value = object.sId;
+    if (value != null) {
+      bytesCount += 3 + value.length * 3;
+    }
+  }
+  {
+    final value = object.website;
     if (value != null) {
       bytesCount += 3 + value.length * 3;
     }
@@ -102,11 +140,15 @@ void _restaurantDatasSerialize(
   List<int> offsets,
   Map<Type, List<int>> allOffsets,
 ) {
-  writer.writeString(offsets[0], object.description);
-  writer.writeString(offsets[1], object.location);
-  writer.writeString(offsets[2], object.name);
-  writer.writeString(offsets[3], object.phone);
-  writer.writeString(offsets[4], object.sId);
+  writer.writeString(offsets[0], object.cuisine);
+  writer.writeString(offsets[1], object.description);
+  writer.writeLong(offsets[2], object.likeCount);
+  writer.writeString(offsets[3], object.name);
+  writer.writeString(offsets[4], object.phone);
+  writer.writeString(offsets[5], object.priceRange);
+  writer.writeString(offsets[6], object.restaurantImage);
+  writer.writeString(offsets[7], object.sId);
+  writer.writeString(offsets[8], object.website);
 }
 
 RestaurantDatas _restaurantDatasDeserialize(
@@ -116,12 +158,16 @@ RestaurantDatas _restaurantDatasDeserialize(
   Map<Type, List<int>> allOffsets,
 ) {
   final object = RestaurantDatas();
-  object.description = reader.readStringOrNull(offsets[0]);
+  object.cuisine = reader.readStringOrNull(offsets[0]);
+  object.description = reader.readStringOrNull(offsets[1]);
   object.id = id;
-  object.location = reader.readStringOrNull(offsets[1]);
-  object.name = reader.readStringOrNull(offsets[2]);
-  object.phone = reader.readStringOrNull(offsets[3]);
-  object.sId = reader.readStringOrNull(offsets[4]);
+  object.likeCount = reader.readLongOrNull(offsets[2]);
+  object.name = reader.readStringOrNull(offsets[3]);
+  object.phone = reader.readStringOrNull(offsets[4]);
+  object.priceRange = reader.readStringOrNull(offsets[5]);
+  object.restaurantImage = reader.readStringOrNull(offsets[6]);
+  object.sId = reader.readStringOrNull(offsets[7]);
+  object.website = reader.readStringOrNull(offsets[8]);
   return object;
 }
 
@@ -137,10 +183,18 @@ P _restaurantDatasDeserializeProp<P>(
     case 1:
       return (reader.readStringOrNull(offset)) as P;
     case 2:
-      return (reader.readStringOrNull(offset)) as P;
+      return (reader.readLongOrNull(offset)) as P;
     case 3:
       return (reader.readStringOrNull(offset)) as P;
     case 4:
+      return (reader.readStringOrNull(offset)) as P;
+    case 5:
+      return (reader.readStringOrNull(offset)) as P;
+    case 6:
+      return (reader.readStringOrNull(offset)) as P;
+    case 7:
+      return (reader.readStringOrNull(offset)) as P;
+    case 8:
       return (reader.readStringOrNull(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -242,6 +296,160 @@ extension RestaurantDatasQueryWhere
 
 extension RestaurantDatasQueryFilter
     on QueryBuilder<RestaurantDatas, RestaurantDatas, QFilterCondition> {
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      cuisineIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'cuisine',
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      cuisineIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'cuisine',
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      cuisineEqualTo(
+    String? value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'cuisine',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      cuisineGreaterThan(
+    String? value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'cuisine',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      cuisineLessThan(
+    String? value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'cuisine',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      cuisineBetween(
+    String? lower,
+    String? upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'cuisine',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      cuisineStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.startsWith(
+        property: r'cuisine',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      cuisineEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.endsWith(
+        property: r'cuisine',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      cuisineContains(String value, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.contains(
+        property: r'cuisine',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      cuisineMatches(String pattern, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.matches(
+        property: r'cuisine',
+        wildcard: pattern,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      cuisineIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'cuisine',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      cuisineIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        property: r'cuisine',
+        value: '',
+      ));
+    });
+  }
+
   QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
       descriptionIsNull() {
     return QueryBuilder.apply(this, (query) {
@@ -453,155 +661,75 @@ extension RestaurantDatasQueryFilter
   }
 
   QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
-      locationIsNull() {
+      likeCountIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
-        property: r'location',
+        property: r'likeCount',
       ));
     });
   }
 
   QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
-      locationIsNotNull() {
+      likeCountIsNotNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNotNull(
-        property: r'location',
+        property: r'likeCount',
       ));
     });
   }
 
   QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
-      locationEqualTo(
-    String? value, {
-    bool caseSensitive = true,
-  }) {
+      likeCountEqualTo(int? value) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'location',
+        property: r'likeCount',
         value: value,
-        caseSensitive: caseSensitive,
       ));
     });
   }
 
   QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
-      locationGreaterThan(
-    String? value, {
+      likeCountGreaterThan(
+    int? value, {
     bool include = false,
-    bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.greaterThan(
         include: include,
-        property: r'location',
+        property: r'likeCount',
         value: value,
-        caseSensitive: caseSensitive,
       ));
     });
   }
 
   QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
-      locationLessThan(
-    String? value, {
+      likeCountLessThan(
+    int? value, {
     bool include = false,
-    bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.lessThan(
         include: include,
-        property: r'location',
+        property: r'likeCount',
         value: value,
-        caseSensitive: caseSensitive,
       ));
     });
   }
 
   QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
-      locationBetween(
-    String? lower,
-    String? upper, {
+      likeCountBetween(
+    int? lower,
+    int? upper, {
     bool includeLower = true,
     bool includeUpper = true,
-    bool caseSensitive = true,
   }) {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(FilterCondition.between(
-        property: r'location',
+        property: r'likeCount',
         lower: lower,
         includeLower: includeLower,
         upper: upper,
         includeUpper: includeUpper,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
-      locationStartsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.startsWith(
-        property: r'location',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
-      locationEndsWith(
-    String value, {
-    bool caseSensitive = true,
-  }) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.endsWith(
-        property: r'location',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
-      locationContains(String value, {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.contains(
-        property: r'location',
-        value: value,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
-      locationMatches(String pattern, {bool caseSensitive = true}) {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.matches(
-        property: r'location',
-        wildcard: pattern,
-        caseSensitive: caseSensitive,
-      ));
-    });
-  }
-
-  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
-      locationIsEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.equalTo(
-        property: r'location',
-        value: '',
-      ));
-    });
-  }
-
-  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
-      locationIsNotEmpty() {
-    return QueryBuilder.apply(this, (query) {
-      return query.addFilterCondition(FilterCondition.greaterThan(
-        property: r'location',
-        value: '',
       ));
     });
   }
@@ -915,6 +1043,314 @@ extension RestaurantDatasQueryFilter
   }
 
   QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      priceRangeIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'priceRange',
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      priceRangeIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'priceRange',
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      priceRangeEqualTo(
+    String? value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'priceRange',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      priceRangeGreaterThan(
+    String? value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'priceRange',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      priceRangeLessThan(
+    String? value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'priceRange',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      priceRangeBetween(
+    String? lower,
+    String? upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'priceRange',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      priceRangeStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.startsWith(
+        property: r'priceRange',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      priceRangeEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.endsWith(
+        property: r'priceRange',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      priceRangeContains(String value, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.contains(
+        property: r'priceRange',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      priceRangeMatches(String pattern, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.matches(
+        property: r'priceRange',
+        wildcard: pattern,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      priceRangeIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'priceRange',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      priceRangeIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        property: r'priceRange',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      restaurantImageIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'restaurantImage',
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      restaurantImageIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'restaurantImage',
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      restaurantImageEqualTo(
+    String? value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'restaurantImage',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      restaurantImageGreaterThan(
+    String? value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'restaurantImage',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      restaurantImageLessThan(
+    String? value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'restaurantImage',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      restaurantImageBetween(
+    String? lower,
+    String? upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'restaurantImage',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      restaurantImageStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.startsWith(
+        property: r'restaurantImage',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      restaurantImageEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.endsWith(
+        property: r'restaurantImage',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      restaurantImageContains(String value, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.contains(
+        property: r'restaurantImage',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      restaurantImageMatches(String pattern, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.matches(
+        property: r'restaurantImage',
+        wildcard: pattern,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      restaurantImageIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'restaurantImage',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      restaurantImageIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        property: r'restaurantImage',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
       sIdIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
@@ -1067,6 +1503,160 @@ extension RestaurantDatasQueryFilter
       ));
     });
   }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      websiteIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'website',
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      websiteIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'website',
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      websiteEqualTo(
+    String? value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'website',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      websiteGreaterThan(
+    String? value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'website',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      websiteLessThan(
+    String? value, {
+    bool include = false,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'website',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      websiteBetween(
+    String? lower,
+    String? upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'website',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      websiteStartsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.startsWith(
+        property: r'website',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      websiteEndsWith(
+    String value, {
+    bool caseSensitive = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.endsWith(
+        property: r'website',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      websiteContains(String value, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.contains(
+        property: r'website',
+        value: value,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      websiteMatches(String pattern, {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.matches(
+        property: r'website',
+        wildcard: pattern,
+        caseSensitive: caseSensitive,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      websiteIsEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'website',
+        value: '',
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      websiteIsNotEmpty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        property: r'website',
+        value: '',
+      ));
+    });
+  }
 }
 
 extension RestaurantDatasQueryObject
@@ -1077,6 +1667,19 @@ extension RestaurantDatasQueryLinks
 
 extension RestaurantDatasQuerySortBy
     on QueryBuilder<RestaurantDatas, RestaurantDatas, QSortBy> {
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterSortBy> sortByCuisine() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'cuisine', Sort.asc);
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterSortBy>
+      sortByCuisineDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'cuisine', Sort.desc);
+    });
+  }
+
   QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterSortBy>
       sortByDescription() {
     return QueryBuilder.apply(this, (query) {
@@ -1092,16 +1695,16 @@ extension RestaurantDatasQuerySortBy
   }
 
   QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterSortBy>
-      sortByLocation() {
+      sortByLikeCount() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'location', Sort.asc);
+      return query.addSortBy(r'likeCount', Sort.asc);
     });
   }
 
   QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterSortBy>
-      sortByLocationDesc() {
+      sortByLikeCountDesc() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'location', Sort.desc);
+      return query.addSortBy(r'likeCount', Sort.desc);
     });
   }
 
@@ -1131,6 +1734,34 @@ extension RestaurantDatasQuerySortBy
     });
   }
 
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterSortBy>
+      sortByPriceRange() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'priceRange', Sort.asc);
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterSortBy>
+      sortByPriceRangeDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'priceRange', Sort.desc);
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterSortBy>
+      sortByRestaurantImage() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'restaurantImage', Sort.asc);
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterSortBy>
+      sortByRestaurantImageDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'restaurantImage', Sort.desc);
+    });
+  }
+
   QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterSortBy> sortBySId() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'sId', Sort.asc);
@@ -1142,10 +1773,36 @@ extension RestaurantDatasQuerySortBy
       return query.addSortBy(r'sId', Sort.desc);
     });
   }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterSortBy> sortByWebsite() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'website', Sort.asc);
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterSortBy>
+      sortByWebsiteDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'website', Sort.desc);
+    });
+  }
 }
 
 extension RestaurantDatasQuerySortThenBy
     on QueryBuilder<RestaurantDatas, RestaurantDatas, QSortThenBy> {
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterSortBy> thenByCuisine() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'cuisine', Sort.asc);
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterSortBy>
+      thenByCuisineDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'cuisine', Sort.desc);
+    });
+  }
+
   QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterSortBy>
       thenByDescription() {
     return QueryBuilder.apply(this, (query) {
@@ -1173,16 +1830,16 @@ extension RestaurantDatasQuerySortThenBy
   }
 
   QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterSortBy>
-      thenByLocation() {
+      thenByLikeCount() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'location', Sort.asc);
+      return query.addSortBy(r'likeCount', Sort.asc);
     });
   }
 
   QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterSortBy>
-      thenByLocationDesc() {
+      thenByLikeCountDesc() {
     return QueryBuilder.apply(this, (query) {
-      return query.addSortBy(r'location', Sort.desc);
+      return query.addSortBy(r'likeCount', Sort.desc);
     });
   }
 
@@ -1212,6 +1869,34 @@ extension RestaurantDatasQuerySortThenBy
     });
   }
 
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterSortBy>
+      thenByPriceRange() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'priceRange', Sort.asc);
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterSortBy>
+      thenByPriceRangeDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'priceRange', Sort.desc);
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterSortBy>
+      thenByRestaurantImage() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'restaurantImage', Sort.asc);
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterSortBy>
+      thenByRestaurantImageDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'restaurantImage', Sort.desc);
+    });
+  }
+
   QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterSortBy> thenBySId() {
     return QueryBuilder.apply(this, (query) {
       return query.addSortBy(r'sId', Sort.asc);
@@ -1223,10 +1908,30 @@ extension RestaurantDatasQuerySortThenBy
       return query.addSortBy(r'sId', Sort.desc);
     });
   }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterSortBy> thenByWebsite() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'website', Sort.asc);
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterSortBy>
+      thenByWebsiteDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'website', Sort.desc);
+    });
+  }
 }
 
 extension RestaurantDatasQueryWhereDistinct
     on QueryBuilder<RestaurantDatas, RestaurantDatas, QDistinct> {
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QDistinct> distinctByCuisine(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'cuisine', caseSensitive: caseSensitive);
+    });
+  }
+
   QueryBuilder<RestaurantDatas, RestaurantDatas, QDistinct>
       distinctByDescription({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -1234,10 +1939,10 @@ extension RestaurantDatasQueryWhereDistinct
     });
   }
 
-  QueryBuilder<RestaurantDatas, RestaurantDatas, QDistinct> distinctByLocation(
-      {bool caseSensitive = true}) {
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QDistinct>
+      distinctByLikeCount() {
     return QueryBuilder.apply(this, (query) {
-      return query.addDistinctBy(r'location', caseSensitive: caseSensitive);
+      return query.addDistinctBy(r'likeCount');
     });
   }
 
@@ -1255,10 +1960,32 @@ extension RestaurantDatasQueryWhereDistinct
     });
   }
 
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QDistinct>
+      distinctByPriceRange({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'priceRange', caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QDistinct>
+      distinctByRestaurantImage({bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'restaurantImage',
+          caseSensitive: caseSensitive);
+    });
+  }
+
   QueryBuilder<RestaurantDatas, RestaurantDatas, QDistinct> distinctBySId(
       {bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
       return query.addDistinctBy(r'sId', caseSensitive: caseSensitive);
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QDistinct> distinctByWebsite(
+      {bool caseSensitive = true}) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'website', caseSensitive: caseSensitive);
     });
   }
 }
@@ -1271,6 +1998,12 @@ extension RestaurantDatasQueryProperty
     });
   }
 
+  QueryBuilder<RestaurantDatas, String?, QQueryOperations> cuisineProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'cuisine');
+    });
+  }
+
   QueryBuilder<RestaurantDatas, String?, QQueryOperations>
       descriptionProperty() {
     return QueryBuilder.apply(this, (query) {
@@ -1278,9 +2011,9 @@ extension RestaurantDatasQueryProperty
     });
   }
 
-  QueryBuilder<RestaurantDatas, String?, QQueryOperations> locationProperty() {
+  QueryBuilder<RestaurantDatas, int?, QQueryOperations> likeCountProperty() {
     return QueryBuilder.apply(this, (query) {
-      return query.addPropertyName(r'location');
+      return query.addPropertyName(r'likeCount');
     });
   }
 
@@ -1296,9 +2029,29 @@ extension RestaurantDatasQueryProperty
     });
   }
 
+  QueryBuilder<RestaurantDatas, String?, QQueryOperations>
+      priceRangeProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'priceRange');
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, String?, QQueryOperations>
+      restaurantImageProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'restaurantImage');
+    });
+  }
+
   QueryBuilder<RestaurantDatas, String?, QQueryOperations> sIdProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'sId');
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, String?, QQueryOperations> websiteProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'website');
     });
   }
 }

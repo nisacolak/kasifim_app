@@ -32,8 +32,13 @@ class RestaurantRepository {
           ..description = element.description
           ..name = element.name
           ..sId = element.sId
-          ..phone = element.phone
-          ..location = element.location;
+          ..phone = element.phone 
+          ..likeCount = element.likeCount
+          ..website = element.website
+          ..cuisine = element.cuisine
+          ..priceRange = element.priceRange
+          ..restaurantImage = element.restaurantImage;
+          
         await isar!.writeTxn(() async {
           await isar.restaurantDatas.put(restaurant); // insert & update
         });

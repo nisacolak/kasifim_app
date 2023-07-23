@@ -7,7 +7,12 @@ class RestaurantDatas {
   late Id id;
   String? name;
   String? description;
-  String? location;
   String? phone;
   String? sId;
+  String? website; 
+  int? likeCount; 
+  String? cuisine; 
+  String? priceRange; 
+  String? restaurantImage;
+
 }

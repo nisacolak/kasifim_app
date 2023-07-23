@@ -17,7 +17,7 @@ class CustomNavBar extends StatefulWidget {
 class _CustomNavBarState extends State<CustomNavBar> {
   List pages = [
     const LocationView(),
-    const HomeView(),
+     HomeView(),
     FavoritesView(),
     ProfileTab(),
   ];

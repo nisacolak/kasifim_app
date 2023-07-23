@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kasifim_app/app/views/home/modules/home_view_bloc.dart';
 import 'package:kasifim_app/app/views/home/widget/category_container.dart';
 
 import 'package:kasifim_app/app/views/home/widget/restaurant_card.dart';
@@ -9,19 +11,36 @@ import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 import 'package:badges/badges.dart' as badges;
 
-class HomeView extends StatefulWidget {
-  const HomeView({
+class HomeView extends StatelessWidget {
+  HomeView({
     Key? key,
   }) : super(key: key);
 
-  @override
-  State<HomeView> createState() => _HomeViewState();
-}
-
-class _HomeViewState extends State<HomeView> {
   TextEditingController homeSearchController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<HomeViewBloc>().add(HomeViewLoadingEvent());
+    });
+
+    return BlocBuilder<HomeViewBloc, HomeViewStates>(
+      builder: (context, state) {
+        if (state is HomeViewLoadingState) {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        } else if (state is HomeViewSuccessState) {
+          return _mainWidget(context, state);
+        } else {
+          return Center(child: Text("error"));
+        }
+      },
+    );
+  }
+
+  SafeArea _mainWidget(BuildContext context,HomeViewSuccessState state) {
+    
     return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
@@ -55,7 +74,7 @@ class _HomeViewState extends State<HomeView> {
             Row(
               children: [
                 AppText.large(
-                  '127',
+                  '${state.restaurantCount}',
                   fontWeight: FontWeight.bold,
                   color: ColorName.orange,
                 ),
@@ -68,7 +87,7 @@ class _HomeViewState extends State<HomeView> {
               ],
             ),
             _buildSpace(context),
-            RestaurantCard(),
+            RestaurantCard(restaurant: state.restaurants,),
           ]),
         ),
       ),

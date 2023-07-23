@@ -23,7 +23,7 @@ class RegisterView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read()<RegisterBloc>().add(RegisterInitialEvent());
+      context.read<RegisterBloc>().add(RegisterInitialEvent());
     });
 
     return BlocBuilder<RegisterBloc, RegisterStates>(
@@ -96,7 +96,7 @@ class RegisterView extends StatelessWidget {
             _buildSpace(),
             CustomButton(
               onPressed: () {
-                context.read()<RegisterBloc>().add(RegisterSuccessEvent(
+                context.read<RegisterBloc>().add(RegisterSuccessEvent(
                     name: _nameController.text,
                     email: _registerEmailController.text,
                     password: _registerPasswordController.text));

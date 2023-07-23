@@ -30,7 +30,6 @@ class RestaurantResponseModel {
 class Restaurants {
   String? sId;
   String? name;
-  String? location;
   String? description;
   List<String>? menu;
   String? phone;
@@ -47,6 +46,7 @@ class Restaurants {
   List<String>? comments;
   String? category;
   List<String>? tags;
+  String? restaurantImage;
   String? createdAt;
   String? updatedAt;
   int? iV;
@@ -54,7 +54,6 @@ class Restaurants {
   Restaurants(
       {this.sId,
       this.name,
-      this.location,
       this.description,
       this.menu,
       this.phone,
@@ -71,6 +70,7 @@ class Restaurants {
       this.comments,
       this.category,
       this.tags,
+      this.restaurantImage,
       this.createdAt,
       this.updatedAt,
       this.iV});
@@ -78,7 +78,6 @@ class Restaurants {
   Restaurants.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];
     name = json['name'];
-    location = json['location'];
     description = json['description'];
     menu = json['menu'].cast<String>();
     phone = json['phone'];
@@ -95,6 +94,7 @@ class Restaurants {
     comments = json['comments'].cast<String>();
     category = json['category'];
     tags = json['tags'].cast<String>();
+    restaurantImage = json['restaurant_image'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
     iV = json['__v'];
@@ -104,7 +104,6 @@ class Restaurants {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['_id'] = this.sId;
     data['name'] = this.name;
-    data['location'] = this.location;
     data['description'] = this.description;
     data['menu'] = this.menu;
     data['phone'] = this.phone;
@@ -121,6 +120,7 @@ class Restaurants {
     data['comments'] = this.comments;
     data['category'] = this.category;
     data['tags'] = this.tags;
+    data['restaurant_image'] = this.restaurantImage;
     data['createdAt'] = this.createdAt;
     data['updatedAt'] = this.updatedAt;
     data['__v'] = this.iV;

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kasifim_app/app/routes/routes.dart';
 import 'package:kasifim_app/app/views/auth/modules/login_bloc.dart';
+import 'package:kasifim_app/app/views/auth/modules/register_bloc.dart';
 import 'package:kasifim_app/app/views/home/modules/home_view_bloc.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 import 'package:kasifim_app/network/local/isar/isar_client.dart';
@@ -27,6 +28,9 @@ Future<void> main() async {
       ),
       BlocProvider<HomeViewBloc>(
         create: (context) => HomeViewBloc(),
+      ),
+      BlocProvider<RegisterBloc>(
+        create: (context) => RegisterBloc(),
       ),
     ], child: KasifimApp())),
   );

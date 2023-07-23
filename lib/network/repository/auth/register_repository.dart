@@ -24,7 +24,7 @@ class RegisterRepository {
           RegisterRequestModel(name: name, email: email, password: password));
       final responseModel = RegisterResponseModel.fromJson(response.toJson());
       logger.i(response.toJson());
-
+        
       final isar = await Isar.getInstance();
 
       final newUser = AuthData()..token = responseModel.message;

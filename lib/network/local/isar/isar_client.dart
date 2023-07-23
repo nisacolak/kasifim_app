@@ -25,4 +25,10 @@ class IsarLocalDatabase {
 
     return restaurantDatas;
   }
+
+  getAllRestaurantCount() async {
+    final isar = await Isar.getInstance(); 
+    final restaurantCount = await isar?.restaurantDatas.count(); 
+    return restaurantCount;
+  }
 }

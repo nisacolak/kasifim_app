@@ -7,47 +7,23 @@ import 'package:kasifim_app/app/widgets/app_text.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 import 'package:kasifim_app/gen/fonts.gen.dart';
+import 'package:kasifim_app/network/local/isar/collection/restaurant_data.dart';
 
 import 'border_favorite.dart';
 
+
+// ignore: must_be_immutable
 class RestaurantCard extends StatelessWidget {
-  const RestaurantCard({
+  List<RestaurantDatas?> restaurant;
+  RestaurantCard({
     Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<HomeViewBloc>().add(HomeViewLoadingEvent());
-    });
-
-    return BlocBuilder<HomeViewBloc, HomeViewStates>(
-      builder: (context, state) {
-        if (state is HomeViewLoadingState) {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        } else if (state is HomeViewSuccessState) {
-          return _mainWidget(state: state);
-        } else {
-          return Center(child: Text("error"));
-        }
-      },
-    );
-  }
-}
-
-class _mainWidget extends StatelessWidget {
-  HomeViewSuccessState state;
-  _mainWidget({
-    Key? key,
-    required this.state,
+    required this.restaurant,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
-        children: state.restaurants
+        children: restaurant
             .map(
               (item) => InkWell(
                 onTap: () {
@@ -190,7 +166,7 @@ class _mainWidget extends StatelessWidget {
                                             size: 20,
                                           ),
                                           AppText.basic(
-                                            '${item.location}',
+                                            '${item.priceRange}',
                                             fontFamily: FontFamily.proximaNova,
                                             fontWeight: FontWeight.w600,
                                           ),
