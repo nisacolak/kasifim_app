@@ -1,8 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:kasifim_app/app/views/home/modules/home_view_bloc.dart';
 import 'package:kasifim_app/app/widgets/app_text.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
@@ -10,7 +8,6 @@ import 'package:kasifim_app/gen/fonts.gen.dart';
 import 'package:kasifim_app/network/local/isar/collection/restaurant_data.dart';
 
 import 'border_favorite.dart';
-
 
 // ignore: must_be_immutable
 class RestaurantCard extends StatelessWidget {
@@ -61,7 +58,7 @@ class RestaurantCard extends StatelessWidget {
                             image: DecorationImage(
                                 fit: BoxFit.cover,
                                 image:
-                                    AssetImage(Assets.images.restaurant.path))),
+                                    AssetImage(Assets.images.breakfast.path))),
                         child: Column(children: [
                           Padding(
                             padding: const EdgeInsets.all(8.0),

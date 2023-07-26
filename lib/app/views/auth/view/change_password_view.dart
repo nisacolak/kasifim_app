@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kasifim_app/app/views/auth/widget/password_field.dart';
+
 import 'package:kasifim_app/app/views/welcome/widget/custom_button.dart';
 import 'package:kasifim_app/app/widgets/app_text.dart';
+import 'package:kasifim_app/app/widgets/build_space.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 
@@ -34,17 +36,17 @@ class ChangePassword extends StatelessWidget {
                     'New Password',
                     color: ColorName.grey,
                   ),
-                  _buildSpace(context),
+                  buildSpace(),
                   PasswordField(
                     controller: _confirmPasswordController,
                   ),
-                  _buildSpace(context),
-                  _buildSpace(context),
+                  buildSpace(),
+                  buildSpace(),
                   AppText.medium(
                     'Confirm Password',
                     color: ColorName.grey,
                   ),
-                  _buildSpace(context),
+
                   PasswordField(
                     controller: _changePasswordController,
                   ),
@@ -65,8 +67,4 @@ class ChangePassword extends StatelessWidget {
               ),
             )));
   }
-
-  SizedBox _buildSpace(BuildContext context) => SizedBox(
-        height: MediaQuery.of(context).size.height * 0.01,
-      );
 }

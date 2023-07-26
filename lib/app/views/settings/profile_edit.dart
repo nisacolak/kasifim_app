@@ -5,6 +5,7 @@ import 'package:kasifim_app/app/views/auth/widget/password_field.dart';
 import 'package:kasifim_app/app/views/profile/widget/profile_avatar.dart';
 import 'package:kasifim_app/app/views/settings/settings.dart';
 import 'package:kasifim_app/app/widgets/app_text.dart';
+import 'package:kasifim_app/app/widgets/build_space.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 
 class ProfileEdit extends StatefulWidget {
@@ -119,19 +120,6 @@ class _ProfileEditState extends State<ProfileEdit> {
             ]),
           ]),
         )));
-  }
-}
-
-class buildSpace extends StatelessWidget {
-  const buildSpace({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * .016,
-    );
   }
 }
 

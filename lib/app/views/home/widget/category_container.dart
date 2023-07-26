@@ -71,16 +71,3 @@ class CategoryContainer extends StatelessWidget {
     );
   }
 }
-
-class _buildSpace extends StatelessWidget {
-  const _buildSpace({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const SizedBox(
-      height: 10,
-    );
-  }
-}

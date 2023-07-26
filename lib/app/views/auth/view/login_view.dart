@@ -5,9 +5,11 @@ import 'package:kasifim_app/app/views/auth/modules/login_bloc.dart';
 import 'package:kasifim_app/app/views/auth/widget/auth_field.dart';
 import 'package:kasifim_app/app/views/auth/widget/password_field.dart';
 import 'package:kasifim_app/app/views/auth/widget/specific_button.dart';
+
 import 'package:kasifim_app/app/views/welcome/widget/custom_button.dart';
 import 'package:kasifim_app/app/views/welcome/widget/custom_text_button.dart';
 import 'package:kasifim_app/app/widgets/app_text.dart';
+import 'package:kasifim_app/app/widgets/build_space.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 
@@ -55,12 +57,12 @@ class LoginView extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _buildSpace(),
+                buildSpace(),
                 AppText.medium(
                   'Email',
                   color: ColorName.grey,
                 ),
-                _buildSpaceLittle(),
+                buildSpaceSmall(),
                 AuthField(
                   controller: _loginEmailController,
                   prefixIcon: const Icon(
@@ -73,12 +75,12 @@ class LoginView extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _buildSpace(),
+                buildSpace(),
                 AppText.medium(
                   'Password',
                   color: ColorName.grey,
                 ),
-                _buildSpaceLittle(),
+                buildSpace(),
                 PasswordField(
                   hintText: 'enter your password',
                   controller: _loginPasswordController,
@@ -95,7 +97,6 @@ class LoginView extends StatelessWidget {
                     text: 'forgot my password')
               ],
             ),
-            _buildSpace(),
             CustomButton(
               onPressed: () {
                 // repository input
@@ -117,12 +118,4 @@ class LoginView extends StatelessWidget {
       ),
     ));
   }
-
-  SizedBox _buildSpace() => const SizedBox(
-        height: 20,
-      );
 }
-
-SizedBox _buildSpaceLittle() => const SizedBox(
-      height: 5,
-    );

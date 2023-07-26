@@ -22,16 +22,3 @@ class FilterCategory extends StatelessWidget {
     );
   }
 }
-
-class _buildSpace extends StatelessWidget {
-  const _buildSpace({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: 10,
-    );
-  }
-}

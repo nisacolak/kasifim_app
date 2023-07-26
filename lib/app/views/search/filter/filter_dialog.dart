@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kasifim_app/app/views/search/filter/widget/close_button.dart';
 import 'package:kasifim_app/app/views/search/filter/widget/filter_short.dart';
+import 'package:kasifim_app/app/widgets/build_space.dart';
 
 import 'package:kasifim_app/gen/colors.gen.dart';
 import 'widget/filter_button..dart';
@@ -46,29 +47,9 @@ class FilterDialog extends StatelessWidget {
             FilterRatings(),
 
             FilterButtonsRow()
-            //_filterText('Rate'),
-            //FilterSlider(),
-            //_filterText('Price Range'),
-            //FilterSwitch(),
-            // FilterButton(
-            //   onPressed: () {},
-            // ),
           ],
         ),
       ),
-    );
-  }
-}
-
-class buildSpace extends StatelessWidget {
-  const buildSpace({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * .02,
     );
   }
 }

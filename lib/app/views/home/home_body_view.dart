@@ -4,7 +4,7 @@ import 'package:kasifim_app/app/views/favorites/favorites_view.dart';
 import 'package:kasifim_app/app/views/home/home_view.dart';
 import 'package:kasifim_app/app/views/explore/explore_view.dart';
 
-import 'package:kasifim_app/app/views/profile/widget/profile_tab.dart';
+import 'package:kasifim_app/app/views/profile/view/profile_view.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 
 class CustomNavBar extends StatefulWidget {
@@ -17,7 +17,7 @@ class CustomNavBar extends StatefulWidget {
 class _CustomNavBarState extends State<CustomNavBar> {
   List pages = [
     const LocationView(),
-     HomeView(),
+    HomeView(),
     FavoritesView(),
     ProfileTab(),
   ];

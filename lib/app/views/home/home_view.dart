@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kasifim_app/app/views/home/modules/home_view_bloc.dart';
 import 'package:kasifim_app/app/views/home/widget/category_container.dart';
@@ -7,6 +6,7 @@ import 'package:kasifim_app/app/views/home/widget/category_container.dart';
 import 'package:kasifim_app/app/views/home/widget/restaurant_card.dart';
 import 'package:kasifim_app/app/views/search/search_box.dart';
 import 'package:kasifim_app/app/widgets/app_text.dart';
+import 'package:kasifim_app/app/widgets/build_space.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 import 'package:badges/badges.dart' as badges;
@@ -39,8 +39,7 @@ class HomeView extends StatelessWidget {
     );
   }
 
-  SafeArea _mainWidget(BuildContext context,HomeViewSuccessState state) {
-    
+  SafeArea _mainWidget(BuildContext context, HomeViewSuccessState state) {
     return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
@@ -56,10 +55,9 @@ class HomeView extends StatelessWidget {
         body: Padding(
           padding: const EdgeInsets.only(top: 0, right: 10, left: 10),
           child: ListView(children: [
-            _buildSpace(context),
+            buildSpaceSmall(),
             const _mainContainer(),
-            _buildSpace(context),
-            _buildSpace(context),
+            buildSpaceSmall(),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -86,8 +84,10 @@ class HomeView extends StatelessWidget {
                 ),
               ],
             ),
-            _buildSpace(context),
-            RestaurantCard(restaurant: state.restaurants,),
+            buildSpaceSmall(),
+            RestaurantCard(
+              restaurant: state.restaurants,
+            ),
           ]),
         ),
       ),

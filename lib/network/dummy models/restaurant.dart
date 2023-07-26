@@ -46,7 +46,7 @@ List<Restaurant> sampleModel = [
     categoryName: "Breakfast",
     distance: "3.2 km",
     categoryPath: Assets.images.categoryBreakfast.path,
-    thumbnailPath: Assets.images.breakfast2.path,
+    thumbnailPath: Assets.images.breakfast.path,
     rate: 3,
     priceRange: "50-100",
     address: "Bereketzade, Büyük Hendek Cd. No:19/A, 34421 Beyoğlu/İstanbul",

@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:kasifim_app/app/routes/custom_page_route.dart';
 import 'package:kasifim_app/app/views/profile/widget/profile_avatar.dart';
 import 'package:kasifim_app/app/views/profile/widget/profile_info.dart';
-import 'package:kasifim_app/app/views/profile/widget/profile_tab.dart';
+import 'package:kasifim_app/app/views/profile/view/profile_view.dart';
 import 'package:kasifim_app/app/views/settings/profile_edit.dart';
 import 'package:kasifim_app/app/widgets/app_text.dart';
+import 'package:kasifim_app/app/widgets/build_space.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 
 class ProfileSettings extends StatelessWidget {
@@ -84,19 +85,6 @@ class ProfileSettings extends StatelessWidget {
             ]),
           ),
         ));
-  }
-}
-
-class buildSpace extends StatelessWidget {
-  const buildSpace({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: MediaQuery.of(context).size.height * .016,
-    );
   }
 }
 

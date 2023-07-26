@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:kasifim_app/app/views/welcome/widget/custom_button.dart';
 import 'package:kasifim_app/app/views/welcome/widget/welcome_tab_bar.dart';
 import 'package:kasifim_app/app/widgets/app_text.dart';
+import 'package:kasifim_app/app/widgets/build_space.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 
@@ -39,13 +40,12 @@ class Welcome extends StatelessWidget {
                   AppText.welcome(
                     'Welcome',
                   ),
-                  _buildSpace(context),
+                  buildSpace(),
                   AppText.welcomeSubtitle(
                     'Before Enjoying FoodMedia Services \n Please Register First',
                     color: ColorName.white,
                   ),
-                  _buildSpace(context),
-                  _buildSpace(context),
+                  buildSpace(),
                   Padding(
                     padding: const EdgeInsets.only(top: 10.0),
                     child: CustomButton(
@@ -67,7 +67,7 @@ class Welcome extends StatelessWidget {
                       },
                     ),
                   ),
-                  _buildSpace(context),
+                  buildSpace(),
                   CustomButton(
                     backgroundColor: ColorName.orangeShade,
                     labelColor: ColorName.orange,
@@ -90,26 +90,9 @@ class Welcome extends StatelessWidget {
                 ],
               ),
             ),
-
-            // _buildSpace(context),
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            //   children: [
-            //     AppText.small(
-            //       'You Have Agreed To',
-            //     ),
-            //     const CustomTextButton(
-            //       text: 'The Terms And Conditions',
-            //     ),
-            //   ],
-            // ),
           ]),
         ),
       ),
     );
-  }
-
-  SizedBox _buildSpace(BuildContext context) {
-    return SizedBox(height: MediaQuery.of(context).size.height * 0.02);
   }
 }

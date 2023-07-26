@@ -80,6 +80,3 @@ class ForgotPassword extends StatelessWidget {
             )));
   }
 }
-
-// SizedBox _buildSpace(BuildContext context) =>
-//     SizedBox(height: MediaQuery.of(context).size.height * 0.5);

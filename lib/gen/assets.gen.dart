@@ -105,10 +105,6 @@ class $AssetsImagesGen {
   AssetGenImage get breakfast =>
       const AssetGenImage('assets/images/breakfast.png');
 
-  /// File path: assets/images/breakfast2.jpg
-  AssetGenImage get breakfast2 =>
-      const AssetGenImage('assets/images/breakfast2.jpg');
-
   /// File path: assets/images/categoryBreakfast.png
   AssetGenImage get categoryBreakfast =>
       const AssetGenImage('assets/images/categoryBreakfast.png');
@@ -199,14 +195,6 @@ class $AssetsImagesGen {
   AssetGenImage get restaurant =>
       const AssetGenImage('assets/images/restaurant.png');
 
-  /// File path: assets/images/restaurant2.png
-  AssetGenImage get restaurant2 =>
-      const AssetGenImage('assets/images/restaurant2.png');
-
-  /// File path: assets/images/restaurant3.png
-  AssetGenImage get restaurant3 =>
-      const AssetGenImage('assets/images/restaurant3.png');
-
   /// File path: assets/images/star.png
   AssetGenImage get star => const AssetGenImage('assets/images/star.png');
 
@@ -229,7 +217,6 @@ class $AssetsImagesGen {
         account,
         bckgnd,
         breakfast,
-        breakfast2,
         categoryBreakfast,
         categoryCoffee,
         categoryDessert,
@@ -254,8 +241,6 @@ class $AssetsImagesGen {
         popularRestaurants,
         resetPassword,
         restaurant,
-        restaurant2,
-        restaurant3,
         star,
         success,
         turkish,

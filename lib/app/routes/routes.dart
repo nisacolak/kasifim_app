@@ -9,7 +9,7 @@ import 'package:kasifim_app/app/views/explore/explore_recording.dart';
 import 'package:kasifim_app/app/views/home/home_body_view.dart';
 import 'package:kasifim_app/app/views/home/home_view.dart';
 import 'package:kasifim_app/app/views/notification/notifications_view.dart';
-import 'package:kasifim_app/app/views/profile/widget/profile_tab.dart';
+import 'package:kasifim_app/app/views/profile/view/profile_view.dart';
 import 'package:kasifim_app/app/views/search/filter/filtered_restaurants.dart';
 import 'package:kasifim_app/app/views/search/search_view.dart';
 import 'package:kasifim_app/app/views/settings/settings.dart';
@@ -26,15 +26,12 @@ Map<String, WidgetBuilder> get pageRoutes {
     '/change-password': (context) => ChangePassword(),
     '/change-password-success': (context) => ChangePasswordSuccess(),
     '/home-body': (context) => CustomNavBar(),
-    '/home': (context) =>  HomeView(),
+    '/home': (context) => HomeView(),
     '/search': (context) => const SearchView(),
     '/restaurant-detail': (context) => RestaurantDetail(),
     '/profile': (context) => ProfileTab(),
     '/profile-settings': (context) => ProfileSettings(),
     '/video-upload': (context) => CameraPage(),
-    // '/video-edit': (context) => VideoEditor(
-    //       file:File(path)
-    //     ),
     '/filtered-restaurants-advanced': (context) =>
         FilteredRestaurantsAdvanced(),
     '/notifications': (context) => NotificationsView()

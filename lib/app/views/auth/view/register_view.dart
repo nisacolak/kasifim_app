@@ -6,6 +6,7 @@ import 'package:kasifim_app/app/views/auth/widget/password_field.dart';
 import 'package:kasifim_app/app/views/auth/widget/specific_button.dart';
 import 'package:kasifim_app/app/views/welcome/widget/custom_button.dart';
 import 'package:kasifim_app/app/widgets/app_text.dart';
+import 'package:kasifim_app/app/widgets/build_space.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 
@@ -53,12 +54,12 @@ class RegisterView extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _buildSpace(),
+                buildSpace(),
                 AppText.medium(
                   'Full Name',
                   color: ColorName.grey,
                 ),
-                _buildSpaceLittle(),
+                buildSpaceSmall(),
                 AuthField(
                   controller: _nameController,
                   prefixIcon: const Icon(
@@ -66,12 +67,12 @@ class RegisterView extends StatelessWidget {
                   ),
                   hintText: 'enter your full name',
                 ),
-                _buildSpace(),
+                buildSpace(),
                 AppText.medium(
                   'Email Address',
                   color: ColorName.grey,
                 ),
-                _buildSpaceLittle(),
+                buildSpaceSmall(),
                 AuthField(
                     controller: _registerEmailController,
                     hintText: 'example@example.com',
@@ -81,19 +82,19 @@ class RegisterView extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                _buildSpace(),
+                buildSpace(),
                 AppText.medium(
                   'Password',
                   color: ColorName.grey,
                 ),
-                _buildSpaceLittle(),
+                buildSpaceSmall(),
                 PasswordField(
                   hintText: 'enter your password',
                   controller: _registerPasswordController,
                 )
               ],
             ),
-            _buildSpace(),
+            buildSpace(),
             CustomButton(
               onPressed: () {
                 context.read<RegisterBloc>().add(RegisterSuccessEvent(
@@ -116,11 +117,3 @@ class RegisterView extends StatelessWidget {
     ));
   }
 }
-
-SizedBox _buildSpace() => const SizedBox(
-      height: 20,
-    );
-
-SizedBox _buildSpaceLittle() => const SizedBox(
-      height: 5,
-    );

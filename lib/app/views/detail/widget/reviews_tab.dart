@@ -137,8 +137,7 @@ class ReviewsTab extends StatelessWidget {
                                           decoration: BoxDecoration(
                                               color: ColorName.green,
                                               image: DecorationImage(
-                                                  image: Assets
-                                                      .images.breakfast2
+                                                  image: Assets.images.breakfast
                                                       .provider())),
                                         );
                                       },
