@@ -1,6 +1,7 @@
 import 'package:isar/isar.dart';
 import 'package:kasifim_app/network/local/isar/collection/auth_data.dart';
 import 'package:kasifim_app/network/local/isar/collection/restaurant_data.dart';
+import 'package:kasifim_app/network/local/isar/collection/user_data.dart';
 
 class IsarLocalDatabase {
   IsarLocalDatabase._();
@@ -27,8 +28,15 @@ class IsarLocalDatabase {
   }
 
   getAllRestaurantCount() async {
-    final isar = await Isar.getInstance(); 
-    final restaurantCount = await isar?.restaurantDatas.count(); 
+    final isar = await Isar.getInstance();
+    final restaurantCount = await isar?.restaurantDatas.count();
     return restaurantCount;
+  }
+
+  getUser() async {
+    final isar = await Isar.getInstance();
+    final userDatas = await isar?.userDatas.where().findAll();
+
+    return userDatas;
   }
 }

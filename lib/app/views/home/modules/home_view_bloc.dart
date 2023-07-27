@@ -25,10 +25,10 @@ class HomeViewBloc extends Bloc<HomeViewEvents, HomeViewStates> {
       HomeViewLoadingEvent event, Emitter<HomeViewStates> emit) async {
     final service = await _restaurantRepository.getRestaurantService();
     final getRestaurant = await _isarDatabase.getAllRestaurant();
-    final getRestaurantCount = await _isarDatabase.getAllRestaurantCount(); 
+    final getRestaurantCount = await _isarDatabase.getAllRestaurantCount();
 
     if (service == 200) {
-      emit(HomeViewSuccessState(getRestaurant,getRestaurantCount));
+      emit(HomeViewSuccessState(getRestaurant, getRestaurantCount));
     } else {
       emit(HomeViewErrorState());
     }

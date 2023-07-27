@@ -5,6 +5,7 @@ import 'package:kasifim_app/network/models/auth/login/login_response.model.dart'
 import 'package:kasifim_app/network/models/auth/register/register_request_model.dart';
 import 'package:kasifim_app/network/models/auth/register/register_response_model.dart';
 import 'package:kasifim_app/network/models/restaurant/restaurant_model.dart';
+import 'package:kasifim_app/network/models/user/user_model.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'rest_client.g.dart';
@@ -21,4 +22,7 @@ abstract class RestClient {
   @GET("restaurant")
   Future<RestaurantResponseModel> getRestaurant(
       @Header('Authorization') String token);
+
+  @GET("user")
+  Future<UserModel> getUser(@Header('Authorization') String token);
 }
