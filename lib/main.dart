@@ -5,6 +5,8 @@ import 'package:kasifim_app/app/routes/routes.dart';
 import 'package:kasifim_app/app/views/auth/modules/login_bloc.dart';
 import 'package:kasifim_app/app/views/auth/modules/register_bloc.dart';
 import 'package:kasifim_app/app/views/home/modules/home_view_bloc.dart';
+import 'package:kasifim_app/app/views/profile/modules/user_bloc.dart';
+import 'package:kasifim_app/app/views/profile/view/profile_view.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
 import 'package:kasifim_app/network/local/isar/isar_client.dart';
 import 'package:one_context/one_context.dart';
@@ -31,6 +33,10 @@ Future<void> main() async {
       ),
       BlocProvider<RegisterBloc>(
         create: (context) => RegisterBloc(),
+      ),
+      BlocProvider<ProfileViewBloc>(
+        create: (context) => ProfileViewBloc(),
+        child: ProfileTab(),
       ),
     ], child: KasifimApp())),
   );

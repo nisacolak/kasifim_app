@@ -40,24 +40,34 @@ class RegisterBloc extends Bloc<RegisterEvents, RegisterStates> {
 
   // FutureOr<void> _errorEvent(event, Emitter<RegisterStates> emit) {}
 
-  FutureOr<void> _initialEvent(RegisterInitialEvent event, Emitter<RegisterStates> emit) {
-    emit(RegisterSuccessState()); 
+  FutureOr<void> _initialEvent(
+      RegisterInitialEvent event, Emitter<RegisterStates> emit) {
+    emit(RegisterSuccessState());
   }
 
-  FutureOr<void> _successEvent(RegisterSuccessEvent event, Emitter<RegisterStates> emit) async {
-    final service = await _registerRepository.registerService(event.name, event.email, event.password); 
-    if(service == 200) {
-      OneContext().pushNamed('/home-body');
-
-    } else {
-      showErrorSnackbar('Hata! lütfen tekrar deneyin'); 
+  FutureOr<void> _successEvent(
+      RegisterSuccessEvent event, Emitter<RegisterStates> emit) async {
+        bool isEmailValid(String email) {
+      final RegExp regex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+      return regex.hasMatch(email);
     }
 
+    if (!isEmailValid(event.email)) {
+      showErrorSnackbar('Invalid email ');
+      return;
+    }
+    final service = await _registerRepository.registerService(
+        event.name, event.email, event.password);
+    if (service == 200) {
+      OneContext().pushNamed('/home-body');
+    } else {
+      showErrorSnackbar('error');
+    }
   }
 
-  FutureOr<void> _sendEvent(RegisterSendEvent event, Emitter<RegisterStates> emit) {
-  }
+  FutureOr<void> _sendEvent(
+      RegisterSendEvent event, Emitter<RegisterStates> emit) {}
 
-  FutureOr<void> _errorEvent(RegisterErrorEvent event, Emitter<RegisterStates> emit) {
-  }
+  FutureOr<void> _errorEvent(
+      RegisterErrorEvent event, Emitter<RegisterStates> emit) {}
 }

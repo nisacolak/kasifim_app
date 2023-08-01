@@ -6,87 +6,106 @@ import 'package:kasifim_app/app/views/settings/settings.dart';
 import 'package:kasifim_app/app/widgets/app_text.dart';
 import 'package:kasifim_app/gen/assets.gen.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
+import 'package:kasifim_app/network/local/isar/collection/user_data.dart';
 
-Widget buildUserBio(BuildContext context) {
-  return Container(
-    margin: EdgeInsets.only(top: 10, bottom: 0, right: 15, left: 15),
-    height: MediaQuery.of(context).size.height * .36,
-    width: MediaQuery.of(context).size.width * .90,
-    decoration: BoxDecoration(
-        color: ColorName.white, borderRadius: BorderRadius.circular(12)),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        SizedBox(
-          height: 40,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              IconButton(
-                  icon: Icon(
-                    Icons.arrow_back,
-                    color: ColorName.green,
-                  ),
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/home-body');
-                  }),
-              IconButton(
-                icon: Icon(
-                  Icons.settings,
-                  color: ColorName.green,
-                ),
-                onPressed: () => Navigator.of(context)
-                    .push(CustomPageRoute(child: ProfileSettings())),
-              ),
-            ],
-          ),
-        ),
-        CircleAvatar(
-          radius: 40,
-          backgroundImage: AssetImage(Assets.images.expressionless.path),
-        ),
-        //ProfileAvatar(),
-        profileBio(),
-        SizedBox(
-          height: MediaQuery.of(context).size.height * .07,
-          width: MediaQuery.of(context).size.width * .7,
-          child: buildProfileInfo(),
-        ),
-      ],
-    ),
-  );
-}
-
-class profileBio extends StatelessWidget {
-  const profileBio({
+class BuildUserBio extends StatelessWidget {
+  final List<UserDatas?> userData;
+  BuildUserBio({
+    required this.userData,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Center(
-        child: Text(
-          'Muhammed Cundullah Bozdağ',
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-        ),
-      ),
-      SizedBox(
-        height: 5,
-      ),
-      Center(
-        child: SizedBox(
-          height: MediaQuery.of(context).size.height * .05,
-          width: MediaQuery.of(context).size.width * .5,
-          child: Text(
-            "Lorem ipsum dolor sit amet orci aliquam",
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 14),
+    return Container(
+      margin: EdgeInsets.only(top: 10, bottom: 0, right: 15, left: 15),
+      height: MediaQuery.of(context).size.height * .36,
+      width: MediaQuery.of(context).size.width * .90,
+      decoration: BoxDecoration(
+          color: ColorName.white, borderRadius: BorderRadius.circular(12)),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          SizedBox(
+            height: 40,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                IconButton(
+                    icon: Icon(
+                      Icons.arrow_back,
+                      color: ColorName.green,
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/home-body');
+                    }),
+                IconButton(
+                  icon: Icon(
+                    Icons.settings,
+                    color: ColorName.green,
+                  ),
+                  onPressed: () => Navigator.of(context)
+                      .push(CustomPageRoute(child: ProfileSettings())),
+                ),
+              ],
+            ),
           ),
-        ),
-      )
-    ]);
+          CircleAvatar(
+            radius: 40,
+            backgroundImage: AssetImage(Assets.images.expressionless.path),
+          ),
+          //ProfileAvatar(),
+          profileBio(
+            userData: userData,
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * .07,
+            width: MediaQuery.of(context).size.width * .7,
+            child: buildProfileInfo(),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class profileBio extends StatelessWidget {
+  List<UserDatas?> userData;
+  profileBio({
+    required this.userData,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+        children: userData
+            .map((item) =>
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Center(
+                    child: Text(
+                      item!.name!,
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  Center(
+                    child: SizedBox(
+                      height: MediaQuery.of(context).size.height * .05,
+                      width: MediaQuery.of(context).size.width * .5,
+                      child: Text(
+                        "Lorem ipsum dolor sit amet orci aliquam",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 14),
+                      ),
+                    ),
+                  )
+                ]))
+            .toList());
   }
 }
 

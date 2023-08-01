@@ -6,9 +6,9 @@ class ProfileViewLoadingState extends ProfileViewStates {}
 
 class ProfileViewSuccessState extends ProfileViewStates {
   ProfileViewSuccessState(
-    this.data,
+    this.userData,
   );
-  late final List<UserDatas?> data;
+  late final List<UserDatas?> userData;
 }
 
 class ProfileViewErrorState extends ProfileViewStates {}

@@ -33,34 +33,26 @@ class Data {
   bool? blocked;
   String? createdAt;
   int? iV;
-  String? place;
-  String? title;
-  String? website;
+
   List<String>? favorites;
   List<String>? followers;
   List<String>? following;
   List<String>? comments;
-  String? resetPasswordExpire;
-  String? resetPasswordToken;
 
-  Data(
-      {this.sId,
-      this.name,
-      this.email,
-      this.role,
-      this.profileImage,
-      this.blocked,
-      this.createdAt,
-      this.iV,
-      this.place,
-      this.title,
-      this.website,
-      this.favorites,
-      this.followers,
-      this.following,
-      this.comments,
-      this.resetPasswordExpire,
-      this.resetPasswordToken});
+  Data({
+    this.sId,
+    this.name,
+    this.email,
+    this.role,
+    this.profileImage,
+    this.blocked,
+    this.createdAt,
+    this.iV,
+    this.favorites,
+    this.followers,
+    this.following,
+    this.comments,
+  });
 
   Data.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];
@@ -71,15 +63,11 @@ class Data {
     blocked = json['blocked'];
     createdAt = json['createdAt'];
     iV = json['__v'];
-    place = json['place'];
-    title = json['title'];
-    website = json['website'];
+
     favorites = json['favorites'].cast<String>();
     followers = json['followers'].cast<String>();
     following = json['following'].cast<String>();
     comments = json['comments'].cast<String>();
-    resetPasswordExpire = json['resetPasswordExpire'];
-    resetPasswordToken = json['resetPasswordToken'];
   }
 
   Map<String, dynamic> toJson() {
@@ -92,15 +80,12 @@ class Data {
     data['blocked'] = this.blocked;
     data['createdAt'] = this.createdAt;
     data['__v'] = this.iV;
-    data['place'] = this.place;
-    data['title'] = this.title;
-    data['website'] = this.website;
+
     data['favorites'] = this.favorites;
     data['followers'] = this.followers;
     data['following'] = this.following;
     data['comments'] = this.comments;
-    data['resetPasswordExpire'] = this.resetPasswordExpire;
-    data['resetPasswordToken'] = this.resetPasswordToken;
+
     return data;
   }
 }

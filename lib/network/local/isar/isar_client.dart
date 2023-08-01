@@ -10,7 +10,8 @@ class IsarLocalDatabase {
   static IsarLocalDatabase get instance => _instance;
 
   initIsar() async {
-    await Isar.openSync([AuthDataSchema, RestaurantDatasSchema]);
+    await Isar.openSync(
+        [AuthDataSchema, RestaurantDatasSchema, UserDatasSchema]);
   }
 
   getAccessToken() async {

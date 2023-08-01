@@ -79,7 +79,7 @@ class RestaurantCard extends StatelessWidget {
                                         color: ColorName.yellow,
                                       ),
                                       AppText.medium(
-                                        item!.name!,
+                                        '${item!.rate!}',
                                         color: ColorName.white,
                                       ),
                                     ],

@@ -9,10 +9,10 @@ class RestaurantDatas {
   String? description;
   String? phone;
   String? sId;
-  String? website; 
-  int? likeCount; 
-  String? cuisine; 
-  String? priceRange; 
+  String? website;
+  int? rate;
+  int? likeCount;
+  String? cuisine;
+  String? priceRange;
   String? restaurantImage;
-
 }

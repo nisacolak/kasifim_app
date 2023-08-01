@@ -47,18 +47,23 @@ const RestaurantDatasSchema = CollectionSchema(
       name: r'priceRange',
       type: IsarType.string,
     ),
-    r'restaurantImage': PropertySchema(
+    r'rate': PropertySchema(
       id: 6,
+      name: r'rate',
+      type: IsarType.long,
+    ),
+    r'restaurantImage': PropertySchema(
+      id: 7,
       name: r'restaurantImage',
       type: IsarType.string,
     ),
     r'sId': PropertySchema(
-      id: 7,
+      id: 8,
       name: r'sId',
       type: IsarType.string,
     ),
     r'website': PropertySchema(
-      id: 8,
+      id: 9,
       name: r'website',
       type: IsarType.string,
     )
@@ -146,9 +151,10 @@ void _restaurantDatasSerialize(
   writer.writeString(offsets[3], object.name);
   writer.writeString(offsets[4], object.phone);
   writer.writeString(offsets[5], object.priceRange);
-  writer.writeString(offsets[6], object.restaurantImage);
-  writer.writeString(offsets[7], object.sId);
-  writer.writeString(offsets[8], object.website);
+  writer.writeLong(offsets[6], object.rate);
+  writer.writeString(offsets[7], object.restaurantImage);
+  writer.writeString(offsets[8], object.sId);
+  writer.writeString(offsets[9], object.website);
 }
 
 RestaurantDatas _restaurantDatasDeserialize(
@@ -165,9 +171,10 @@ RestaurantDatas _restaurantDatasDeserialize(
   object.name = reader.readStringOrNull(offsets[3]);
   object.phone = reader.readStringOrNull(offsets[4]);
   object.priceRange = reader.readStringOrNull(offsets[5]);
-  object.restaurantImage = reader.readStringOrNull(offsets[6]);
-  object.sId = reader.readStringOrNull(offsets[7]);
-  object.website = reader.readStringOrNull(offsets[8]);
+  object.rate = reader.readLongOrNull(offsets[6]);
+  object.restaurantImage = reader.readStringOrNull(offsets[7]);
+  object.sId = reader.readStringOrNull(offsets[8]);
+  object.website = reader.readStringOrNull(offsets[9]);
   return object;
 }
 
@@ -191,10 +198,12 @@ P _restaurantDatasDeserializeProp<P>(
     case 5:
       return (reader.readStringOrNull(offset)) as P;
     case 6:
-      return (reader.readStringOrNull(offset)) as P;
+      return (reader.readLongOrNull(offset)) as P;
     case 7:
       return (reader.readStringOrNull(offset)) as P;
     case 8:
+      return (reader.readStringOrNull(offset)) as P;
+    case 9:
       return (reader.readStringOrNull(offset)) as P;
     default:
       throw IsarError('Unknown property with id $propertyId');
@@ -1197,6 +1206,80 @@ extension RestaurantDatasQueryFilter
   }
 
   QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      rateIsNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNull(
+        property: r'rate',
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      rateIsNotNull() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(const FilterCondition.isNotNull(
+        property: r'rate',
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      rateEqualTo(int? value) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.equalTo(
+        property: r'rate',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      rateGreaterThan(
+    int? value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.greaterThan(
+        include: include,
+        property: r'rate',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      rateLessThan(
+    int? value, {
+    bool include = false,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.lessThan(
+        include: include,
+        property: r'rate',
+        value: value,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
+      rateBetween(
+    int? lower,
+    int? upper, {
+    bool includeLower = true,
+    bool includeUpper = true,
+  }) {
+    return QueryBuilder.apply(this, (query) {
+      return query.addFilterCondition(FilterCondition.between(
+        property: r'rate',
+        lower: lower,
+        includeLower: includeLower,
+        upper: upper,
+        includeUpper: includeUpper,
+      ));
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterFilterCondition>
       restaurantImageIsNull() {
     return QueryBuilder.apply(this, (query) {
       return query.addFilterCondition(const FilterCondition.isNull(
@@ -1748,6 +1831,19 @@ extension RestaurantDatasQuerySortBy
     });
   }
 
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterSortBy> sortByRate() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'rate', Sort.asc);
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterSortBy>
+      sortByRateDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'rate', Sort.desc);
+    });
+  }
+
   QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterSortBy>
       sortByRestaurantImage() {
     return QueryBuilder.apply(this, (query) {
@@ -1883,6 +1979,19 @@ extension RestaurantDatasQuerySortThenBy
     });
   }
 
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterSortBy> thenByRate() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'rate', Sort.asc);
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterSortBy>
+      thenByRateDesc() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addSortBy(r'rate', Sort.desc);
+    });
+  }
+
   QueryBuilder<RestaurantDatas, RestaurantDatas, QAfterSortBy>
       thenByRestaurantImage() {
     return QueryBuilder.apply(this, (query) {
@@ -1967,6 +2076,12 @@ extension RestaurantDatasQueryWhereDistinct
     });
   }
 
+  QueryBuilder<RestaurantDatas, RestaurantDatas, QDistinct> distinctByRate() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addDistinctBy(r'rate');
+    });
+  }
+
   QueryBuilder<RestaurantDatas, RestaurantDatas, QDistinct>
       distinctByRestaurantImage({bool caseSensitive = true}) {
     return QueryBuilder.apply(this, (query) {
@@ -2033,6 +2148,12 @@ extension RestaurantDatasQueryProperty
       priceRangeProperty() {
     return QueryBuilder.apply(this, (query) {
       return query.addPropertyName(r'priceRange');
+    });
+  }
+
+  QueryBuilder<RestaurantDatas, int?, QQueryOperations> rateProperty() {
+    return QueryBuilder.apply(this, (query) {
+      return query.addPropertyName(r'rate');
     });
   }
 

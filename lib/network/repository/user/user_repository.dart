@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:isar/isar.dart';
 import 'package:kasifim_app/network/local/isar/collection/user_data.dart';
 import 'package:kasifim_app/network/local/isar/isar_client.dart';
@@ -26,8 +25,9 @@ class UserRepository {
       final response = await client.getUser(token);
       int i = 1;
       response.data!.forEach((element) async {
-        final data = new UserDatas()
+        final data = UserDatas()
           ..id = i++
+          ..sId = element.sId
           ..name = element.name
           ..email = element.email
           ..profileImage = element.profileImage

@@ -7,6 +7,7 @@ import 'package:kasifim_app/app/views/settings/profile_edit.dart';
 import 'package:kasifim_app/app/widgets/app_text.dart';
 import 'package:kasifim_app/app/widgets/build_space.dart';
 import 'package:kasifim_app/gen/colors.gen.dart';
+import 'package:kasifim_app/network/local/isar/collection/user_data.dart';
 
 class ProfileSettings extends StatelessWidget {
   const ProfileSettings({Key? key}) : super(key: key);
@@ -50,7 +51,7 @@ class ProfileSettings extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           ProfileAvatar(),
-                          profileBio(),
+                          //profileBio(userData: ,),
                           CircleAvatar(
                             backgroundColor: Colors.transparent,
                             radius: 5,

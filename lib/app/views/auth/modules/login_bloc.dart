@@ -24,14 +24,25 @@ class LoginBloc extends Bloc<LoginEvents, LoginStates> {
 
   FutureOr<void> _successEvent(
       LoginSuccessEvent event, Emitter<LoginStates> emit) async {
+    // bool isEmailValid(String email) {
+    //   final RegExp regex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+    //   return regex.hasMatch(email);
+    // }
+
+    // if (!isEmailValid(event.email)) {
+    //   showErrorSnackbar('Invalid email');
+    //   return;
+    // }
+
     final service =
         await _loginRepository.loginService(event.email, event.password);
+
     if (service == 200) {
       OneContext().pushNamed('/home-body');
     } else if (service == 400) {
-      showErrorSnackbar('Hata: Şifre yanlış 400');
+      showErrorSnackbar('email or password is incorrect');
     } else {
-      showErrorSnackbar('Hata: sonra deneyin');
+      showErrorSnackbar('email or password is incorrect');
     }
   }
 

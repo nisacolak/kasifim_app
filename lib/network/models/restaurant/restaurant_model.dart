@@ -50,6 +50,8 @@ class Restaurants {
   String? createdAt;
   String? updatedAt;
   int? iV;
+  int? rate;
+  List<String>? rates;
 
   Restaurants(
       {this.sId,
@@ -73,7 +75,9 @@ class Restaurants {
       this.restaurantImage,
       this.createdAt,
       this.updatedAt,
-      this.iV});
+      this.iV,
+      this.rate,
+      this.rates});
 
   Restaurants.fromJson(Map<String, dynamic> json) {
     sId = json['_id'];
@@ -98,6 +102,8 @@ class Restaurants {
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
     iV = json['__v'];
+    rate = json['rate'];
+    rates = json['rates'].cast<String>();
   }
 
   Map<String, dynamic> toJson() {
@@ -124,6 +130,8 @@ class Restaurants {
     data['createdAt'] = this.createdAt;
     data['updatedAt'] = this.updatedAt;
     data['__v'] = this.iV;
+    data['rate'] = this.rate;
+    data['rates'] = this.rates;
     return data;
   }
 }

@@ -119,7 +119,7 @@ class _RestClient implements RestClient {
     )
             .compose(
               _dio.options,
-              'user',
+              'users',
               queryParameters: queryParameters,
               data: _data,
             )

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:kasifim_app/app/views/profile/modules/user_bloc.dart';
 
 import 'package:kasifim_app/app/views/profile/widget/media_tab.dart';
 import 'package:kasifim_app/app/views/profile/widget/profile_info.dart';
@@ -24,6 +26,26 @@ class _ProfileTabState extends State<ProfileTab> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<ProfileViewBloc>().add(ProfileViewLoadingEvent());
+    });
+
+    return BlocBuilder<ProfileViewBloc, ProfileViewStates>(
+      builder: (context, state) {
+        if (state is ProfileViewLoadingState) {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        } else if (state is ProfileViewSuccessState) {
+          return _mainWidget(context, state);
+        } else {
+          return Center(child: Text("error"));
+        }
+      },
+    );
+  }
+
+  Scaffold _mainWidget(BuildContext context, ProfileViewSuccessState state) {
     return Scaffold(
       backgroundColor: ColorName.lightGrey,
       body: DefaultTabController(
@@ -33,8 +55,9 @@ class _ProfileTabState extends State<ProfileTab> with TickerProviderStateMixin {
               headerSliverBuilder: (context, bool innerBoxIsScrolled) {
                 return [
                   SliverToBoxAdapter(
-                    child: buildUserBio(context),
-                  ),
+                      child: BuildUserBio(
+                    userData: state.userData,
+                  )),
                   SliverAppBar(
                     backgroundColor: ColorName.lightGrey,
                     pinned: true,
