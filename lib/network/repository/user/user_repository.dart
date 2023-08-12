@@ -21,11 +21,12 @@ class UserRepository {
     final isar = await Isar.getInstance()!;
 
     final token = await _isarLocalDatabase.getAccessToken();
+    final id = await _isarLocalDatabase.getUser();
     try {
       final response = await client.getUser(token);
       int i = 1;
       response.data!.forEach((element) async {
-        final data = UserDatas()
+        final user = UserDatas()
           ..id = i++
           ..sId = element.sId
           ..name = element.name
@@ -35,6 +36,10 @@ class UserRepository {
           ..comments = element.comments
           ..followers = element.followers
           ..following = element.following;
+
+        await isar!.writeTxn(() async {
+          await isar.userDatas.put(user);
+        });
       });
       return 200;
     } on DioError catch (e) {

@@ -24,5 +24,7 @@ abstract class RestClient {
       @Header('Authorization') String token);
 
   @GET("users")
-  Future<UserModel> getUser(@Header('Authorization') String token);
+  Future<UserModel> getUser(
+    @Header('Authorization') String token,
+  );
 }

@@ -80,7 +80,7 @@ class LoginView extends StatelessWidget {
                   'Password',
                   color: ColorName.grey,
                 ),
-                buildSpace(),
+                buildSpaceSmall(),
                 PasswordField(
                   hintText: 'enter your password',
                   controller: _loginPasswordController,

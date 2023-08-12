@@ -29,7 +29,7 @@ class _PasswordFieldState extends State<PasswordField> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.07,
+      height: MediaQuery.of(context).size.height * 0.06,
       width: MediaQuery.of(context).size.width * 0.70,
       child: TextFormField(
         controller: widget.controller,
@@ -50,7 +50,7 @@ class _PasswordFieldState extends State<PasswordField> {
             borderRadius: BorderRadius.circular(12),
             borderSide: const BorderSide(color: ColorName.orange),
           ),
-          contentPadding: const EdgeInsets.all(19),
+          contentPadding: const EdgeInsets.only(top: 20),
         ),
       ),
     );

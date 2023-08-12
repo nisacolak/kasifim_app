@@ -20,6 +20,8 @@ class RegisterView extends StatelessWidget {
 
   final TextEditingController _registerPasswordController =
       TextEditingController();
+  final TextEditingController _registerPasswordConfirmController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -91,6 +93,11 @@ class RegisterView extends StatelessWidget {
                 PasswordField(
                   hintText: 'enter your password',
                   controller: _registerPasswordController,
+                ),
+                buildSpaceMedium(),
+                PasswordField(
+                  hintText: 'confirm your password',
+                  controller: _registerPasswordConfirmController,
                 )
               ],
             ),

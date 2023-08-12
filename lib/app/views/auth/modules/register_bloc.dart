@@ -47,7 +47,7 @@ class RegisterBloc extends Bloc<RegisterEvents, RegisterStates> {
 
   FutureOr<void> _successEvent(
       RegisterSuccessEvent event, Emitter<RegisterStates> emit) async {
-        bool isEmailValid(String email) {
+    bool isEmailValid(String email) {
       final RegExp regex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
       return regex.hasMatch(email);
     }
