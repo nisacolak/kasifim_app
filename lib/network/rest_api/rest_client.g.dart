@@ -105,7 +105,10 @@ class _RestClient implements RestClient {
   }
 
   @override
-  Future<UserModel> getUser(String token) async {
+  Future<UserModel> getUser(
+    String id,
+    String token,
+  ) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'Authorization': token};
@@ -119,7 +122,7 @@ class _RestClient implements RestClient {
     )
             .compose(
               _dio.options,
-              'users',
+              'users/${id}',
               queryParameters: queryParameters,
               data: _data,
             )

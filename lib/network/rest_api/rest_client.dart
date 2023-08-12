@@ -23,8 +23,10 @@ abstract class RestClient {
   Future<RestaurantResponseModel> getRestaurant(
       @Header('Authorization') String token);
 
-  @GET("users")
+  @GET("users/{id}")
   Future<UserModel> getUser(
+    @Path() String id,
     @Header('Authorization') String token,
+    
   );
 }

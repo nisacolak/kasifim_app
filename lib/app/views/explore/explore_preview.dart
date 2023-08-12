@@ -41,12 +41,12 @@ class _VideoPageState extends State<VideoPage> {
           IconButton(
             icon: const Icon(Icons.check),
             onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute<void>(
-                      builder: ((context) => VideoEditor(
-                            file: File(widget.filePath),
-                          ))));
+              // Navigator.push(
+              //     context,
+              //     MaterialPageRoute<void>(
+              //         builder: ((context) => VideoEditor(
+              //               file: File(widget.filePath),
+              //             ))));
               // Navigator.pushNamed(context, '/video-edit',
               //     arguments: File(widget.filePath));
             },

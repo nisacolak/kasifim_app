@@ -30,7 +30,6 @@ dependencies:
   readmore: ^2.2.0
   camera: ^0.10.5+2
   path_provider: ^2.0.15
-  video_editor: ^2.4.0
   helpers: ^1.2.3
   fraction: ^5.0.0
   image_picker: ^0.8.8

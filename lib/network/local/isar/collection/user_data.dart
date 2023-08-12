@@ -4,7 +4,7 @@ part 'user_data.g.dart';
 
 @collection
 class UserDatas {
-  late Id id;
+  Id id = 1;
   String? sId;
   String? name;
   String? email;

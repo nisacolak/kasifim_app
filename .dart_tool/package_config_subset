@@ -158,14 +158,6 @@ ffi
 2.17
 file:///Users/selimkutuk/.pub-cache/hosted/pub.dev/ffi-2.0.2/
 file:///Users/selimkutuk/.pub-cache/hosted/pub.dev/ffi-2.0.2/lib/
-ffmpeg_kit_flutter_min_gpl
-2.12
-file:///Users/selimkutuk/.pub-cache/hosted/pub.dev/ffmpeg_kit_flutter_min_gpl-5.1.0/
-file:///Users/selimkutuk/.pub-cache/hosted/pub.dev/ffmpeg_kit_flutter_min_gpl-5.1.0/lib/
-ffmpeg_kit_flutter_platform_interface
-2.12
-file:///Users/selimkutuk/.pub-cache/hosted/pub.dev/ffmpeg_kit_flutter_platform_interface-0.2.1/
-file:///Users/selimkutuk/.pub-cache/hosted/pub.dev/ffmpeg_kit_flutter_platform_interface-0.2.1/lib/
 file
 2.12
 file:///Users/selimkutuk/.pub-cache/hosted/pub.dev/file-6.1.4/
@@ -554,10 +546,6 @@ timing
 2.14
 file:///Users/selimkutuk/.pub-cache/hosted/pub.dev/timing-1.0.1/
 file:///Users/selimkutuk/.pub-cache/hosted/pub.dev/timing-1.0.1/lib/
-transparent_image
-2.12
-file:///Users/selimkutuk/.pub-cache/hosted/pub.dev/transparent_image-2.0.1/
-file:///Users/selimkutuk/.pub-cache/hosted/pub.dev/transparent_image-2.0.1/lib/
 tuple
 2.17
 file:///Users/selimkutuk/.pub-cache/hosted/pub.dev/tuple-2.0.2/
@@ -570,10 +558,6 @@ vector_math
 2.14
 file:///Users/selimkutuk/.pub-cache/hosted/pub.dev/vector_math-2.1.4/
 file:///Users/selimkutuk/.pub-cache/hosted/pub.dev/vector_math-2.1.4/lib/
-video_editor
-2.17
-file:///Users/selimkutuk/.pub-cache/hosted/pub.dev/video_editor-2.4.0/
-file:///Users/selimkutuk/.pub-cache/hosted/pub.dev/video_editor-2.4.0/lib/
 video_player
 2.17
 file:///Users/selimkutuk/.pub-cache/hosted/pub.dev/video_player-2.6.1/
@@ -594,10 +578,6 @@ video_player_web
 2.17
 file:///Users/selimkutuk/.pub-cache/hosted/pub.dev/video_player_web-2.0.16/
 file:///Users/selimkutuk/.pub-cache/hosted/pub.dev/video_player_web-2.0.16/lib/
-video_thumbnail
-2.16
-file:///Users/selimkutuk/.pub-cache/hosted/pub.dev/video_thumbnail-0.5.3/
-file:///Users/selimkutuk/.pub-cache/hosted/pub.dev/video_thumbnail-0.5.3/lib/
 watcher
 3.0
 file:///Users/selimkutuk/.pub-cache/hosted/pub.dev/watcher-1.1.0/

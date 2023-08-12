@@ -23,24 +23,22 @@ class UserRepository {
     final token = await _isarLocalDatabase.getAccessToken();
     final id = await _isarLocalDatabase.getUser();
     try {
-      final response = await client.getUser(token);
-      int i = 1;
-      response.data!.forEach((element) async {
-        final user = UserDatas()
-          ..id = i++
-          ..sId = element.sId
-          ..name = element.name
-          ..email = element.email
-          ..profileImage = element.profileImage
-          ..favorites = element.favorites
-          ..comments = element.comments
-          ..followers = element.followers
-          ..following = element.following;
+      final response = await client.getUser(id, token);
 
-        await isar!.writeTxn(() async {
-          await isar.userDatas.put(user);
-        });
+      print(response.data![0].name);
+      final user = UserDatas()
+        ..sId = response.data![0].sId
+        ..name = response.data![0].name
+        ..email = response.data![0].email
+        ..profileImage = response.data![0].profileImage
+        ..favorites = response.data![0].favorites
+        ..comments = response.data![0].comments
+        ..followers = response.data![0].followers
+        ..following = response.data![0].following;
+      await isar!.writeTxn(() async {
+        await isar.userDatas.put(user);
       });
+
       return 200;
     } on DioError catch (e) {
       if (e.response != null && e.response?.statusCode == 400) {
